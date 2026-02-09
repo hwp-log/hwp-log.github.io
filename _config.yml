@@ -2,7 +2,7 @@ logo: "/assets/images/logo.png"
 title: "Engineering Log"
 description: "프로젝트, 기술 탐구, 공부 내용을 한 데 모은 개인 기록 저장소"
 url: "https://hyunwoopark-dev.github.io"
-baseurl: "/HyunwooPark.github.io"
+baseurl: ""
 
 theme: minimal-mistakes-jekyll
 minimal_mistakes_skin: "default"
