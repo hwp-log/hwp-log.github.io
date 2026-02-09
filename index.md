@@ -1,8 +1,5 @@
 ---
-layout: home
-title: Engineering Log
+layout: single
+title: ""
 author_profile: true
 ---
-
-프로젝트, 기술 탐구, 공부 내용을 한 데 모은 개인 기록 저장소입니다.  
-모든 섹션에서 "왜지? -> 시행착오 -> 해결!" 과정을 그대로 남기는 것을 목표로 합니다.
