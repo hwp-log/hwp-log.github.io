@@ -137,6 +137,6 @@ navbar는 그 값을 가지고 아래처럼 처리한다.
 
 ## 적용 결과
 
-![ActiveLink 적용결과](/assets/post_images/2026-02-09/image0.png)
+![ActiveLink 적용결과](/assets/post_images/2026-02-09/image1.png)
 
 해당 페이지에서 ActiveLink가 활성화 되었음을 알 수 있다.
