@@ -6,7 +6,7 @@ categories: [next.js]
 ---
 
 next.js 기본기를 다지고자 이전 정리한 글에 이어 작성하는 기록이다.  
-→ https://www.notion.so/next-js_session-1-2fd23927a2a7806c9437dbb874633045?source=copy_link
+→ [이전 정리 노션 문서 바로가기](https://www.notion.so/next-js_session-1-2fd23927a2a7806c9437dbb874633045?source=copy_link)
 
 강의내용은 x.com을 클론코딩하는 내용으로, 서비스에서 사용되는 기능을 next.js로 구현하는 것이 목적이다.
 현재까지 구현한 내용은 x.com의 메인페이지 및 로그인페이지를 구현하였고 Home메뉴의 레이아웃을 작성한 상태이다.
@@ -18,7 +18,7 @@ next.js 기본기를 다지고자 이전 정리한 글에 이어 작성하는 �
 
 ## ActiveLink란?
 
-!(/assets/post_images/2026-02-09/image0.png)
+![ActiveLink 예시](/assets/post_images/2026-02-09/image0.png)
 
 말그대로 "지금 내가 어디 페이지에 있는지 표시" 하는 기능
 즉, 어느페이지에 접속해 있는지 메뉴가 볼드처리 되면서 활성화 된 기능을 뜻한다. 사용자 관점에서 본다면, 내가 어느메뉴를 사용하고 있는지 기억하고 있지는 않다. 따라서 이를 확인하려면 메뉴에 테두리가 처지던, 아니면 다른 글씨색이 되던 표시상태가 필요하다.
@@ -137,6 +137,6 @@ navbar는 그 값을 가지고 아래처럼 처리한다.
 
 ## 적용 결과
 
-!(/assets/post_images/2026-02-09/image0.png)
+![ActiveLink 적용결과](/assets/post_images/2026-02-09/image0.png)
 
 해당 페이지에서 ActiveLink가 활성화 되었음을 알 수 있다.
