@@ -1,0 +1,6 @@
+title: "Engineering Log"
+description: "프로젝트, 기술 탐구, 공부 내용을 한 데 모은 개인 기록 저장소"
+theme: jekyll-theme-minimal
+
+plugins:
+  - jekyll-feed
