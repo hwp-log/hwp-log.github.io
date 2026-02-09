@@ -1,9 +1,7 @@
----
-# Only the main Sass file needs front matter (the dashes are enough)
----
-
-@import "minimal-mistakes";
-
-.layout--home .archive__subtitle {
-  display: none;
+/* 홈에서 Recent Posts 헤더 숨기기 - 가능한 모든 경우 다 막기 */
+.layout--home h2.archive__subtitle,
+.layout--home h3.archive__subtitle,
+.layout--home .page__inner-wrap>h2,
+.layout--home .page__inner-wrap>h3 {
+  display: none !important;
 }
