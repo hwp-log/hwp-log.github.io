@@ -247,7 +247,7 @@
         
         <h2 id="글-작성-목적">글 작성 목적</h2>
 
-<p>next.js 기본기를 다지고자 이전 정리한 글에 이어 작성하는 기록이다.
+<p>next.js 기본기를 다지고자 이전 정리한 글에 이어 작성하는 기록이다.<br />
 → <a href="https://hwp-log.github.io/next.js/2026/02/09/next.js-session-2-2.html">이전 글 바로가기</a></p>
 
 <p>x-com의 좌측메뉴 작성에 이어, 이번에는 우측메뉴를 작성하려고 한다.<br />
@@ -259,15 +259,10 @@
 이 부분을 오늘 구현 해 보고자 한다.</p>
 
 <h2 id="작성방법은">작성방법은?</h2>
-<ol>
-  <li>
-    <p>작성할 로그인 이후 레이아웃 파일 확인. 
+<p>1.작성할 로그인 이후 레이아웃 파일 확인. 
 → src/app/(afterLogin)/layout.tsx</p>
-  </li>
-  <li>
-    <p>파일 내부의 컴포넌트에서 작성할 영역 및 컴포넌트를 채워준다.</p>
-  </li>
-</ol>
+
+<p>2.파일 내부의 컴포넌트에서 작성할 영역 및 컴포넌트를 채워준다.</p>
 
 <div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ...</span>
 <span class="k">import</span> <span class="nx">TrendSection</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">@/app/(afterLogin)/_component/TrendSection</span><span class="dl">"</span><span class="p">;</span>
@@ -276,9 +271,9 @@
 <span class="k">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="nx">AfterLoginLayout</span><span class="p">({</span> <span class="nx">children</span> <span class="p">}:</span> <span class="p">{</span> <span class="nl">children</span><span class="p">:</span> <span class="nx">ReactNode</span> <span class="p">})</span> <span class="p">{</span>
   <span class="k">return</span> <span class="p">(</span>
         <span class="c1">// ...</span>
-            <span class="p">&lt;</span><span class="nc">TrendSection</span> <span class="p">/&gt;</span> <span class="c1">// 3-1. 나를 위한 트렌드 영역</span>
+            <span class="p">&lt;</span><span class="nc">TrendSection</span> <span class="p">/&gt;</span> <span class="c1">// 4-1. 나를 위한 트렌드 영역</span>
             <span class="p">&lt;</span><span class="nt">div</span> <span class="na">className</span><span class="p">=</span><span class="si">{</span><span class="nx">style</span><span class="p">.</span><span class="nx">followRecommend</span><span class="si">}</span><span class="p">&gt;</span>
-              <span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span>팔로우 추천<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span> <span class="si">{</span><span class="cm">/* 3-2. 팔로우 추천 영역 */</span><span class="si">}</span>
+              <span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span>팔로우 추천<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span> <span class="si">{</span><span class="cm">/* 4-3. 팔로우 추천 영역 */</span><span class="si">}</span>
               <span class="p">&lt;</span><span class="nc">FollowRecommend</span> <span class="p">/&gt;</span> 
               <span class="p">&lt;</span><span class="nc">FollowRecommend</span> <span class="p">/&gt;</span>
               <span class="p">&lt;</span><span class="nc">FollowRecommend</span> <span class="p">/&gt;</span>
@@ -287,15 +282,12 @@
   <span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div></div>
-<ol>
-  <li>코드와 컴포넌트와의 대응</li>
-</ol>
+
+<p>3.코드와 컴포넌트와의 대응</p>
 
 <p><img src="/assets/post_images/2026-02-11/image2.png" alt="코드와 컴포넌트 대응" /></p>
 
-<ol>
-  <li>해당 컴포넌트들은 _component라는 private folder에 넣어준다.</li>
-</ol>
+<p>4.해당 컴포넌트들은 _component라는 private folder에 넣어준다.</p>
 
 <p>4-1. TrendSection.tsx</p>
 
@@ -307,7 +299,7 @@
     <span class="p">&lt;</span><span class="nt">div</span> <span class="na">className</span><span class="p">=</span><span class="si">{</span><span class="nx">style</span><span class="p">.</span><span class="nx">trendBg</span><span class="si">}</span><span class="p">&gt;</span>
       <span class="p">&lt;</span><span class="nt">div</span> <span class="na">className</span><span class="p">=</span><span class="si">{</span><span class="nx">style</span><span class="p">.</span><span class="nx">trend</span><span class="si">}</span><span class="p">&gt;</span>
         <span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span>나를 위한 트렌드<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nc">Trend</span> <span class="p">/&gt;</span> <span class="si">{</span><span class="cm">/*4-1-1 Trend 내용*/</span><span class="si">}</span>
+        <span class="p">&lt;</span><span class="nc">Trend</span> <span class="p">/&gt;</span> <span class="si">{</span><span class="cm">/*4-2. Trend 내용*/</span><span class="si">}</span>
         <span class="p">&lt;</span><span class="nc">Trend</span> <span class="p">/&gt;</span>
         <span class="p">&lt;</span><span class="nc">Trend</span> <span class="p">/&gt;</span>
         <span class="p">&lt;</span><span class="nc">Trend</span> <span class="p">/&gt;</span>
@@ -323,7 +315,7 @@
 <span class="p">}</span>
 </code></pre></div></div>
 
-<p>4-1-1. Trend.tsx</p>
+<p>4-2. Trend.tsx</p>
 
 <div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">Link</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">next/link</span><span class="dl">"</span><span class="p">;</span>
 <span class="k">import</span> <span class="nx">style</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./trend.module.css</span><span class="dl">'</span><span class="p">;</span>
@@ -340,7 +332,7 @@
 </code></pre></div></div>
 <p>해당 /search?q=트렌드 는 URL 쿼리 파라미터로서 클릭 했을시, 설정된 관련 내용으로 서칭한다.</p>
 
-<p>4-2. FollowRecommend.tsx</p>
+<p>4-3. FollowRecommend.tsx</p>
 
 <div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="dl">"</span><span class="s2">use client</span><span class="dl">"</span>
 <span class="k">import</span> <span class="nx">style</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./followRecommend.module.css</span><span class="dl">'</span><span class="p">;</span>
@@ -370,16 +362,12 @@
 <span class="p">}</span>
 </code></pre></div></div>
 
-<ol>
-  <li>근데 이전에 배웠던 preivate floder가 “중복파일 정리용”이라고 알고 있었는데?<br />
-미리 중복될 파일을 예측하고 넣어놓는 것인가? 일단은 의문을 품은채 작성해 보기로 한다.</li>
-</ol>
+<p>5.근데 이전에 배웠던 preivate floder가 “중복파일 정리용”이라고 알고 있었는데?<br />
+미리 중복될 파일을 예측하고 넣어놓는 것인가? 일단은 의문을 품은채 작성해 보기로 한다.</p>
 
 <p><img src="/assets/post_images/2026-02-11/image1.png" alt="private folder 설명" /></p>
 
-<ol>
-  <li>우측 섹션에 반영 된 것을 확인 할 수 있다.</li>
-</ol>
+<p>6.우측 섹션에 반영 된 것을 확인 할 수 있다.</p>
 
 <p><img src="/assets/post_images/2026-02-11/image3.png" alt="반영내용" /></p>
 
@@ -402,7 +390,7 @@
       
   <nav class="pagination">
     
-      <a href="/next.js/2026/02/09/next.js-session-2-2.html" class="pagination--pager" title="[next.js] ActiveLink 만들기">Previous</a>
+      <a href="/next.js/2026/02/09/next.js-session-2-2.html" class="pagination--pager" title="[next.js] x-com의 ActiveLink 만들기">Previous</a>
     
     
       <a href="#" class="pagination--pager disabled">Next</a>

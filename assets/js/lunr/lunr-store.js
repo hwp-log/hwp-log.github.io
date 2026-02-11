@@ -5,7 +5,7 @@ var store = [{
         "url": "/devlog/2026/02/09/github-pages-setup-log.html",
         "teaser": null
       },{
-        "title": "[next.js] ActiveLink 만들기",
+        "title": "[next.js] x-com의 ActiveLink 만들기",
         "excerpt":"next.js 기본기를 다지고자 이전 정리한 글에 이어 작성하는 기록이다. → 이전 정리 노션 문서 바로가기 강의내용은 x.com을 클론코딩하는 내용으로, 서비스에서 사용되는 기능을 next.js로 구현하는 것이 목적이다. 현재까지 구현한 내용은 x.com의 메인페이지 및 로그인페이지를 구현하였고 Home메뉴의 레이아웃을 작성한 상태이다. 어쨌든 중요한 것은.. 이걸 만들면서도 정작 진짜 필요한 기술인지에 대한 의문이 들었어야...","categories": ["next.js"],
         "tags": [],
         "url": "/next.js/2026/02/09/next.js-session-2-2.html",
