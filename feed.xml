@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="https://hwp-log.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://hwp-log.github.io/" rel="alternate" type="text/html" /><updated>2026-02-11T08:42:45+00:00</updated><id>https://hwp-log.github.io/feed.xml</id><title type="html">Engineering Log</title><subtitle>프로젝트, 기술 탐구, 공부 내용을 한 데 모은 개인 기록 저장소</subtitle><entry><title type="html">[next.js] x-com의 나를 위한 트렌드 메뉴 만들기</title><link href="https://hwp-log.github.io/next.js/2026/02/11/next.js-session-2-3.html" rel="alternate" type="text/html" title="[next.js] x-com의 나를 위한 트렌드 메뉴 만들기" /><published>2026-02-11T00:00:00+00:00</published><updated>2026-02-11T00:00:00+00:00</updated><id>https://hwp-log.github.io/next.js/2026/02/11/next.js-session%202-3</id><content type="html" xml:base="https://hwp-log.github.io/next.js/2026/02/11/next.js-session-2-3.html"><![CDATA[<h2 id="글-작성-목적">글 작성 목적</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="https://hwp-log.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://hwp-log.github.io/" rel="alternate" type="text/html" /><updated>2026-02-11T15:09:41+00:00</updated><id>https://hwp-log.github.io/feed.xml</id><title type="html">Engineering Log</title><subtitle>프로젝트, 기술 탐구, 공부 내용을 한 데 모은 개인 기록 저장소</subtitle><entry><title type="html">[next.js] x-com의 나를 위한 트렌드 메뉴 만들기</title><link href="https://hwp-log.github.io/next.js/2026/02/11/next.js-session-2-3.html" rel="alternate" type="text/html" title="[next.js] x-com의 나를 위한 트렌드 메뉴 만들기" /><published>2026-02-11T00:00:00+00:00</published><updated>2026-02-11T00:00:00+00:00</updated><id>https://hwp-log.github.io/next.js/2026/02/11/next.js-session%202-3</id><content type="html" xml:base="https://hwp-log.github.io/next.js/2026/02/11/next.js-session-2-3.html"><![CDATA[<h2 id="글-작성-목적">글 작성 목적</h2>
 
 <p>next.js 기본기를 다지고자 이전 정리한 글에 이어 작성하는 기록이다.<br />
 → <a href="https://hwp-log.github.io/next.js/2026/02/09/next.js-session-2-2.html">이전 글 바로가기</a></p>
@@ -116,13 +116,84 @@
 </code></pre></div></div>
 
 <p>5.근데 이전에 배웠던 preivate floder가 “중복파일 정리용”이라고 알고 있었는데?<br />
-미리 중복될 파일을 예측하고 넣어놓는 것인가? 일단은 의문을 품은채 작성해 보기로 한다.</p>
+미리 중복될 파일을 예측하고 넣어놓는 것인가? 일단은 의문을 품은채 계속 작성해 보기로 한다.</p>
 
 <p><img src="/assets/post_images/2026-02-11/image1.png" alt="private folder 설명" /></p>
 
+<p>→ 용도 관련하여 다시 한번 조사 해보니, “중복파일 정리용”보다는<br />
+해당라우트 그룹에서만 쓰는 컴포넌트를 모아두는 곳으로 인식하는 것이 옳다고 한다.</p>
+
+<p><img src="/assets/post_images/2026-02-11/image4.png" alt="private folder 설명2" /></p>
+
+<p>→ 예시의 경우는 (dashboard)에 한정하여 쓰일 컴포넌트들로 묶어서 사용하고 있다. URL로의 접근은 불가.</p>
+
 <p>6.우측 섹션에 반영 된 것을 확인 할 수 있다.</p>
 
-<p><img src="/assets/post_images/2026-02-11/image3.png" alt="반영내용" /></p>]]></content><author><name></name></author><category term="next.js" /><summary type="html"><![CDATA[글 작성 목적]]></summary></entry><entry><title type="html">GitHub Pages로 Engineering Log 띄우기 삽질기</title><link href="https://hwp-log.github.io/devlog/2026/02/09/github-pages-setup-log.html" rel="alternate" type="text/html" title="GitHub Pages로 Engineering Log 띄우기 삽질기" /><published>2026-02-09T00:00:00+00:00</published><updated>2026-02-09T00:00:00+00:00</updated><id>https://hwp-log.github.io/devlog/2026/02/09/github-pages-setup-log</id><content type="html" xml:base="https://hwp-log.github.io/devlog/2026/02/09/github-pages-setup-log.html"><![CDATA[<p>최초 Engineering Log 작성글</p>]]></content><author><name></name></author><category term="devlog" /><summary type="html"><![CDATA[최초 Engineering Log 작성글]]></summary></entry><entry><title type="html">[next.js] x-com의 ActiveLink 만들기</title><link href="https://hwp-log.github.io/next.js/2026/02/09/next.js-session-2-2.html" rel="alternate" type="text/html" title="[next.js] x-com의 ActiveLink 만들기" /><published>2026-02-09T00:00:00+00:00</published><updated>2026-02-09T00:00:00+00:00</updated><id>https://hwp-log.github.io/next.js/2026/02/09/next.js-session%202-2</id><content type="html" xml:base="https://hwp-log.github.io/next.js/2026/02/09/next.js-session-2-2.html"><![CDATA[<p>next.js 기본기를 다지고자 이전 정리한 글에 이어 작성하는 기록이다.<br />
+<p><img src="/assets/post_images/2026-02-11/image3.png" alt="반영내용" /></p>]]></content><author><name></name></author><category term="next.js" /><summary type="html"><![CDATA[글 작성 목적]]></summary></entry><entry><title type="html">[next.js] Context API - TabProvider를 활용한 홈 탭 상태관리</title><link href="https://hwp-log.github.io/next.js/2026/02/11/next.js-session-2-4.html" rel="alternate" type="text/html" title="[next.js] Context API - TabProvider를 활용한 홈 탭 상태관리" /><published>2026-02-11T00:00:00+00:00</published><updated>2026-02-11T00:00:00+00:00</updated><id>https://hwp-log.github.io/next.js/2026/02/11/next.js-session%202-4</id><content type="html" xml:base="https://hwp-log.github.io/next.js/2026/02/11/next.js-session-2-4.html"><![CDATA[<p>x.com의 로그인 후, 메인페이지를 보게 된다면 중앙에 ‘추천/팔로우’와 ‘내용’이 등장한다. 이때 추천/팔로우를 번갈아서 클릭 했을 때, 내용이 전환 될 필요가 존재한다. 문제는 ‘추천/팔로우’와’내용’의 각 컴포넌트가 형제(병렬) 관계이기 때문에, 일반적인 props 전달로는 상태를 공유 할 수 없다는 점이다.(React는 “데이터는 위에서 아래로 흐른다.” 라는 단방향 데이터흐름 설계원칙을 가지고 있어 부모 → 자식 prop전달이 기본이다.)</p>
+
+<h2 id="형제간의-props-공유">형제간의 Props 공유?</h2>
+<p>결국 이를 해결하려면, ‘공통부모에서 상태를 내려주는 방식’이 필요하고 가장 간단한 방법으로 React의 ContextAPI를 활용하는 것이다. Redux같은 외부 라이브러리 없이 React 내장 기능만으로 해결할 수 있다.
+<img src="/assets/post_images/2026-02-11/image5.png" alt="Context API 사용예시" /></p>
+
+<h2 id="그럼-적용은-어떻게">그럼 적용은 어떻게?</h2>
+<h3 id="먼저-적용되는-기술은-아래와-같다">먼저 적용되는 기술은 아래와 같다.</h3>
+
+<ul>
+  <li>React Context API — createContext로 전역 상태 저장소를 만들고, Provider로 하위 컴포넌트에 공유</li>
+  <li>useState — 현재 탭 상태(“rec” 또는 “fol”)를 관리</li>
+  <li>“use client” — 탭 전환은 사용자 인터랙션이므로 클라이언트 컴포넌트로 선언 필요(서버 클라이언트에선 사용불가)</li>
+</ul>
+
+<h3 id="context-api---tabprovider-작성">Context API - TabProvider 작성</h3>
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="dl">"</span><span class="s2">use client</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="k">import</span> <span class="p">{</span> <span class="nx">ReactNode</span><span class="p">,</span> <span class="nx">createContext</span><span class="p">,</span> <span class="nx">useState</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">react</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="c1">// 1. Context API의 createContext로 저장소를 만든다</span>
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">TabContext</span> <span class="o">=</span> <span class="nx">createContext</span><span class="p">({</span>
+  <span class="na">tab</span><span class="p">:</span> <span class="dl">"</span><span class="s2">rec</span><span class="dl">"</span><span class="p">,</span> <span class="c1">// 현재 탭 상태</span>
+  <span class="na">setTab</span><span class="p">:</span> <span class="p">(</span><span class="na">value</span><span class="p">:</span> <span class="dl">"</span><span class="s2">rec</span><span class="dl">"</span> <span class="o">|</span> <span class="dl">"</span><span class="s2">fol</span><span class="dl">"</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{},</span> <span class="c1">// 탭 전환 함수 ("rec" 추천 | "fol" 팔로우)</span>
+<span class="p">});</span>
+
+<span class="kd">type</span> <span class="nx">Props</span> <span class="o">=</span> <span class="p">{</span> <span class="na">children</span><span class="p">:</span> <span class="nx">ReactNode</span><span class="p">};</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="nx">TabProvider</span><span class="p">({</span> <span class="nx">children</span> <span class="p">}:</span> <span class="nx">Props</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">tab</span><span class="p">,</span> <span class="nx">setTab</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="dl">"</span><span class="s2">rec</span><span class="dl">"</span><span class="p">);</span>
+
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="c1">// 2. Context API의 Provider를 활용해서 TabProvider 컴포넌트를 만듦 </span>
+    <span class="p">&lt;</span><span class="nc">TabContext</span><span class="p">.</span><span class="nc">Provider</span> <span class="na">value</span><span class="p">=&gt;</span> <span class="si">{</span><span class="cm">/* value = 공유 props */</span><span class="si">}</span>
+      <span class="si">{</span><span class="nx">children</span><span class="si">}</span> <span class="si">{</span><span class="cm">/* children = &lt;Tab /&gt;, &lt;Post /&gt; 등 형제 컴포넌트들 */</span><span class="si">}</span>
+    <span class="p">&lt;/</span><span class="nc">TabContext</span><span class="p">.</span><span class="nc">Provider</span><span class="p">&gt;</span>
+  <span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p>1의 경우, API 호출을 통한 TabContext를 설정해준다. Props의 기본값과 전환될 값을 설정해준다.
+2의 경우, 적용될 컴포넌트를 감싸준다 (value값: 스위칭 될 Props)</p>
+
+<h3 id="homepagetsx에서의-적용">home/page.tsx에서의 적용</h3>
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="nx">Home</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="p">&lt;</span><span class="nt">main</span><span class="p">&gt;</span>
+      홈페이지
+    <span class="p">&lt;</span><span class="nt">main</span> <span class="na">className</span><span class="p">=</span><span class="si">{</span><span class="nx">style</span><span class="p">.</span><span class="nx">main</span><span class="si">}</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nc">TabProvider</span><span class="p">&gt;</span> <span class="si">{</span><span class="cm">/* 적용될 컴포넌트를 감싼다.*/</span><span class="si">}</span>
+        <span class="p">&lt;</span><span class="nc">Tab</span><span class="p">/&gt;</span>
+        <span class="p">&lt;</span><span class="nc">Post</span><span class="p">/&gt;</span> 
+        <span class="p">&lt;</span><span class="nc">Post</span><span class="p">/&gt;</span>
+        <span class="p">&lt;</span><span class="nc">Post</span><span class="p">/&gt;</span>
+      <span class="p">&lt;/</span><span class="nc">TabProvider</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">main</span><span class="p">&gt;</span>
+  )
+}
+</code></pre></div></div>
+<p>Tab 컴포넌트에서 PropsL rec,fol을 받으면,Post는 Props에 따라 내용을 전환해준다.</p>
+
+<h2 id="적용-결과">적용 결과</h2>
+
+<p><img src="/assets/post_images/2026-02-11/image6.png" alt="하드코딩 결과" /></p>
+
+<p>아직은 상태 받는쪽의 tab.tsx에서 설정을 안해주었기에 전환은 안되는상태. 프레임만 잡았다고 생각하자.</p>]]></content><author><name></name></author><category term="next.js" /><summary type="html"><![CDATA[x.com의 로그인 후, 메인페이지를 보게 된다면 중앙에 ‘추천/팔로우’와 ‘내용’이 등장한다. 이때 추천/팔로우를 번갈아서 클릭 했을 때, 내용이 전환 될 필요가 존재한다. 문제는 ‘추천/팔로우’와’내용’의 각 컴포넌트가 형제(병렬) 관계이기 때문에, 일반적인 props 전달로는 상태를 공유 할 수 없다는 점이다.(React는 “데이터는 위에서 아래로 흐른다.” 라는 단방향 데이터흐름 설계원칙을 가지고 있어 부모 → 자식 prop전달이 기본이다.)]]></summary></entry><entry><title type="html">[next.js] x-com의 ActiveLink 만들기</title><link href="https://hwp-log.github.io/next.js/2026/02/09/next.js-session-2-2.html" rel="alternate" type="text/html" title="[next.js] x-com의 ActiveLink 만들기" /><published>2026-02-09T00:00:00+00:00</published><updated>2026-02-09T00:00:00+00:00</updated><id>https://hwp-log.github.io/next.js/2026/02/09/next.js-session%202-2</id><content type="html" xml:base="https://hwp-log.github.io/next.js/2026/02/09/next.js-session-2-2.html"><![CDATA[<p>next.js 기본기를 다지고자 이전 정리한 글에 이어 작성하는 기록이다.<br />
 → <a href="https://www.notion.so/next-js_session-1-2fd23927a2a7806c9437dbb874633045?source=copy_link">이전 정리 노션 문서 바로가기</a></p>
 
 <p>강의내용은 x.com을 클론코딩하는 내용으로, 서비스에서 사용되는 기능을 next.js로 구현하는 것이 목적이다.
