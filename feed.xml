@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="https://hwp-log.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://hwp-log.github.io/" rel="alternate" type="text/html" /><updated>2026-02-11T08:25:12+00:00</updated><id>https://hwp-log.github.io/feed.xml</id><title type="html">Engineering Log</title><subtitle>프로젝트, 기술 탐구, 공부 내용을 한 데 모은 개인 기록 저장소</subtitle><entry><title type="html"></title><link href="https://hwp-log.github.io/2026/02/11/2026-02-10-next.js-session-2-3.html" rel="alternate" type="text/html" title="" /><published>2026-02-11T08:25:12+00:00</published><updated>2026-02-11T08:25:12+00:00</updated><id>https://hwp-log.github.io/2026/02/11/2026-02-10-next.js-session%202-3</id><content type="html" xml:base="https://hwp-log.github.io/2026/02/11/2026-02-10-next.js-session-2-3.html"><![CDATA[<h2 id="글-작성-목적">글 작성 목적</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="https://hwp-log.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://hwp-log.github.io/" rel="alternate" type="text/html" /><updated>2026-02-11T08:28:35+00:00</updated><id>https://hwp-log.github.io/feed.xml</id><title type="html">Engineering Log</title><subtitle>프로젝트, 기술 탐구, 공부 내용을 한 데 모은 개인 기록 저장소</subtitle><entry><title type="html"></title><link href="https://hwp-log.github.io/2026/02/11/2026-02-10-next.js-session-2-3.html" rel="alternate" type="text/html" title="" /><published>2026-02-11T08:28:35+00:00</published><updated>2026-02-11T08:28:35+00:00</updated><id>https://hwp-log.github.io/2026/02/11/2026-02-10-next.js-session%202-3</id><content type="html" xml:base="https://hwp-log.github.io/2026/02/11/2026-02-10-next.js-session-2-3.html"><![CDATA[<h2 id="글-작성-목적">글 작성 목적</h2>
 
 <p>next.js 기본기를 다지고자 이전 정리한 글에 이어 작성하는 기록이다.
 → <a href="https://hwp-log.github.io/next.js/2026/02/09/next.js-session-2-2.html">이전 글 바로가기</a></p>
@@ -40,7 +40,6 @@
   <span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div></div>
-
 <ol>
   <li>코드와 컴포넌트와의 대응</li>
 </ol>
