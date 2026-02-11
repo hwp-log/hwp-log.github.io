@@ -1,0 +1,458 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.27.3 by Michael Rose
+  Copyright 2013-2025 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Engineering Log</title>
+<meta name="description" content="프로젝트, 기술 탐구, 공부 내용을 한 데 모은 개인 기록 저장소">
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Engineering Log">
+<meta property="og:title" content="Engineering Log">
+<meta property="og:url" content="https://hwp-log.github.io/2026/02/11/2026-02-10-next.js-session-2-3.html">
+
+
+  <meta property="og:description" content="프로젝트, 기술 탐구, 공부 내용을 한 데 모은 개인 기록 저장소">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2026-02-11T08:19:22+00:00">
+
+
+
+
+
+
+<link rel="canonical" href="https://hwp-log.github.io/2026/02/11/2026-02-10-next.js-session-2-3.html">
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Engineering Log Feed">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+  
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css"></noscript>
+
+
+
+    <link rel="icon" type="image/png" href="/assets/images/favicon.png">
+
+<style>
+    /* 홈에서 Recent Posts 헤더 숨기기 */
+    .layout--home h3.archive__subtitle {
+        display: none !important;
+    }
+</style>
+  </head>
+
+  <body class="layout--single" dir="ltr">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+          <a class="site-logo" href="/"><img src="/assets/images/logo.png" alt="Engineering Log"></a>
+        
+        <a class="site-title" href="/">
+          Engineering Log
+          
+        </a>
+        <ul class="visible-links"></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="https://hwp-log.github.io/" itemprop="url"></a>
+    </h3>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <meta itemprop="description" content="">
+    <meta itemprop="datePublished" content="2026-02-11T08:19:22+00:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          
+          
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2026-02-11T08:19:22+00:00">2026-02-11</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <h2 id="글-작성-목적">글 작성 목적</h2>
+
+<p>next.js 기본기를 다지고자 이전 정리한 글에 이어 작성하는 기록이다.
+→ <a href="https://hwp-log.github.io/next.js/2026/02/09/next.js-session-2-2.html">이전 글 바로가기</a></p>
+
+<p>x-com의 좌측메뉴 작성에 이어, 이번에는 우측메뉴를 작성하려고 한다.<br />
+우측 메뉴는 사진과 같이 “나를 위한 트렌드” 메뉴가 존재한다.</p>
+
+<p>(/assets/post_images/2026-02-11/image0.png)</p>
+
+<p>우측에 보면 Today’s News, What’s happening등 구 트위터의 “나를 위한 트렌드” 자리이다.<br />
+이 부분을 오늘 구현 해 보고자 한다.</p>
+
+<h2 id="작성방법은">작성방법은?</h2>
+<ol>
+  <li>
+    <p>작성할 로그인 이후 레이아웃 파일 확인. 
+→ src/app/(afterLogin)/layout.tsx</p>
+  </li>
+  <li>
+    <p>파일 내부의 컴포넌트에서 작성할 영역 및 컴포넌트를 채워준다.
+```tsx
+// …
+import TrendSection from “@/app/(afterLogin)/_component/TrendSection”;
+import FollowRecommend from “@/app/(afterLogin)/_component/FollowRecommend”;</p>
+  </li>
+</ol>
+
+<p>export default function AfterLoginLayout({ children }: { children: ReactNode }) {
+  return (
+        // …
+            <TrendSection></TrendSection> // 3-1. 나를 위한 트렌드 영역
+            &lt;div className={style.followRecommend}&gt;
+              &lt;h3&gt;팔로우 추천&lt;/h3&gt; {/* 3-2. 팔로우 추천 영역 */}
+              <FollowRecommend></FollowRecommend> 
+              <FollowRecommend></FollowRecommend>
+              <FollowRecommend></FollowRecommend>
+            &lt;/div&gt;
+        // …
+  )
+}</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+3. 코드와 컴포넌트와의 대응  
+
+(/assets/post_images/2026-02-11/image2.png)
+
+4. 해당 컴포넌트들은 _component라는 private folder에 넣어준다.  
+
+4-1. TrendSection.tsx
+
+```tsx
+import style from './trendSection.module.css';
+import Trend from "@/app/(afterLogin)/_component/Trend";
+
+export default function TrendSection() {
+  return (
+    &lt;div className={style.trendBg}&gt;
+      &lt;div className={style.trend}&gt;
+        &lt;h3&gt;나를 위한 트렌드&lt;/h3&gt;
+        &lt;Trend /&gt; {/*4-1-1 Trend 내용*/}
+        &lt;Trend /&gt;
+        &lt;Trend /&gt;
+        &lt;Trend /&gt;
+        &lt;Trend /&gt;
+        &lt;Trend /&gt;
+        &lt;Trend /&gt;
+        &lt;Trend /&gt;
+        &lt;Trend /&gt;
+        &lt;Trend /&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  )
+}
+</code></pre></div></div>
+
+<p>4-1-1. Trend.tsx</p>
+
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">Link</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">next/link</span><span class="dl">"</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">style</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./trend.module.css</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="nx">Trend</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="c1">// ?q=트렌드 -&gt; 나중에 트렌드 대신 키워드로 연결</span>
+    <span class="p">&lt;</span><span class="nc">Link</span> <span class="na">href</span><span class="p">=</span><span class="si">{</span><span class="s2">`/search?q=트렌드`</span><span class="si">}</span> <span class="na">className</span><span class="p">=</span><span class="si">{</span><span class="nx">style</span><span class="p">.</span><span class="nx">container</span><span class="si">}</span><span class="p">&gt;</span> 
+      <span class="p">&lt;</span><span class="nt">div</span> <span class="na">className</span><span class="p">=</span><span class="si">{</span><span class="nx">style</span><span class="p">.</span><span class="nx">count</span><span class="si">}</span><span class="p">&gt;</span>실시간트렌드<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">div</span> <span class="na">className</span><span class="p">=</span><span class="si">{</span><span class="nx">style</span><span class="p">.</span><span class="nx">title</span><span class="si">}</span><span class="p">&gt;</span>제로초<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">div</span> <span class="na">className</span><span class="p">=</span><span class="si">{</span><span class="nx">style</span><span class="p">.</span><span class="nx">count</span><span class="si">}</span><span class="p">&gt;</span>1,234 posts<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nc">Link</span><span class="p">&gt;</span>
+  <span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p>해당 /search?q=트렌드 는 URL 쿼리 파라미터로서 클릭 했을시, 설정된 관련 내용으로 서칭한다.</p>
+
+<p>4-2. FollowRecommend.tsx</p>
+
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="dl">"</span><span class="s2">use client</span><span class="dl">"</span>
+<span class="k">import</span> <span class="nx">style</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./followRecommend.module.css</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="nx">FollowRecommend</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">onFollow</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{};</span>
+  <span class="kd">const</span> <span class="nx">user</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">id</span><span class="p">:</span> <span class="dl">'</span><span class="s1">elonmusk</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">nickname</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Elon Musk</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">image</span><span class="p">:</span> <span class="dl">'</span><span class="s1">/yRsRRjGO.jpg</span><span class="dl">'</span>
+  <span class="p">};</span>
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">className</span><span class="p">=</span><span class="si">{</span><span class="nx">style</span><span class="p">.</span><span class="nx">container</span><span class="si">}</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">div</span> <span class="na">className</span><span class="p">=</span><span class="si">{</span><span class="nx">style</span><span class="p">.</span><span class="nx">userLogoSection</span><span class="si">}</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">className</span><span class="p">=</span><span class="si">{</span><span class="nx">style</span><span class="p">.</span><span class="nx">userLogo</span><span class="si">}</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="p">=</span><span class="si">{</span><span class="nx">user</span><span class="p">.</span><span class="nx">image</span><span class="si">}</span> <span class="na">alt</span><span class="p">=</span><span class="si">{</span><span class="nx">user</span><span class="p">.</span><span class="nx">id</span><span class="si">}</span> <span class="p">/&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">div</span> <span class="na">className</span><span class="p">=</span><span class="si">{</span><span class="nx">style</span><span class="p">.</span><span class="nx">userInfo</span><span class="si">}</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">className</span><span class="p">=</span><span class="si">{</span><span class="nx">style</span><span class="p">.</span><span class="nx">title</span><span class="si">}</span><span class="p">&gt;</span><span class="si">{</span><span class="nx">user</span><span class="p">.</span><span class="nx">nickname</span><span class="si">}</span><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">className</span><span class="p">=</span><span class="si">{</span><span class="nx">style</span><span class="p">.</span><span class="nx">count</span><span class="si">}</span><span class="p">&gt;</span>@<span class="si">{</span><span class="nx">user</span><span class="p">.</span><span class="nx">id</span><span class="si">}</span><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">div</span> <span class="na">className</span><span class="p">=</span><span class="si">{</span><span class="nx">style</span><span class="p">.</span><span class="nx">followButtonSection</span><span class="si">}</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">button</span> <span class="na">onClick</span><span class="p">=</span><span class="si">{</span><span class="nx">onFollow</span><span class="si">}</span><span class="p">&gt;</span>팔로우<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+  <span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<ol>
+  <li>근데 이전에 배웠던 preivate floder가 “중복파일 정리용”이라고 알고 있었는데?<br />
+미리 중복될 파일을 예측하고 넣어놓는 것인가? 일단은 의문을 품은채 작성해 보기로 한다.</li>
+</ol>
+
+<p>(/assets/post_images/2026-02-11/image1.png)</p>
+
+<ol>
+  <li>우측 섹션에 반영 된 것을 확인 할 수 있다.</li>
+</ol>
+
+<p>(/assets/post_images/2026-02-11/image3.png)</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2026-02-11T08:19:22+00:00">2026-02-11</time></p>
+
+      </footer>
+
+      
+
+      
+  <nav class="pagination">
+    
+      <a href="/next.js/2026/02/09/next.js-session-2-2.html" class="pagination--pager" title="[next.js] ActiveLink 만들기">Previous</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">Next</a>
+    
+  </nav>
+
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+      
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        
+
+<div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+
+<div class="page__footer-copyright">&copy; 2026 <a href="https://hwp-log.github.io">Engineering Log</a>. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/jekyll-themes/minimal-mistakes/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+  </body>
+</html>
