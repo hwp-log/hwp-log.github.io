@@ -12,7 +12,7 @@ var store = [{
         "teaser": null
       },{
         "title": null,
-        "excerpt":"글 작성 목적 next.js 기본기를 다지고자 이전 정리한 글에 이어 작성하는 기록이다. → 이전 글 바로가기 x-com의 좌측메뉴 작성에 이어, 이번에는 우측메뉴를 작성하려고 한다. 우측 메뉴는 사진과 같이 “나를 위한 트렌드” 메뉴가 존재한다. (/assets/post_images/2026-02-11/image0.png) 우측에 보면 Today’s News, What’s happening등 구 트위터의 “나를 위한 트렌드” 자리이다. 이 부분을 오늘 구현...","categories": [],
+        "excerpt":"글 작성 목적 next.js 기본기를 다지고자 이전 정리한 글에 이어 작성하는 기록이다. → 이전 글 바로가기 x-com의 좌측메뉴 작성에 이어, 이번에는 우측메뉴를 작성하려고 한다. 우측 메뉴는 사진과 같이 “나를 위한 트렌드” 메뉴가 존재한다. 우측에 보면 Today’s News, What’s happening등 구 트위터의 “나를 위한 트렌드” 자리이다. 이 부분을 오늘 구현 해...","categories": [],
         "tags": null,
         "url": "/2026/02/11/2026-02-10-next.js-session-2-3.html",
         "teaser": null

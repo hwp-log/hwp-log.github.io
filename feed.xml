@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="https://hwp-log.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://hwp-log.github.io/" rel="alternate" type="text/html" /><updated>2026-02-11T08:19:22+00:00</updated><id>https://hwp-log.github.io/feed.xml</id><title type="html">Engineering Log</title><subtitle>프로젝트, 기술 탐구, 공부 내용을 한 데 모은 개인 기록 저장소</subtitle><entry><title type="html"></title><link href="https://hwp-log.github.io/2026/02/11/2026-02-10-next.js-session-2-3.html" rel="alternate" type="text/html" title="" /><published>2026-02-11T08:19:22+00:00</published><updated>2026-02-11T08:19:22+00:00</updated><id>https://hwp-log.github.io/2026/02/11/2026-02-10-next.js-session%202-3</id><content type="html" xml:base="https://hwp-log.github.io/2026/02/11/2026-02-10-next.js-session-2-3.html"><![CDATA[<h2 id="글-작성-목적">글 작성 목적</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="https://hwp-log.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://hwp-log.github.io/" rel="alternate" type="text/html" /><updated>2026-02-11T08:25:12+00:00</updated><id>https://hwp-log.github.io/feed.xml</id><title type="html">Engineering Log</title><subtitle>프로젝트, 기술 탐구, 공부 내용을 한 데 모은 개인 기록 저장소</subtitle><entry><title type="html"></title><link href="https://hwp-log.github.io/2026/02/11/2026-02-10-next.js-session-2-3.html" rel="alternate" type="text/html" title="" /><published>2026-02-11T08:25:12+00:00</published><updated>2026-02-11T08:25:12+00:00</updated><id>https://hwp-log.github.io/2026/02/11/2026-02-10-next.js-session%202-3</id><content type="html" xml:base="https://hwp-log.github.io/2026/02/11/2026-02-10-next.js-session-2-3.html"><![CDATA[<h2 id="글-작성-목적">글 작성 목적</h2>
 
 <p>next.js 기본기를 다지고자 이전 정리한 글에 이어 작성하는 기록이다.
 → <a href="https://hwp-log.github.io/next.js/2026/02/09/next.js-session-2-2.html">이전 글 바로가기</a></p>
@@ -6,7 +6,7 @@
 <p>x-com의 좌측메뉴 작성에 이어, 이번에는 우측메뉴를 작성하려고 한다.<br />
 우측 메뉴는 사진과 같이 “나를 위한 트렌드” 메뉴가 존재한다.</p>
 
-<p>(/assets/post_images/2026-02-11/image0.png)</p>
+<p><img src="/assets/post_images/2026-02-11/image0.png" alt="나를 위한 트랜드 예시" /></p>
 
 <p>우측에 보면 Today’s News, What’s happening등 구 트위터의 “나를 위한 트렌드” 자리이다.<br />
 이 부분을 오늘 구현 해 보고자 한다.</p>
@@ -18,59 +18,63 @@
 → src/app/(afterLogin)/layout.tsx</p>
   </li>
   <li>
-    <p>파일 내부의 컴포넌트에서 작성할 영역 및 컴포넌트를 채워준다.
-```tsx
-// …
-import TrendSection from “@/app/(afterLogin)/_component/TrendSection”;
-import FollowRecommend from “@/app/(afterLogin)/_component/FollowRecommend”;</p>
+    <p>파일 내부의 컴포넌트에서 작성할 영역 및 컴포넌트를 채워준다.</p>
   </li>
 </ol>
 
-<p>export default function AfterLoginLayout({ children }: { children: ReactNode }) {
-  return (
-        // …
-            <TrendSection></TrendSection> // 3-1. 나를 위한 트렌드 영역
-            &lt;div className={style.followRecommend}&gt;
-              &lt;h3&gt;팔로우 추천&lt;/h3&gt; {/* 3-2. 팔로우 추천 영역 */}
-              <FollowRecommend></FollowRecommend> 
-              <FollowRecommend></FollowRecommend>
-              <FollowRecommend></FollowRecommend>
-            &lt;/div&gt;
-        // …
-  )
-}</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-3. 코드와 컴포넌트와의 대응  
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ...</span>
+<span class="k">import</span> <span class="nx">TrendSection</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">@/app/(afterLogin)/_component/TrendSection</span><span class="dl">"</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">FollowRecommend</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">@/app/(afterLogin)/_component/FollowRecommend</span><span class="dl">"</span><span class="p">;</span>
 
-(/assets/post_images/2026-02-11/image2.png)
+<span class="k">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="nx">AfterLoginLayout</span><span class="p">({</span> <span class="nx">children</span> <span class="p">}:</span> <span class="p">{</span> <span class="nl">children</span><span class="p">:</span> <span class="nx">ReactNode</span> <span class="p">})</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">(</span>
+        <span class="c1">// ...</span>
+            <span class="p">&lt;</span><span class="nc">TrendSection</span> <span class="p">/&gt;</span> <span class="c1">// 3-1. 나를 위한 트렌드 영역</span>
+            <span class="p">&lt;</span><span class="nt">div</span> <span class="na">className</span><span class="p">=</span><span class="si">{</span><span class="nx">style</span><span class="p">.</span><span class="nx">followRecommend</span><span class="si">}</span><span class="p">&gt;</span>
+              <span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span>팔로우 추천<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span> <span class="si">{</span><span class="cm">/* 3-2. 팔로우 추천 영역 */</span><span class="si">}</span>
+              <span class="p">&lt;</span><span class="nc">FollowRecommend</span> <span class="p">/&gt;</span> 
+              <span class="p">&lt;</span><span class="nc">FollowRecommend</span> <span class="p">/&gt;</span>
+              <span class="p">&lt;</span><span class="nc">FollowRecommend</span> <span class="p">/&gt;</span>
+            <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="c1">// ...</span>
+  <span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></div>
 
-4. 해당 컴포넌트들은 _component라는 private folder에 넣어준다.  
+<ol>
+  <li>코드와 컴포넌트와의 대응</li>
+</ol>
 
-4-1. TrendSection.tsx
+<p><img src="/assets/post_images/2026-02-11/image2.png" alt="코드와 컴포넌트 대응" /></p>
 
-```tsx
-import style from './trendSection.module.css';
-import Trend from "@/app/(afterLogin)/_component/Trend";
+<ol>
+  <li>해당 컴포넌트들은 _component라는 private folder에 넣어준다.</li>
+</ol>
 
-export default function TrendSection() {
-  return (
-    &lt;div className={style.trendBg}&gt;
-      &lt;div className={style.trend}&gt;
-        &lt;h3&gt;나를 위한 트렌드&lt;/h3&gt;
-        &lt;Trend /&gt; {/*4-1-1 Trend 내용*/}
-        &lt;Trend /&gt;
-        &lt;Trend /&gt;
-        &lt;Trend /&gt;
-        &lt;Trend /&gt;
-        &lt;Trend /&gt;
-        &lt;Trend /&gt;
-        &lt;Trend /&gt;
-        &lt;Trend /&gt;
-        &lt;Trend /&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-  )
-}
+<p>4-1. TrendSection.tsx</p>
+
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">style</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./trendSection.module.css</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">Trend</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">@/app/(afterLogin)/_component/Trend</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="nx">TrendSection</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">className</span><span class="p">=</span><span class="si">{</span><span class="nx">style</span><span class="p">.</span><span class="nx">trendBg</span><span class="si">}</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">div</span> <span class="na">className</span><span class="p">=</span><span class="si">{</span><span class="nx">style</span><span class="p">.</span><span class="nx">trend</span><span class="si">}</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span>나를 위한 트렌드<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nc">Trend</span> <span class="p">/&gt;</span> <span class="si">{</span><span class="cm">/*4-1-1 Trend 내용*/</span><span class="si">}</span>
+        <span class="p">&lt;</span><span class="nc">Trend</span> <span class="p">/&gt;</span>
+        <span class="p">&lt;</span><span class="nc">Trend</span> <span class="p">/&gt;</span>
+        <span class="p">&lt;</span><span class="nc">Trend</span> <span class="p">/&gt;</span>
+        <span class="p">&lt;</span><span class="nc">Trend</span> <span class="p">/&gt;</span>
+        <span class="p">&lt;</span><span class="nc">Trend</span> <span class="p">/&gt;</span>
+        <span class="p">&lt;</span><span class="nc">Trend</span> <span class="p">/&gt;</span>
+        <span class="p">&lt;</span><span class="nc">Trend</span> <span class="p">/&gt;</span>
+        <span class="p">&lt;</span><span class="nc">Trend</span> <span class="p">/&gt;</span>
+        <span class="p">&lt;</span><span class="nc">Trend</span> <span class="p">/&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+  <span class="p">)</span>
+<span class="p">}</span>
 </code></pre></div></div>
 
 <p>4-1-1. Trend.tsx</p>
@@ -125,13 +129,13 @@ export default function TrendSection() {
 미리 중복될 파일을 예측하고 넣어놓는 것인가? 일단은 의문을 품은채 작성해 보기로 한다.</li>
 </ol>
 
-<p>(/assets/post_images/2026-02-11/image1.png)</p>
+<p><img src="/assets/post_images/2026-02-11/image1.png" alt="private folder 설명" /></p>
 
 <ol>
   <li>우측 섹션에 반영 된 것을 확인 할 수 있다.</li>
 </ol>
 
-<p>(/assets/post_images/2026-02-11/image3.png)</p>]]></content><author><name></name></author></entry><entry><title type="html">GitHub Pages로 Engineering Log 띄우기 삽질기</title><link href="https://hwp-log.github.io/devlog/2026/02/09/github-pages-setup-log.html" rel="alternate" type="text/html" title="GitHub Pages로 Engineering Log 띄우기 삽질기" /><published>2026-02-09T00:00:00+00:00</published><updated>2026-02-09T00:00:00+00:00</updated><id>https://hwp-log.github.io/devlog/2026/02/09/github-pages-setup-log</id><content type="html" xml:base="https://hwp-log.github.io/devlog/2026/02/09/github-pages-setup-log.html"><![CDATA[<p>최초 Engineering Log 작성글</p>]]></content><author><name></name></author><category term="devlog" /><summary type="html"><![CDATA[최초 Engineering Log 작성글]]></summary></entry><entry><title type="html">[next.js] ActiveLink 만들기</title><link href="https://hwp-log.github.io/next.js/2026/02/09/next.js-session-2-2.html" rel="alternate" type="text/html" title="[next.js] ActiveLink 만들기" /><published>2026-02-09T00:00:00+00:00</published><updated>2026-02-09T00:00:00+00:00</updated><id>https://hwp-log.github.io/next.js/2026/02/09/next.js-session%202-2</id><content type="html" xml:base="https://hwp-log.github.io/next.js/2026/02/09/next.js-session-2-2.html"><![CDATA[<p>next.js 기본기를 다지고자 이전 정리한 글에 이어 작성하는 기록이다.<br />
+<p><img src="/assets/post_images/2026-02-11/image3.png" alt="반영내용" /></p>]]></content><author><name></name></author></entry><entry><title type="html">GitHub Pages로 Engineering Log 띄우기 삽질기</title><link href="https://hwp-log.github.io/devlog/2026/02/09/github-pages-setup-log.html" rel="alternate" type="text/html" title="GitHub Pages로 Engineering Log 띄우기 삽질기" /><published>2026-02-09T00:00:00+00:00</published><updated>2026-02-09T00:00:00+00:00</updated><id>https://hwp-log.github.io/devlog/2026/02/09/github-pages-setup-log</id><content type="html" xml:base="https://hwp-log.github.io/devlog/2026/02/09/github-pages-setup-log.html"><![CDATA[<p>최초 Engineering Log 작성글</p>]]></content><author><name></name></author><category term="devlog" /><summary type="html"><![CDATA[최초 Engineering Log 작성글]]></summary></entry><entry><title type="html">[next.js] ActiveLink 만들기</title><link href="https://hwp-log.github.io/next.js/2026/02/09/next.js-session-2-2.html" rel="alternate" type="text/html" title="[next.js] ActiveLink 만들기" /><published>2026-02-09T00:00:00+00:00</published><updated>2026-02-09T00:00:00+00:00</updated><id>https://hwp-log.github.io/next.js/2026/02/09/next.js-session%202-2</id><content type="html" xml:base="https://hwp-log.github.io/next.js/2026/02/09/next.js-session-2-2.html"><![CDATA[<p>next.js 기본기를 다지고자 이전 정리한 글에 이어 작성하는 기록이다.<br />
 → <a href="https://www.notion.so/next-js_session-1-2fd23927a2a7806c9437dbb874633045?source=copy_link">이전 정리 노션 문서 바로가기</a></p>
 
 <p>강의내용은 x.com을 클론코딩하는 내용으로, 서비스에서 사용되는 기능을 next.js로 구현하는 것이 목적이다.
