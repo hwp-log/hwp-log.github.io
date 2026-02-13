@@ -11,7 +11,7 @@
     <meta charset="utf-8">
 
 <!-- begin _includes/seo.html --><title>[next.js] Context API - TabProvider를 활용한 홈 탭 상태관리 - Engineering Log</title>
-<meta name="description" content="x.com의 로그인 후, 메인페이지를 보게 된다면 중앙에 ‘추천/팔로우’와 ‘내용’이 등장한다. 이때 추천/팔로우를 번갈아서 클릭 했을 때, 내용이 전환 될 필요가 존재한다. 문제는 ‘추천/팔로우’와’내용’의 각 컴포넌트가 형제(병렬) 관계이기 때문에, 일반적인 props 전달로는 상태를 공유 할 수 없다는 점이다.(React는 “데이터는 위에서 아래로 흐른다.” 라는 단방향 데이터흐름 설계원칙을 가지고 있어 부모 → 자식 prop전달이 기본이다.)">
+<meta name="description" content="x.com의 로그인 후, 메인페이지를 보게 된다면 중앙에 ‘추천/팔로우’와 ‘내용’이 등장한다. 이때 추천/팔로우를 번갈아서 클릭 했을 때, 내용이 전환 될 필요가 존재한다.">
 
 
 
@@ -22,7 +22,7 @@
 <meta property="og:url" content="https://hwp-log.github.io/next.js/2026/02/11/next.js-session-2-22gang.html">
 
 
-  <meta property="og:description" content="x.com의 로그인 후, 메인페이지를 보게 된다면 중앙에 ‘추천/팔로우’와 ‘내용’이 등장한다. 이때 추천/팔로우를 번갈아서 클릭 했을 때, 내용이 전환 될 필요가 존재한다. 문제는 ‘추천/팔로우’와’내용’의 각 컴포넌트가 형제(병렬) 관계이기 때문에, 일반적인 props 전달로는 상태를 공유 할 수 없다는 점이다.(React는 “데이터는 위에서 아래로 흐른다.” 라는 단방향 데이터흐름 설계원칙을 가지고 있어 부모 → 자식 prop전달이 기본이다.)">
+  <meta property="og:description" content="x.com의 로그인 후, 메인페이지를 보게 된다면 중앙에 ‘추천/팔로우’와 ‘내용’이 등장한다. 이때 추천/팔로우를 번갈아서 클릭 했을 때, 내용이 전환 될 필요가 존재한다.">
 
 
 
@@ -127,7 +127,7 @@
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
     <meta itemprop="headline" content="[next.js] Context API - TabProvider를 활용한 홈 탭 상태관리">
-    <meta itemprop="description" content="x.com의 로그인 후, 메인페이지를 보게 된다면 중앙에 ‘추천/팔로우’와 ‘내용’이 등장한다. 이때 추천/팔로우를 번갈아서 클릭 했을 때, 내용이 전환 될 필요가 존재한다. 문제는 ‘추천/팔로우’와’내용’의 각 컴포넌트가 형제(병렬) 관계이기 때문에, 일반적인 props 전달로는 상태를 공유 할 수 없다는 점이다.(React는 “데이터는 위에서 아래로 흐른다.” 라는 단방향 데이터흐름 설계원칙을 가지고 있어 부모 → 자식 prop전달이 기본이다.)">
+    <meta itemprop="description" content="x.com의 로그인 후, 메인페이지를 보게 된다면 중앙에 ‘추천/팔로우’와 ‘내용’이 등장한다. 이때 추천/팔로우를 번갈아서 클릭 했을 때, 내용이 전환 될 필요가 존재한다.">
     <meta itemprop="datePublished" content="2026-02-11T00:00:00+00:00">
     
 
@@ -161,7 +161,9 @@
 
       <section class="page__content" itemprop="text">
         
-        <p>x.com의 로그인 후, 메인페이지를 보게 된다면 중앙에 ‘추천/팔로우’와 ‘내용’이 등장한다. 이때 추천/팔로우를 번갈아서 클릭 했을 때, 내용이 전환 될 필요가 존재한다. 문제는 ‘추천/팔로우’와’내용’의 각 컴포넌트가 형제(병렬) 관계이기 때문에, 일반적인 props 전달로는 상태를 공유 할 수 없다는 점이다.(React는 “데이터는 위에서 아래로 흐른다.” 라는 단방향 데이터흐름 설계원칙을 가지고 있어 부모 → 자식 prop전달이 기본이다.)</p>
+        <p>x.com의 로그인 후, 메인페이지를 보게 된다면 중앙에 ‘추천/팔로우’와 ‘내용’이 등장한다. 이때 추천/팔로우를 번갈아서 클릭 했을 때, 내용이 전환 될 필요가 존재한다.</p>
+
+<p>문제는 ‘추천/팔로우’와’내용’의 각 컴포넌트가 형제(병렬) 관계이기 때문에, 일반적인 props 전달로는 상태를 공유 할 수 없다는 점이다.(React는 “데이터는 위에서 아래로 흐른다.” 라는 단방향 데이터흐름 설계원칙을 가지고 있어 부모 → 자식 prop전달이 기본이다.)</p>
 
 <h2 id="형제간의-props-공유">형제간의 Props 공유?</h2>
 <p>결국 이를 해결하려면, ‘공통부모에서 상태를 내려주는 방식’이 필요하고 가장 간단한 방법으로 React의 ContextAPI를 활용하는 것이다. Redux같은 외부 라이브러리 없이 React 내장 기능만으로 해결할 수 있다.
