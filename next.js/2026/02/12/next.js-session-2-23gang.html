@@ -172,11 +172,27 @@
 <h2 id="왜-게시글-클릭시-모달로-상세보기-일까">왜? 게시글 클릭시, 모달로 상세보기 일까?</h2>
 <p>x.com을 사용하다 보면, 새로운 페이지 이동이 최소화 된 것을 알 수 있다. 생각보다 많은정보를 소화하기 위한 전략이라 할 수 있는데, 이는 전통적인 방식인 MPA 패턴이 해당 어플리케이션 패턴에 최적화 되기 어렵다고 추론할 수 있다. 특히 새로고침 및 페이지 이동은 사용자 입장에 있어서 사용자의 스크롤 위치, 입력 중인 내용, 현재 보던 맥락의 유실우려가 존재하여, UX 경험을 좋지 않게 할 수 있다. 이에 대응가능한 패러다임이 SPA (Single Page application) 방식이다.</p>
 
-<p>SPA는 새로고침 및 페이지 이동을 최소화하여, 페이지 이동 및 사용자가 정보를 습득함에 있어서 잦은 이동이 줄어 사용경험의 혼잡함을 줄여준다는 장점이 있다. 그러나 이는 많은 정보를 담은 페이지의 경우를 뜻하며, 상대적으로 적은 정보를 담은 페이지는 MPA설계가 낫다는 의견도 많다. 그렇기에 한단계 높은 수준의 설계라기보다는 상황에 맞는 설계패턴이 탄생했다고 보는게 개인의 의견이다. 이에 대한 고찰은 추후 다뤄볼 생각이다.</p>
+<p>SPA는 새로고침 및 페이지 이동을 최소화하여, 페이지 이동 및 사용자가 정보를 습득함에 있어서 잦은 이동이 줄어 사용경험의 혼잡함을 줄여준다는 장점이 있다. 그러나 이는 많은 정보를 담은 페이지의 경우를 뜻하며, 상대적으로 적은 정보를 담은 페이지는 MPA설계가 낫다는 의견도 많다. 그렇기에 한단계 높은 수준의 설계라기보다는 상황에 맞는 설계 패턴으로 자리 잡았다고 보는게 개인의 의견이다. 이에 대한 고찰은 추후 다뤄볼 생각이다.</p>
 
-<p>본론으로 다시 돌아와서, x.com은 이러한 SPA라는 패러다임 원칙에 맞게 로그인 부터 안쪽 컨텐츠 소비까지 철저하게 설계되었다는 점에 초점을 맞춰야한다. 그래야 해당 앱을 클론코딩을 하던 비슷하게 만들던, 적용된 Next.js의 기술들인 패러랠 라우팅, 인터셉팅 라우팅을 사용한 이유와 SPA설계 철학을 반영해 사용한 기술이라는 것을 알 수 있게 된다.</p>
+<p>본론으로 다시 돌아와서, x.com은 이러한 SPA라는 패러다임 원칙에 맞게 로그인 부터 안쪽 컨텐츠 소비까지 철저하게 SPA로 설계되었다는 점에 초점을 맞춰야한다. 그래야 Next.js의 기술들인 패러랠 라우팅, 인터셉팅 라우팅을 통해 비슷하게 클론코딩 하려는 이유를 알 수 있게 된다. (참고로 x.com닷컴은 Next.js가 아닌 자체 프레임워크로 만들어진 사이트이다. 다만 학습목적에서 Next.js로 구현하려는 것일 뿐 이다.)</p>
 
-<h2 id="그럼-모달을-띄우기-위해-사용되는-라우팅-기술은-어떻게-적용할까">그럼 모달을 띄우기 위해, 사용되는 라우팅 기술은 어떻게 적용할까?</h2>
+<h2 id="패러랠-라우팅">패러랠 라우팅?</h2>
+<p>그렇다면, 패러랠 라우팅은 무엇일까? x-com에서는 메뉴의 한 페이지에 각 영역별로 정보가 담긴다. 이 정보가 담기는 영역마다 하나의 컴포넌트가 대응한다고 생각하면 된다.</p>
+
+<p><img src="/assets/post_images/2026-02-13/image.png" alt="패러랠 라우트" /></p>
+
+<p>이때, 동일한 레이아웃에서 하나 이상의 페이지를 렌더링 하는 기술을 패러랠 라우팅이라 한다.</p>
+
+<h2 id="인터셉팅-라우팅">인터셉팅 라우팅?</h2>
+<p>또한 인터셉팅 라우팅은 정보가 담긴 페이지를 모달로 표시해 주기 위한 기술이다.</p>
+
+<p><img src="/assets/post_images/2026-02-13/image1.png" alt="인터셉팅 라우트" /></p>
+
+<p>예시이미지 처럼 사진을 클릭하면, 오버레이되어 사진을 모달로 표시할 수 있다. 그리고 이 경우 Next.js는 <code class="language-plaintext highlighter-rouge">/photo/123</code>경로를 가로채서 <code class="language-plaintext highlighter-rouge">/feed</code> 에 오버레이한다. 이때 주소창에는 Card.tsx경로가 표시가 안되는데, 이 기술을 인터셉팅 라우팅이라 한다.</p>
+
+<p>→ 그럼 패러랠/인터셉팅 라우팅은 Next.js에서 어떻게 구현하는 것일까?</p>
+
+<h2 id="패러랠인터셉팅-라우팅으로-모달-구현하기">패러랠/인터셉팅 라우팅으로 모달 구현하기</h2>
 <p>먼저, 모달을 소비하는 부분이 어디인지 생각해 보자. x.com을 사용해 본 유저라면 아래의 상황이 익숙할 것이다. 글 작성, 게시글 상세, 이미지 확대 등 다양한 곳에서 모달이 사용된다.
 <img src="/assets/post_images/2026-02-12/image3.png" alt="이미지처럼 글 작성, 게시글 상세, 이미지 확대" /></p>
 
@@ -189,7 +205,7 @@
 
 <p>이렇게 설정해주면, 모달을 띄우기 전에는 null값을 던져주기 때문에, 페이지 작동에도 문제가 발생하지 않는다. 다만 각 세그먼트별로 대응해야 하다보니 더미페이지가 다수 발생한다는 단점이 존재한다. 또한 해당 모달을 렌더링하는 페이지에서는 반드시 “use client”를 작성해줘야 한다. 모달 내부에서 useState, useRef, onChange 같은 React 훅과 이벤트 핸들러 사용하기 때문이다.</p>
 
-<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="dl">"</span><span class="s2">use client</span><span class="dl">"</span><span class="p">;</span><span class="c1">// &lt;- 작성시 클라이언트 컴포넌트 전환</span>
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="dl">"</span><span class="s2">use client</span><span class="dl">"</span><span class="p">;</span><span class="c1">// &lt;- 모달의 인터랙션(useState, 이벤트)를 위해 필수</span>
 
 <span class="k">import</span> <span class="nx">style</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./modal.module.css</span><span class="dl">'</span><span class="p">;</span>
 <span class="k">import</span> <span class="p">{</span> <span class="nx">useRef</span><span class="p">,</span> <span class="nx">useState</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">react</span><span class="dl">"</span><span class="p">;</span>
