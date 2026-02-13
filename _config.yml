@@ -27,5 +27,6 @@ defaults:
       layout: single
       author_profile: true
       show_date: true
+      classes: wide
 
 date_format: "%Y-%m-%d"
