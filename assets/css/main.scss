@@ -1,20 +1,24 @@
---- 
---- 
+---
+---
 
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@300;400;500;600;700&display=swap');
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}";
 @import "minimal-mistakes";
 
+// 제목 숨기기
 h3.archive__subtitle {
   display: none !important;
 }
 
+// 전체 폰트
 html,
 body {
   font-family: 'IBM Plex Sans KR', -apple-system, BlinkMacSystemFont, sans-serif !important;
 }
 
-.page {
+// 레이아웃 폭
+.page,
+.archive {
   float: none !important;
   max-width: 1200px !important;
   width: 100% !important;
@@ -22,13 +26,7 @@ body {
   padding: 0 24px;
 }
 
-.archive {
-  max-width: 1200px !important;
-  width: 100% !important;
-  margin: 0 auto;
-  padding: 0 24px;
-}
-
+// 본문 스타일
 .page__content {
   font-family: 'IBM Plex Sans KR', -apple-system, BlinkMacSystemFont, sans-serif !important;
   font-size: 17px !important;
@@ -50,12 +48,14 @@ body {
   }
 }
 
-// 여기 밖으로!
-.masthead {
+// 검색 버튼/토글 색 바꾸기 (초록 → 파랑)
+.search__toggle {
   background-color: #2563EB !important;
-  border-bottom: none !important;
+  border-color: #2563EB !important;
+  color: #ffffff !important;
 }
 
-.greedy-nav a {
-  color: #ffffff !important;
+.search__toggle:hover {
+  background-color: #1D4ED8 !important;
+  border-color: #1D4ED8 !important;
 }
