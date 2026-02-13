@@ -25,7 +25,7 @@ defaults:
       type: posts
     values:
       layout: single
-      author_profile: true
+      author_profile: false
       show_date: true
       classes: wide
 
