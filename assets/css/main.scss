@@ -38,17 +38,7 @@ body {
   }
 }
 
-// 아카이브 리스트 항목 전체 배경색 커스터마이징
-.archive__item {
-  background-color: #2563EB !important; // 기본 배경
-}
-
-.archive__item:hover,
-.archive__item:focus-within {
-  background-color: #1D4ED8 !important; // hover 시 배경
-}
-
 // 제목 링크 텍스트는 흰색으로
 .archive__item-title a {
-  color: #ffffff !important;
+  background-color: #2563EB !important; // 기본 배경
 }
