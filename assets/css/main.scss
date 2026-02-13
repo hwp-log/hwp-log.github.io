@@ -48,13 +48,14 @@ body {
       color: #1D4ED8 !important;
     }
   }
+}
 
-  .masthead {
-    background-color: #2563EB !important;
-    border-bottom: none !important;
-  }
+// 여기 밖으로!
+.masthead {
+  background-color: #2563EB !important;
+  border-bottom: none !important;
+}
 
-  .greedy-nav a {
-    color: #ffffff !important;
-  }
+.greedy-nav a {
+  color: #ffffff !important;
 }
