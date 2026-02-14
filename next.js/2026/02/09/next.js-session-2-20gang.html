@@ -155,7 +155,6 @@
 
     <!-- Hits.sh View Counter -->
     <span style="color: #7a8288; margin-left: 10px;">
-        <i class="far fa-fw fa-eye" aria-hidden="true"></i>
         <span id="page-views" data-url="/next.js/2026/02/09/next.js-session-2-20gang.html"></span>
     </span>
 </p>
@@ -332,12 +331,12 @@
 
       var pageUrl = viewElement.getAttribute('data-url');
 
-      // 배지 이미지 (숫자만 표시)
+      // 배지 이미지 (숫자 + views 라벨)
       var img = document.createElement('img');
-      img.src = 'https://hits.sh/hwp-log.github.io' + pageUrl + '.svg?view=total&style=flat-square&label=%20&color=f8f8f8&labelColor=f8f8f8&hit=000000';
+      img.src = 'https://hits.sh/hwp-log.github.io' + pageUrl + '.svg?view=total&style=flat-square&label=views&color=f8f8f8&labelColor=f8f8f8&hit=000000';
       img.alt = 'Views';
       img.style.verticalAlign = 'middle';
-      img.style.height = '14px';
+      img.style.height = '18px';
 
       viewElement.appendChild(img);
     })();
