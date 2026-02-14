@@ -106,12 +106,12 @@ layout: default
 
       var pageUrl = viewElement.getAttribute('data-url');
 
-      // 배지 이미지 (숫자 + views 라벨)
+      // 배지 이미지 (투명 배경, 수직 정렬)
       var img = document.createElement('img');
-      img.src = 'https://hits.sh/hwp-log.github.io' + pageUrl + '.svg?view=total&style=flat-square&label=views&color=f8f8f8&labelColor=f8f8f8&hit=000000';
+      img.src = 'https://hits.sh/hwp-log.github.io' + pageUrl + '.svg?view=total&style=flat-square&label=views&color=00000000&labelColor=00000000&hit=7a8288';
       img.alt = 'Views';
-      img.style.verticalAlign = 'middle';
-      img.style.height = '18px';
+      img.style.verticalAlign = 'text-bottom';
+      img.style.height = '16px';
 
       viewElement.appendChild(img);
     })();
