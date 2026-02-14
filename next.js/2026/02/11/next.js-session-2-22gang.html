@@ -275,18 +275,19 @@
 
       var pageUrl = viewElement.getAttribute('data-url');
 
-      // 배지 이미지로 조회수 표시 (숫자 포함됨)
+      // 눈 아이콘
+      viewElement.innerHTML = '<i class="far fa-eye" aria-hidden="true"></i> ';
+
+      // 배지 이미지 (전체 조회수만, 라벨 제거, 흰배경, 검정글씨)
       var img = document.createElement('img');
-      img.src = 'https://hits.sh/hwp-log.github.io' + pageUrl + '.svg?view=today-total&style=flat-square&label=views&color=6c757d&labelColor=6c757d';
+      img.src = 'https://hits.sh/hwp-log.github.io' + pageUrl + '.svg?view=total&style=flat-square&label=&color=f8f8f8&labelColor=f8f8f8&hit=000000';
       img.alt = 'Views';
       img.style.verticalAlign = 'middle';
-      img.style.height = '20px';
+      img.style.height = '14px';
 
-      viewElement.innerHTML = '';
       viewElement.appendChild(img);
     })();
   </script>
-
 </div>
       
     </div>
