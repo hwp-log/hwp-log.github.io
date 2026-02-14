@@ -105,16 +105,18 @@ layout: default
       if (!viewElement) return;
 
       var pageUrl = viewElement.getAttribute('data-url');
-      var apiUrl = 'https://hits.sh{{ site.url }}' + pageUrl + '.json';
+      var apiUrl = 'https://hits.sh/hwp-log.github.io' + pageUrl + '.json';
 
       fetch(apiUrl)
         .then(function (response) { return response.json(); })
         .then(function (data) {
           viewElement.textContent = (data.hits || 0).toLocaleString();
         })
-        .catch(function () {
+        .catch(function (error) {
+          console.error('Hits.sh error:', error);
           viewElement.textContent = '0';
         });
     })();
   </script>
+
 </div>
