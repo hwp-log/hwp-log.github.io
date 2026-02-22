@@ -26,6 +26,12 @@ var store = [{
         "title": "[Reflection] 프로그래밍 학습에 왜(Why)를 묻기 시작하면서 달라진 것들",
         "excerpt":"현재, Next.js를 사용한, x.com을 작성한 시점에서 의문이 한가지 든 점이 있었다. 과연 개발공부라는 것이 다른사람이 제시한 커리큘럼대로 공부하는 것이 맞는지에 대한 의문이다. 물론 무엇이 맞고 틀리고의 문제가 아니였다. 처음 개발공부를 시작했을때는 기초적인 추상성과 그것을 구현하는 기본기에 숙달되기 위해 공부한 거였다면, 이번에 공부하는 관점은 조금 바꿀필요가 있다고 생각했다. 사실, 클론코딩을 듣고...","categories": ["Reflection"],
         "tags": [],
-        "url": "/reflection/2026/02/19/think-day-1.html",
+        "url": "/reflection/2026/02/19/reflection-1.html",
+        "teaser": null
+      },{
+        "title": "[JavaScript] var, let, const는 왜 생겨났을까?",
+        "excerpt":"코딩 학습의 자연스러운 동기는 무엇일까? 이전 글에서 고민해본 결과, 그 동기는 ‘무언가 만들고자 하는 마음’과 ‘작동 원리에 대한 궁금증’ 두 가지로 나뉜다는 결론에 도달했다. 이번 글에서는 후자 - ‘var의 작동 원리에 대한 궁금증’부터 let, const가 왜 생겨났는지에 대한 궁금증과 학습으로 이어진 과정까지 작성 해 보려 한다. “var, let, const는 왜...","categories": ["JavaScript"],
+        "tags": [],
+        "url": "/javascript/2026/02/20/JS-day-1.html",
         "teaser": null
       }]
