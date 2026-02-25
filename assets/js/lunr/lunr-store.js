@@ -34,10 +34,4 @@ var store = [{
         "tags": [],
         "url": "/javascript/2026/02/20/JS-day-1.html",
         "teaser": null
-      },{
-        "title": "[React.js] React의 학습커브는 왜 가파른 것일까?",
-        "excerpt":"React를 처음 배우는 개발자들의 공통적인 의견은 무엇이 있을까? 컴포넌트에 대한 이해?, 단방향 데이터 흐름?, hook? 무엇이 어렵다고 특정짓기는 어렵지만, 개인적인 생각으로는 이러한 개념을 한 번에 이해해야하는 부담이 아닐까 싶다. 왜냐하면 js로 분리해서 인터렉션을 구성하던 개발자 입장에서는 한눈에 들어오지 않기 때문이다. 실제로 본인도 JS로 각 dom의 인터렉션을 지정해서 작성하다가, React의 트리구조와...","categories": ["React.js"],
-        "tags": [],
-        "url": "/react.js/2026/02/20/React.js-day-1.html",
-        "teaser": null
       }]
