@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="https://hwp-log.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://hwp-log.github.io/" rel="alternate" type="text/html" /><updated>2026-02-25T15:42:15+00:00</updated><id>https://hwp-log.github.io/feed.xml</id><title type="html">Engineering Log</title><subtitle>프로젝트, 기술 탐구, 공부 내용을 한 데 모은 개인 기록 저장소</subtitle><entry><title type="html">[React.js] React의 학습커브는 왜 가파른 것일까?</title><link href="https://hwp-log.github.io/react.js/2026/02/25/React.js-day-1.html" rel="alternate" type="text/html" title="[React.js] React의 학습커브는 왜 가파른 것일까?" /><published>2026-02-25T00:00:00+00:00</published><updated>2026-02-25T00:00:00+00:00</updated><id>https://hwp-log.github.io/react.js/2026/02/25/React.js-day-1</id><content type="html" xml:base="https://hwp-log.github.io/react.js/2026/02/25/React.js-day-1.html"><![CDATA[<p>React를 처음 배우는 개발자들의 공통적인 의견은 무엇이 있을까? 컴포넌트에 대한 이해?, 단방향 데이터 흐름?, hook? 무엇이 어렵다고 특정짓기는 어렵지만, 개인적인 생각으로는 이러한 개념을 한 번에 이해해야하는 부담이 아닐까 싶다. 왜냐하면 js로 분리해서 인터렉션을 구성하던 개발자 입장에서는 한눈에 들어오지 않기 때문이다.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="https://hwp-log.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://hwp-log.github.io/" rel="alternate" type="text/html" /><updated>2026-02-25T15:46:22+00:00</updated><id>https://hwp-log.github.io/feed.xml</id><title type="html">Engineering Log</title><subtitle>프로젝트, 기술 탐구, 공부 내용을 한 데 모은 개인 기록 저장소</subtitle><entry><title type="html">[React.js] React의 학습커브는 왜 가파른 것일까?</title><link href="https://hwp-log.github.io/react.js/2026/02/25/React.js-day-1.html" rel="alternate" type="text/html" title="[React.js] React의 학습커브는 왜 가파른 것일까?" /><published>2026-02-25T00:00:00+00:00</published><updated>2026-02-25T00:00:00+00:00</updated><id>https://hwp-log.github.io/react.js/2026/02/25/React.js-day-1</id><content type="html" xml:base="https://hwp-log.github.io/react.js/2026/02/25/React.js-day-1.html"><![CDATA[<p>React를 처음 배우는 개발자들의 공통적인 의견은 무엇이 있을까? 컴포넌트에 대한 이해?, 단방향 데이터 흐름?, hook? 무엇이 어렵다고 특정짓기는 어렵지만, 개인적인 생각으로는 이러한 개념을 한 번에 이해해야하는 부담이 아닐까 싶다. 왜냐하면 js로 분리해서 인터렉션을 구성하던 개발자 입장에서는 한눈에 들어오지 않기 때문이다.</p>
 
 <p>실제로 본인도 JS로 각 dom의 인터렉션을 지정해서 작성하다가, React의 트리구조와 대응되는 컴포넌트 단위 사고로의 전환에 어려운 부분이 많았다. 그렇다면 이러한 전환이 필요했던 이유는 무엇이였을까? 굳이 쪼개서 생각하지 않아도 될 부분을 왜 쪼개고 이에 맞는 프레임워크를 만들게 된 것일까? 이번 글에서는 이러한 ‘구조가 탄생된 배경을 이해’하고 ‘구조에 맞는 기술’이 왜 만들어 졌는지에 대해 다뤄보고자 한다.</p>
 
@@ -10,7 +10,8 @@
 좌 : 2004년 페이스북 | 우 : 2011년 페이스북<br />
 출처 : <a href="https://www.cnet.com/pictures/facebook-then-and-now-pictures/">CNET</a></p>
 
-<p>이 상태에서 페이스북의 엔지니어들은 코드의 유지보수 조차 어렵게 되었는데, 이는 필연적으로 업무 프로세스를 효율적으로 만드는 도구가 필요했던 것이다. 이것이 React.js가 생기게 된 계기이다.</p>
+<p>이 상태에서 페이스북의 엔지니어들은 코드의 유지보수 조차 어렵게 되었는데, 이는 필연적으로 업무 프로세스를 효율적으로 만드는 도구가 필요했던 것이다. <br />
+이것이 React.js가 생기게 된 계기이다.</p>
 
 <h2 id="업데이트-속도를-늦추게-한-본질적인-원인은-무엇이였을까">업데이트 속도를 늦추게 한 본질적인 원인은 무엇이였을까?</h2>
 
