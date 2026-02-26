@@ -1,151 +1,47 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="https://hwp-log.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://hwp-log.github.io/" rel="alternate" type="text/html" /><updated>2026-02-25T15:56:54+00:00</updated><id>https://hwp-log.github.io/feed.xml</id><title type="html">Engineering Log</title><subtitle>프로젝트, 기술 탐구, 공부 내용을 한 데 모은 개인 기록 저장소</subtitle><entry><title type="html">[React.js] React의 학습커브는 왜 가파른 것일까?</title><link href="https://hwp-log.github.io/react.js/2026/02/25/React.js-day-1.html" rel="alternate" type="text/html" title="[React.js] React의 학습커브는 왜 가파른 것일까?" /><published>2026-02-25T00:00:00+00:00</published><updated>2026-02-25T00:00:00+00:00</updated><id>https://hwp-log.github.io/react.js/2026/02/25/React.js-day-1</id><content type="html" xml:base="https://hwp-log.github.io/react.js/2026/02/25/React.js-day-1.html"><![CDATA[<p>React를 처음 배우는 개발자들의 공통적인 의견은 무엇이 있을까? 컴포넌트에 대한 이해?, 단방향 데이터 흐름?, hook? 무엇이 어렵다고 특정짓기는 어렵지만, 개인적인 생각으로는 이러한 개념을 한 번에 이해해야하는 부담이 아닐까 싶다. 왜냐하면 js로 분리해서 인터렉션을 구성하던 개발자 입장에서는 한눈에 들어오지 않기 때문이다.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="https://hwp-log.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://hwp-log.github.io/" rel="alternate" type="text/html" /><updated>2026-02-26T15:45:56+00:00</updated><id>https://hwp-log.github.io/feed.xml</id><title type="html">Engineering Log</title><subtitle>프로젝트, 기술 탐구, 공부 내용을 한 데 모은 개인 기록 저장소</subtitle><entry><title type="html">[React.js] React의 학습커브는 왜 가파른 것일까?</title><link href="https://hwp-log.github.io/react.js/2026/02/25/React.js-day-1.html" rel="alternate" type="text/html" title="[React.js] React의 학습커브는 왜 가파른 것일까?" /><published>2026-02-25T00:00:00+00:00</published><updated>2026-02-25T00:00:00+00:00</updated><id>https://hwp-log.github.io/react.js/2026/02/25/React.js-day-1</id><content type="html" xml:base="https://hwp-log.github.io/react.js/2026/02/25/React.js-day-1.html"><![CDATA[<p>React의 학습커브는 왜 가파른 것일까? 컴포넌트에 대한 이해? 단방향 데이터 흐름? hook개념? 무엇이 어렵다고 특정짓기 어렵지만, 개인적인 생각으로는 이러한 개념을 한 번에 이해해야하는 부담이 아닐까 싶다. 왜냐하면 JS로 분리해서 인터렉션을 구성하던 개발자 입장에서는 이러한 개념이 한눈에 들어오지 않기 때문이다.</p>
 
-<p>실제로 본인도 JS로 각 dom의 인터렉션을 지정해서 작성하다가, React의 트리구조와 대응되는 컴포넌트 단위 사고로의 전환에 어려운 부분이 많았다. 그렇다면 이러한 전환이 필요했던 이유는 무엇이였을까? 굳이 쪼개서 생각하지 않아도 될 부분을 왜 쪼개고 이에 맞는 프레임워크를 만들게 된 것일까? 이번 글에서는 이러한 ‘구조가 탄생된 배경을 이해’하고 ‘구조에 맞는 기술’이 왜 만들어 졌는지에 대해 다뤄보고자 한다.</p>
+<p>실제로 본인도 JS로 각 Dom의 인터렉션을 지정해서 작성하다가, React의 트리구조와 대응하는 컴포넌트 단위로의 사고전환에 어려운 점이 많았다. 그렇다면 이러한 전환이 필요했던 이유는 무엇이였을까? 굳이 쪼개서 생각하지 않아도 될 부분을 왜 쪼개고, 이에 맞는 프레임워크를 만들게 된 것일까?</p>
 
-<h2 id="2011년-facebook은-점점-복잡해지고-있었다">2011년, FaceBook은 점점 복잡해지고 있었다.</h2>
+<p>이번 글에서는</p>
+<ul>
+  <li>React의 ‘트리구조가 탄생하게 된 배경’을 먼저 살펴보고,</li>
+  <li>그 구조에 ‘맞는 개념과 기술’이 어떻게 만들어 졌는지 정리해 보고자 한다.</li>
+</ul>
 
-<p>15년전인 2011년, 페이스북은 초기의 모습과 달리 점점 구조가 복잡해 지기 시작했다. 페이스북 광고 및 뉴스피드와 같은 기능이 들어가며, 더욱 많은 인력이 요구되었고 팀원 수와 앱 기능 관리는 업무 속도의 효율을 떨어트리게 되었다. 이는 앱의 업데이트 속도를 늦추게 되는 결과를 낳게 되었다.</p>
+<h2 id="탄생배경-1-2011년-facebook은-점점-복잡해지고-있었다">[탄생배경 1] 2011년, facebook은 점점 복잡해지고 있었다.</h2>
+
+<p>15년전인 2011년, 페이스북은 초기의 모습과 달리 웹 앱의 구조가 복잡해지기 시작했다. 광고와 뉴스피드 같은 기능이 계속 추가되면서 코드는 비대해졌고, 이를 유지/개선하기 위해 더 많은 인력이 투입되었다.</p>
+
+<p>문제는 기능과 팀원이 늘어날수록, 서로 영향을 주고받는 ‘연쇄적인 업데이트’가 잦아졌다는 것이다. 한 부분을 수정하면 예상치 못한 다른 부분이 깨지고, 전체 앱을 이해하고 수정하는 데 드는 비용이 크게 증가했던 것이다. 결과적으로 신기능 출시와 개선 속도도 점점 느려지기 시작했다.</p>
 
 <p><img src="/assets/post_images/2026-02-25/facebook.png" alt="페이스북, 2004년(좌)&amp; 2011년(우)" /><br />
 좌 : 2004년 페이스북 | 우 : 2011년 페이스북<br />
 출처 : <a href="https://www.cnet.com/pictures/facebook-then-and-now-pictures/">CNET</a></p>
 
-<p>이 상태에서 페이스북의 엔지니어들은 코드의 유지보수 조차 어렵게 되었는데, 이는 필연적으로 업무 프로세스를 효율적으로 만드는 도구가 필요했던 것이다. <br />
-이것이 React.js가 생기게 된 계기이다.</p>
+<p>이 상태에서 페이스북의 엔지니어들은 코드 유지/보수자체가 점점 더 어려워지고 있다는 사실에 직면하게 되었다. 복잡해진 UI를 더욱 효율적인 방식으로 이해하고, 다룰 수 있는 방식 방식이 필요하게 된 것이다.</p>
 
-<h2 id="업데이트-속도를-늦추게-한-본질적인-원인은-무엇이였을까">업데이트 속도를 늦추게 한 본질적인 원인은 무엇이였을까?</h2>
+<p>이러한 내부적인 니즈가 쌓인 끝에, 복잡한 UI를 다루기 위한 프레임워크인 React.js가 탄생하게 된다.</p>
 
-<p>원래 FaceBook은 MVC패턴의 양방향 모델 구조였다. 이는 초기의 단순구조였던, FaceBook에서는 채용이 가능했던 구조였지만, 점점 복잡해 지면서 양방향 구조의 한계를 느끼게 된다. 그렇다면 그 구조의 한계는 무엇이였을까? 바로 예측불가 코드였던 것이다.</p>
+<h2 id="탄생배경-2-그렇다면-원인이였던-연쇄적인-업데이트는-무엇이였을까">[탄생배경 2] 그렇다면 원인이였던 ‘연쇄적인 업데이트’는 무엇이였을까?</h2>
 
-<p><img src="/assets/post_images/2026-02-25/unpredcitable_code.png" alt="React.js Conf 2015 Keynotes" /><br />
-출처 : <a href="https://www.youtube.com/watch?v=KVZ-P-ZI6W4&amp;list=PLb0IAmt7-GS1cbw4qonlQztYV1TAW0sCr&amp;index=2">React.js Conf 2015 Keynote</a></p>
+<p>원래 facebook은 MVC패턴과 양방향 데이터 흐름에 기반한 구조를 사용하고 있었다. 이 방식은 초기처럼 화면이 단순할 때, 잘 동작했었지만, 기능과 화면이 복잡해질수록 점점 한계를 드러내기 시작했다.</p>
 
-<p>아래의 단방향과 양방향에 내용을 넣어보자. 어떻게 작동하는가?</p>
+<p>그 한계는 앞서 말했던 연쇄적인 업데이트(cascading updates)였던 것이다. MVC패턴을 생각해보자, 사용자가 입력을 하면 View에서 Controller를 거쳐 Model이 갱신되고, 갱신된 Model은 다시 View에 재랜더링 되는 방식이다.
+즉 입력(Input) -&gt; 모델(Model) -&gt; 출력(Output)으로 고정된 것이다.</p>
 
-<div id="data-flow-demo">
-  <h1>대규모 앱 데이터 흐름 시각화</h1>
+<p>이 사이클이 여기서만 끝난다면, “어느 지점에서 어떤 값이 바뀌는지” 쉽게 예측할 수 있다.
+문제는 여기서 끝이 아니였던 것이다. 출력단계(View)에서 끝나지 않고, 화면 변화에 반응해 다시 Model을 건드리는 자동 입력(Input) 트리거가 작동한다면 어떻게 될까?</p>
 
-  <div class="container">
-    <!-- 단방향 -->
-    <div class="box" id="one-way-container">
-      <h2>단방향 (One-way)</h2>
-      <div class="state-box">중앙 Store (State): <span id="one-way-state">""</span></div>
-      <input type="text" id="one-way-input" placeholder="여기에 입력 (View)" />
-      <div class="component-tree">
-        <div style="font-weight:bold; margin-bottom:5px;">Component Tree (하향식 전파)</div>
-        <div class="node" id="ow-node-1">Header 컴포넌트: <span class="val">""</span></div>
-        <div class="node" id="ow-node-2">Content 컴포넌트: <span class="val">""</span></div>
-        <div class="node" id="ow-node-3">Footer 컴포넌트: <span class="val">""</span></div>
-      </div>
-      <div class="log" id="one-way-log">이벤트 로그가 여기에 표시.</div>
-      <p style="font-size: 12px; color: #888;">* 입력 -&gt; Action 발생 -&gt; State 변경 -&gt; UI 전체 전파</p>
-    </div>
+<p>한 Input이 자동 트리거의 작동을 통해 Model, View를 여러번 왕복 하게 되면서, 어디서 무엇이 전파되고 다시 재전파 되는지 추적하기가 어려워진다.(물론 기능이 적은 앱에서는 많은 데이터를 관리하지 않기에 추적이 가능하다.)</p>
 
+<p>그러나 기능이 추가된다면, 이에 영향을 주는 자동 인풋 트리거의 수가 증가하여 모델의 값이 어디가 얼마나 갱신될지 예측이 불가능 한것이다.</p>
 
-    <!-- 양방향 -->
-    <div class="box" id="two-way-container">
-      <h2>양방향 (Two-way)</h2>
-      <div class="state-box">Model (Data Object): <span id="two-way-state">""</span></div>
-      <input type="text" id="two-way-input" placeholder="여기에 입력 (View/Model)" />
-      <div class="component-tree">
-        <div style="font-weight:bold; margin-bottom:5px;">Connected Views (자동 동기화)</div>
-        <div class="node" id="tw-node-1">프로필 이름: <span class="val">""</span></div>
-        <div class="node" id="tw-node-2">알림 설정: <span class="val">""</span></div>
-        <div class="node" id="tw-node-3">실시간 미리보기: <span class="val">""</span></div>
-      </div>
-      <div class="log" id="two-way-log">이벤트 로그가 여기에 표시.</div>
-      <p style="font-size: 12px; color: #888;">* 입력 = State 변경 (즉시 연결)</p>
-    </div>
-  </div>
-</div>
+<p><img src="/assets/post_images/2026-02-25/mvc.png" alt="페이스북의 복잡해진 MVC패턴" /><br />
+출처 : <a href="https://www.infoq.com/news/2014/05/facebook-mvc-flux/">InfoQ</a></p>
 
-<style>
-  /* data-flow-demo 영역에만 스타일 적용되도록 앞에 #data-flow-demo 붙임 */
-  #data-flow-demo { font-family: sans-serif; }
-  #data-flow-demo .container { display: flex; gap: 40px; width: 100%; max-width: 1000px; }
-  #data-flow-demo .box { flex: 1; background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); position: relative; }
-  #data-flow-demo h2 { text-align: center; color: #333; margin-bottom: 30px; }
-  #data-flow-demo .component-tree { border: 2px dashed #ccc; padding: 15px; margin-top: 20px; border-radius: 8px; }
-  #data-flow-demo .node { padding: 10px; border: 1px solid #ddd; margin: 5px 0; border-radius: 4px; background: #fafafa; font-size: 13px; transition: all 0.3s; }
-  #data-flow-demo .active { background: #e3f2fd; border-color: #2196f3; transform: scale(1.02); }
-  #data-flow-demo .state-box { background: #333; color: #fff; padding: 10px; border-radius: 6px; margin-bottom: 20px; text-align: center; }
-  #data-flow-demo input { width: 100%; padding: 10px; box-sizing: border-box; margin-bottom: 10px; border: 2px solid #ddd; border-radius: 4px; outline: none; }
-  #data-flow-demo input:focus { border-color: #2196f3; }
-  #data-flow-demo .log { font-size: 12px; color: #666; height: 100px; overflow-y: auto; border: 1px solid #eee; padding: 5px; margin-top: 10px; background: #f9f9f9; }
-</style>
+<p>이런 예측불가능한 상황을 해결하기 위해, 기존의 양방향 패턴을 단방향 패턴으로 바꾸게 된다.</p>
 
-<script>
-  (function() {
-    // 단방향
-    const owInput = document.getElementById('one-way-input');
-    const owState = document.getElementById('one-way-state');
-    const owLog = document.getElementById('one-way-log');
-    const owNodes = [
-      document.getElementById('ow-node-1'),
-      document.getElementById('ow-node-2'),
-      document.getElementById('ow-node-3')
-    ];
-
-
-    owInput.addEventListener('input', (e) => {
-      const val = e.target.value;
-      addLog(owLog, `[Action] 유저 입력 발생: ${val}`);
-
-
-      setTimeout(() => {
-        owState.innerText = `"${val}"`;
-        addLog(owLog, `[State Update] 중앙 저장소 데이터 갱신`);
-
-
-        owNodes.forEach((node, index) => {
-          setTimeout(() => {
-            node.querySelector('.val').innerText = `"${val}"`;
-            node.classList.add('active');
-            addLog(owLog, `[Render] 하위 컴포넌트 ${index+1} 갱신`);
-            setTimeout(() => node.classList.remove('active'), 300);
-          }, index * 100);
-        });
-      }, 200);
-    });
-
-
-    // 양방향
-    const twInput = document.getElementById('two-way-input');
-    const twState = document.getElementById('two-way-state');
-    const twLog = document.getElementById('two-way-log');
-    const twNodes = [
-      document.getElementById('tw-node-1'),
-      document.getElementById('tw-node-2'),
-      document.getElementById('tw-node-3')
-    ];
-
-
-    twInput.addEventListener('input', (e) => {
-      const val = e.target.value;
-      twState.innerText = `"${val}"`;
-      addLog(twLog, `[Sync] Model 데이터 즉시 변경`);
-
-
-      twNodes.forEach(node => {
-        node.querySelector('.val').innerText = `"${val}"`;
-        node.classList.add('active');
-        setTimeout(() => node.classList.remove('active'), 300);
-      });
-      addLog(twLog, `[Update] 연결된 모든 View 동시 갱신`);
-    });
-
-
-    function addLog(container, text) {
-      const entry = document.createElement('div');
-      entry.innerText = `> ${text}`;
-      container.prepend(entry);
-    }
-  })();
-</script>
-
-<p>단방향의 경우에는 어느 컴포넌트가 작동했는지 눈에 들어올 것이다. 그러나 양방향의 경우에는 컴포넌트가 동시에 갱신되어 어느부분이 작동하는지 한눈에 들어오지 않을 것이다. 이 상태에서 양방향의 컴포넌트 개수가 많아진다면 유지보수가 어려울 것이다.</p>
-
-<p>…작성중…</p>]]></content><author><name></name></author><category term="React.js" /><summary type="html"><![CDATA[React를 처음 배우는 개발자들의 공통적인 의견은 무엇이 있을까? 컴포넌트에 대한 이해?, 단방향 데이터 흐름?, hook? 무엇이 어렵다고 특정짓기는 어렵지만, 개인적인 생각으로는 이러한 개념을 한 번에 이해해야하는 부담이 아닐까 싶다. 왜냐하면 js로 분리해서 인터렉션을 구성하던 개발자 입장에서는 한눈에 들어오지 않기 때문이다.]]></summary></entry><entry><title type="html">[JavaScript] var, let, const는 왜 생겨났을까?</title><link href="https://hwp-log.github.io/javascript/2026/02/20/JS-day-1.html" rel="alternate" type="text/html" title="[JavaScript] var, let, const는 왜 생겨났을까?" /><published>2026-02-20T00:00:00+00:00</published><updated>2026-02-20T00:00:00+00:00</updated><id>https://hwp-log.github.io/javascript/2026/02/20/JS-day-1</id><content type="html" xml:base="https://hwp-log.github.io/javascript/2026/02/20/JS-day-1.html"><![CDATA[<p>코딩 학습의 자연스러운 동기는 무엇일까? <a href="https://hwp-log.github.io/reflection/2026/02/19/reflection-1.html">이전 글</a>에서 고민해본 결과, 그 동기는 ‘무언가 만들고자 하는 마음’과 ‘작동 원리에 대한 궁금증’ 두 가지로 나뉜다는 결론에 도달했다. 이번 글에서는 후자 - ‘var의 작동 원리에 대한 궁금증’부터 let, const가 왜 생겨났는지에 대한 궁금증과 학습으로 이어진 과정까지 작성 해 보려 한다.</p>
+<p>…작성중…</p>]]></content><author><name></name></author><category term="React.js" /><summary type="html"><![CDATA[React의 학습커브는 왜 가파른 것일까? 컴포넌트에 대한 이해? 단방향 데이터 흐름? hook개념? 무엇이 어렵다고 특정짓기 어렵지만, 개인적인 생각으로는 이러한 개념을 한 번에 이해해야하는 부담이 아닐까 싶다. 왜냐하면 JS로 분리해서 인터렉션을 구성하던 개발자 입장에서는 이러한 개념이 한눈에 들어오지 않기 때문이다.]]></summary></entry><entry><title type="html">[JavaScript] var, let, const는 왜 생겨났을까?</title><link href="https://hwp-log.github.io/javascript/2026/02/20/JS-day-1.html" rel="alternate" type="text/html" title="[JavaScript] var, let, const는 왜 생겨났을까?" /><published>2026-02-20T00:00:00+00:00</published><updated>2026-02-20T00:00:00+00:00</updated><id>https://hwp-log.github.io/javascript/2026/02/20/JS-day-1</id><content type="html" xml:base="https://hwp-log.github.io/javascript/2026/02/20/JS-day-1.html"><![CDATA[<p>코딩 학습의 자연스러운 동기는 무엇일까? <a href="https://hwp-log.github.io/reflection/2026/02/19/reflection-1.html">이전 글</a>에서 고민해본 결과, 그 동기는 ‘무언가 만들고자 하는 마음’과 ‘작동 원리에 대한 궁금증’ 두 가지로 나뉜다는 결론에 도달했다. 이번 글에서는 후자 - ‘var의 작동 원리에 대한 궁금증’부터 let, const가 왜 생겨났는지에 대한 궁금증과 학습으로 이어진 과정까지 작성 해 보려 한다.</p>
 
 <h2 id="var-let-const는-왜-생겨났을까-라는-의문">“var, let, const는 왜 생겨났을까?” 라는 의문</h2>
 <p>JS를 처음 배우면서 떠오르는 의문점이 뭐가 있을까? 바로 ‘var와 호이스팅’이라는 개념이라고 생각한다. 왜냐하면 함수랑 블록, 스코프 개념이 정립되지 않은 상태이기 때문이다. 특히 이를 코드로 쳐보지 않는 이상 누구든지 난해한 부분이다.</p>
