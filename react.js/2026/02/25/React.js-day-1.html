@@ -208,11 +208,11 @@
 <p><img src="/assets/post_images/2026-02-25/mvc.png" alt="페이스북의 복잡해진 MVC패턴" /><br />
 출처 : <a href="https://www.infoq.com/news/2014/05/facebook-mvc-flux/">InfoQ</a></p>
 
-<h2 id="사례-안-읽은-메시지-기능에서-생긴-일">[사례] 안 읽은 메시지 기능에서 생긴 일</h2>
+<h2 id="사례와-해결책-안-읽은-메시지-기능과-flux-패턴">[사례와 해결책] 안 읽은 메시지 기능과 Flux 패턴</h2>
 
-<p>그렇다면 그 사례는 어떤 것이 있을까? 앞서 말한 것처럼 문제의 핵심은 ‘view의 자동 트리거를 통한 재전파를 통한 예측불가성’ 이였다. 모델에 수시로 갱신되면서 어느 부분에서 값이 바뀌었는지 쪼개서 보더라도 누가 최종책임을 지는지 알기 힘든 상황이였다.</p>
+<p>그렇다면 그 사례는 어떤 것이 있을까? 페이스북에서는 “실제로 새 메시지가 없는데도 새 메시지가 있다고 사용자에게 알리는 채팅버그”가 있었다. 이는 앞서 말한 “연쇄적인 업데이트 내용이 폭증”하면서, 모델에 수시로 값이 갱신되고 어느 부분에서 값이 바뀌었는지 알 수 없었기에 생긴 버그였다.</p>
 
-<p>이를 해결하고자 했던 패턴이 Flux패턴이였다.</p>
+<p>그리고 이를 해결하고자 했던 패턴이 Flux패턴이였다.</p>
 
 <p><img src="/assets/post_images/2026-02-25/flux.png" alt="flux 패턴" /><br />
 출처 : <a href="https://facebookarchive.github.io/flux/docs/in-depth-overview/">InfoQ</a></p>
@@ -221,35 +221,42 @@
 
 <ol>
   <li>핵심은 Store에 저장되는 ‘기능별 상태정보’ 이다.</li>
-  <li>연쇄적인 업데이트가 많아지면… View에서 끝나는지, Model에서 끝나는지 알 수 없었다.</li>
-  <li>이를 해결해 주는게 dispatcher과 Store이다.</li>
+  <li>연쇄적인 업데이트가 많아지면… 어느 Model에서 값이 변경 되었는지 알 수 없었다.</li>
+  <li>이를 해결해 주는게 dispatcher과 Store(정해진 도메인들이 모인 Model영역)이다.</li>
   <li>dispatcher는 액션을 모든 Store에 전달하는 단일통로이다.</li>
   <li>dispatcher는 한 액션이 처리되는 동안 상태변경이 단 한번의 path로만 일어나도록 강제한다.</li>
-  <li>“안 읽은 메시지”,”채팅 목록”등의 기능은 모두 Store에서 값을 읽기 때문에, 값이 헷갈리지 않게 된다.</li>
+  <li>“안 읽은 메시지”,”채팅 목록”등의 관련 기능은 모두 Store에서 값을 읽기 때문에, 값이 헷갈리지 않게 된다.</li>
+  <li>예시 이미지에서는 Store 하나로 고정되어 있지만, 이전 MVC패턴에서는 관련 없는 모델로 값이 튀는 것이 문제였다.</li>
 </ol>
 
 <p>이렇게 보면, Flux는 “View/Model이 어디서 끝나는지 모르는 스파게티 흐름”을 
 한 방향으로 고정하고, 최종책임을 Store에서 확인 할 수 있는 구조가 되는 것이다.</p>
 
-<p>기존(양방향) : [ Input(view) -&gt; Model#1 -&gt; Output(view) -&gt; Model#??(‘어느 모델로 튈지 모름’) -&gt; …]
-개선(단방향) : [ Input(View) -&gt; Action(controller) -&gt; Dispatcher(controller) -&gt; Store(‘정해진 도메인 기능들의 모델’) -&gt; Output(View) -&gt; …]</p>
+<p>기존(MVC) : [ Input(view) -&gt; Model#1 -&gt; Output(view) -&gt; Model#??(‘어느 모델로 튈지 모름’) -&gt; …]
+개선(FLUX) : [ Input(View) -&gt; Action(controller) -&gt; Dispatcher(controller) -&gt; Store(‘정해진 도메인 기능들의 모델영역’) -&gt; Output(View) -&gt; …]</p>
 
-<p>그렇다면 여기서 양방향과 단방향의 차이는 무엇일까?</p>
+<p>간단히 말하자면…</p>
 
 <ul>
-  <li>
-    <p>양방향 : 
-View가 Model을 직접바꾸고 Model이 또 다른 View를 바꾸고, 그 View가 다시 또다른 Model을 바꾸는 식으로 여러 방향, 경로가 업데이트가 되는 구조</p>
-  </li>
-  <li>
-    <p>단방향 :
-View 입력이 Dispatcher, Store를 거쳐 View랜더 한방향 루프만 돌고 끝나는 구조</p>
-  </li>
+  <li>양방향 :</li>
 </ul>
 
-<p>즉, 핵심은 Dispatcher를 통한 고정된 경로를 거쳐 지정된 Store만 갱신해 준다는 것이다. 이렇듯 ‘여러 모델’로 값이 튀지 않게 ‘정해진 도메인 기능들의 모델(해당 기능의 Store)’로만 가기 때문에 단방향이라고 말하는 것이다.</p>
+<p>[Model#1 &lt;-&gt; ViewA &lt;-&gt; Model#?? &lt;-&gt; ViewB]</p>
 
-<p>이는 ‘고정된 경로’랑 ‘저장장소’를 제공하여, 디버깅을 용이하게 하기 위한 아이디어인 것이다.</p>
+<ul>
+  <li>한방향 :</li>
+</ul>
+
+<p>[ViewA -&gt; Action -&gt; Dispatcher -&gt; StoreA]
+[ViewA -&gt; Action -&gt; Dispatcher -&gt; StoreB]
+ 주의!
+(데이터가 튀지 않는다는 말이 데이터가 여러 Model로 안 간다는 것이 아니다.) 
+(데이터가 이동 도중 예상치 못한 경로로 가지 않는것을 막는다는 것이다.)</p>
+
+<p>즉, 핵심은 Dispatcher를 통한 ‘고정된 경로를 거쳐 지정된 Store만 갱신해 준다는 것이다.’
+이렇듯 ‘여러 모델’로 값이 튀지 않게 ‘정해진 도메인 기능들의 모델영역(해당 기능의 Store)’로만 가기 때문에 단방향이라고 말하는 것이다.</p>
+
+<p>이는 ‘고정된 경로’랑 ‘저장장소’를 제공하여, 어디서 어떤 상태가 바뀌는지 추적을 쉽게 할 수 있게 해준다. 또한 하나의 액션이 발생하면, 관련된 여러 Store가 그 액션을 각자 해석해 상태를 갱신할 수 있겠지만, 이 모든 과정은 항상 Action -&gt; Dispatcher -&gt; Store -&gt; View 라는 고정된 흐름 안에서 일어나기 때문에, 기존의 “예상치 못한 곳에서 값이 튀는” 현상을 크게 줄일 수 있는 것이다.</p>
 
         
       </section>
