@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="https://hwp-log.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://hwp-log.github.io/" rel="alternate" type="text/html" /><updated>2026-02-28T11:22:53+00:00</updated><id>https://hwp-log.github.io/feed.xml</id><title type="html">Engineering Log</title><subtitle>프로젝트, 기술 탐구, 공부 내용을 한 데 모은 개인 기록 저장소</subtitle><entry><title type="html">[React.js] React의 학습커브는 왜 가파른 것일까?</title><link href="https://hwp-log.github.io/react.js/2026/02/25/React.js-day-1.html" rel="alternate" type="text/html" title="[React.js] React의 학습커브는 왜 가파른 것일까?" /><published>2026-02-25T00:00:00+00:00</published><updated>2026-02-25T00:00:00+00:00</updated><id>https://hwp-log.github.io/react.js/2026/02/25/React.js-day-1</id><content type="html" xml:base="https://hwp-log.github.io/react.js/2026/02/25/React.js-day-1.html"><![CDATA[<p>React의 학습커브는 왜 가파른 것일까? 컴포넌트에 대한 이해? 단방향 데이터 흐름? hook개념? 무엇이 어렵다고 특정짓기 어렵지만, 개인적인 생각으로는 이러한 개념을 한 번에 이해해야하는 부담이 아닐까 싶다. 왜냐하면 JS로 분리해서 인터렉션을 구성하던 개발자 입장에서는 이러한 개념이 한눈에 들어오지 않기 때문이다.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="https://hwp-log.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://hwp-log.github.io/" rel="alternate" type="text/html" /><updated>2026-02-28T13:49:06+00:00</updated><id>https://hwp-log.github.io/feed.xml</id><title type="html">Engineering Log</title><subtitle>프로젝트, 기술 탐구, 공부 내용을 한 데 모은 개인 기록 저장소</subtitle><entry><title type="html">[React.js] React의 학습커브는 왜 가파른 것일까?</title><link href="https://hwp-log.github.io/react.js/2026/02/25/React.js-day-1.html" rel="alternate" type="text/html" title="[React.js] React의 학습커브는 왜 가파른 것일까?" /><published>2026-02-25T00:00:00+00:00</published><updated>2026-02-25T00:00:00+00:00</updated><id>https://hwp-log.github.io/react.js/2026/02/25/React.js-day-1</id><content type="html" xml:base="https://hwp-log.github.io/react.js/2026/02/25/React.js-day-1.html"><![CDATA[<p>React의 학습커브는 왜 가파른 것일까? 컴포넌트에 대한 이해? 단방향 데이터 흐름? hook개념? 무엇이 어렵다고 특정짓기 어렵지만, 개인적인 생각으로는 이러한 개념을 한 번에 이해해야하는 부담이 아닐까 싶다. 왜냐하면 JS로 분리해서 인터렉션을 구성하던 개발자 입장에서는 이러한 개념이 한눈에 들어오지 않기 때문이다.</p>
 
 <p>실제로 본인도 JS로 각 Dom의 인터렉션을 지정해서 작성하다가, React의 트리구조와 대응하는 컴포넌트 단위로의 사고전환에 어려운 점이 많았다. 그렇다면 이러한 전환이 필요했던 이유는 무엇이였을까? 굳이 쪼개서 생각하지 않아도 될 부분을 왜 쪼개고, 이에 맞는 프레임워크를 왜 만들게 된 것일까?</p>
 
@@ -22,7 +22,7 @@
 
 <p>이러한 내부적인 니즈가 쌓인 끝에, 복잡한 UI를 다루기 위한 프레임워크 React.js가 탄생하게 된다.</p>
 
-<h2 id="탄생배경-2-그렇다면-니즈가-쌓이게-된-원인은-무엇이었을까">[탄생배경 2] 그렇다면 니즈가 쌓이게 된 원인은 무엇이었을까?</h2>
+<h2 id="탄생배경-2-그렇다면-니즈가-생기게-된-원인은-무엇이었을까">[탄생배경 2] 그렇다면 니즈가 생기게 된 원인은 무엇이었을까?</h2>
 
 <p>facebook은 MVC 스타일 구조와 양방향/단방향 데이터 흐름 패턴을 많이 사용하고 있었다. 이 방식은 초기화면처럼 단순할 때, 잘 동작했었다.</p>
 
@@ -41,11 +41,11 @@
 <p><img src="/assets/post_images/2026-02-25/mvc.png" alt="페이스북의 복잡해진 MVC패턴" /><br />
 출처 : <a href="https://www.infoq.com/news/2014/05/facebook-mvc-flux/">InfoQ</a></p>
 
-<h2 id="사례와-해결책-안-읽은-메시지-기능과-flux-패턴">[사례와 해결책] 안 읽은 메시지 기능과 Flux 패턴</h2>
+<h2 id="사례와-해결책-안-읽은-메시지-기능과-flux-패턴">[사례와 해결책] ‘안 읽은 메시지 기능’과 ‘Flux 패턴’</h2>
 
-<p>그렇다면 그 사례는 어떤 것이 있을까? 페이스북에서는 “실제로 새 메시지가 없는데도 새 메시지가 있다고 사용자에게 알리는 채팅버그”가 있었다. 이는 앞서 말한 “연쇄적인 업데이트 내용이 폭증”하면서, 모델에 수시로 값이 갱신되고 어느 부분에서 값이 바뀌었는지 알 수 없었기에 생긴 버그였다.</p>
+<p>그렇다면 그 사례는 어떤 것이 있을까? 페이스북에서는 “실제로 새 메시지가 없는데도, 새 메시지가 있다고 사용자에게 알리는 채팅버그”가 있었다. 이는 앞서 말한 “연쇄적인 업데이트 내용이 폭증”하면서, 모델에 수시로 값이 갱신되고 어느 부분에서 값이 바뀌었는지 알 수 없었기에 생긴 버그였다.</p>
 
-<p>그리고 이를 해결하고자 했던 패턴이 Flux패턴이였다.</p>
+<p>그리고 이를 해결하고자 했던 패턴이 Flux 패턴이였다.</p>
 
 <p><img src="/assets/post_images/2026-02-25/flux.png" alt="flux 패턴" /><br />
 출처 : <a href="https://facebookarchive.github.io/flux/docs/in-depth-overview/">InfoQ</a></p>
@@ -63,27 +63,12 @@
 </ol>
 
 <p>이렇게 보면, Flux는 “View/Model이 어디서 끝나는지 모르는 스파게티 흐름”을 
-한 방향으로 고정하고, 최종책임을 Store에서 확인 할 수 있는 구조가 되는 것이다.</p>
+단방향으로 고정하고, 최종책임을 Store에서 확인 할 수 있는 구조가 되는 것이다.</p>
 
-<p>간단히 말하자면…</p>
-
-<ul>
-  <li>양방향 :</li>
-</ul>
-
-<p>[Model기능1 &lt;-&gt; ViewA &lt;-&gt; Model기능?? &lt;-&gt; View??]</p>
-
-<ul>
-  <li>한방향 :</li>
-</ul>
-
-<p>[ViewA -&gt; Action -&gt; Dispatcher -&gt; Store(기능A)]
-[ViewA -&gt; Action -&gt; Dispatcher -&gt; Store(기능B)]</p>
-
-<p>즉, 핵심은 Dispatcher를 통한 ‘고정된 경로를 거쳐 지정된 Store만 갱신해 준다는 것이다.’
+<p>즉, Dispatcher를 통한 ‘고정된 경로를 거쳐 지정된 Store만 갱신해 준다는 것이다.’
 이렇듯 ‘여러 모델’로 값이 튀지 않게 ‘정해진 도메인 기능들의 모델영역(해당 기능의 Store)’로만 가기 때문에 단방향이라고 말하는 것이다.</p>
 
-<p>이는 ‘고정된 경로’랑 ‘저장장소’를 제공하여, 어디서 어떤 상태가 바뀌는지 추적을 쉽게 할 수 있게 해준다. 또한 하나의 액션이 발생하면, 관련된 여러 Store가 그 액션을 각자 해석해 상태를 갱신할 수 있겠지만, 이 모든 과정은 항상 Action -&gt; Dispatcher -&gt; Store -&gt; View 라는 고정된 흐름 안에서 일어나기 때문에, 기존의 “예상치 못한 곳에서 값이 튀는” 현상을 크게 줄일 수 있는 것이다.</p>]]></content><author><name></name></author><category term="React.js" /><summary type="html"><![CDATA[React의 학습커브는 왜 가파른 것일까? 컴포넌트에 대한 이해? 단방향 데이터 흐름? hook개념? 무엇이 어렵다고 특정짓기 어렵지만, 개인적인 생각으로는 이러한 개념을 한 번에 이해해야하는 부담이 아닐까 싶다. 왜냐하면 JS로 분리해서 인터렉션을 구성하던 개발자 입장에서는 이러한 개념이 한눈에 들어오지 않기 때문이다.]]></summary></entry><entry><title type="html">[JavaScript] var, let, const는 왜 생겨났을까?</title><link href="https://hwp-log.github.io/javascript/2026/02/20/JS-day-1.html" rel="alternate" type="text/html" title="[JavaScript] var, let, const는 왜 생겨났을까?" /><published>2026-02-20T00:00:00+00:00</published><updated>2026-02-20T00:00:00+00:00</updated><id>https://hwp-log.github.io/javascript/2026/02/20/JS-day-1</id><content type="html" xml:base="https://hwp-log.github.io/javascript/2026/02/20/JS-day-1.html"><![CDATA[<p>코딩 학습의 자연스러운 동기는 무엇일까? <a href="https://hwp-log.github.io/reflection/2026/02/19/reflection-1.html">이전 글</a>에서 고민해본 결과, 그 동기는 ‘무언가 만들고자 하는 마음’과 ‘작동 원리에 대한 궁금증’ 두 가지로 나뉜다는 결론에 도달했다. 이번 글에서는 후자 - ‘var의 작동 원리에 대한 궁금증’부터 let, const가 왜 생겨났는지에 대한 궁금증과 학습으로 이어진 과정까지 작성 해 보려 한다.</p>
+<p>이는 ‘고정된 경로’랑 ‘저장장소’를 제공하여, 어디서 어떤 상태가 바뀌는지 추적을 쉽게 할 수 있게 해준다. 또한 하나의 액션이 발생하면, 관련된 Store들이 각자 상태를 갱신할 수 있겠지만, 이 모든 과정은 항상 Action -&gt; Dispatcher -&gt; Store -&gt; View 라는 단방향 흐름 안에서 일어나기 때문에, 기존의 “예상치 못한 곳에서 값이 튀는” 현상을 크게 줄일 수 있는 것이다.</p>]]></content><author><name></name></author><category term="React.js" /><summary type="html"><![CDATA[React의 학습커브는 왜 가파른 것일까? 컴포넌트에 대한 이해? 단방향 데이터 흐름? hook개념? 무엇이 어렵다고 특정짓기 어렵지만, 개인적인 생각으로는 이러한 개념을 한 번에 이해해야하는 부담이 아닐까 싶다. 왜냐하면 JS로 분리해서 인터렉션을 구성하던 개발자 입장에서는 이러한 개념이 한눈에 들어오지 않기 때문이다.]]></summary></entry><entry><title type="html">[JavaScript] var, let, const는 왜 생겨났을까?</title><link href="https://hwp-log.github.io/javascript/2026/02/20/JS-day-1.html" rel="alternate" type="text/html" title="[JavaScript] var, let, const는 왜 생겨났을까?" /><published>2026-02-20T00:00:00+00:00</published><updated>2026-02-20T00:00:00+00:00</updated><id>https://hwp-log.github.io/javascript/2026/02/20/JS-day-1</id><content type="html" xml:base="https://hwp-log.github.io/javascript/2026/02/20/JS-day-1.html"><![CDATA[<p>코딩 학습의 자연스러운 동기는 무엇일까? <a href="https://hwp-log.github.io/reflection/2026/02/19/reflection-1.html">이전 글</a>에서 고민해본 결과, 그 동기는 ‘무언가 만들고자 하는 마음’과 ‘작동 원리에 대한 궁금증’ 두 가지로 나뉜다는 결론에 도달했다. 이번 글에서는 후자 - ‘var의 작동 원리에 대한 궁금증’부터 let, const가 왜 생겨났는지에 대한 궁금증과 학습으로 이어진 과정까지 작성 해 보려 한다.</p>
 
 <h2 id="var-let-const는-왜-생겨났을까-라는-의문">“var, let, const는 왜 생겨났을까?” 라는 의문</h2>
 <p>JS를 처음 배우면서 떠오르는 의문점이 뭐가 있을까? 바로 ‘var와 호이스팅’이라는 개념이라고 생각한다. 왜냐하면 함수랑 블록, 스코프 개념이 정립되지 않은 상태이기 때문이다. 특히 이를 코드로 쳐보지 않는 이상 누구든지 난해한 부분이다.</p>
