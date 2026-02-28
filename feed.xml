@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="https://hwp-log.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://hwp-log.github.io/" rel="alternate" type="text/html" /><updated>2026-02-27T16:23:54+00:00</updated><id>https://hwp-log.github.io/feed.xml</id><title type="html">Engineering Log</title><subtitle>프로젝트, 기술 탐구, 공부 내용을 한 데 모은 개인 기록 저장소</subtitle><entry><title type="html">[React.js] React의 학습커브는 왜 가파른 것일까?</title><link href="https://hwp-log.github.io/react.js/2026/02/25/React.js-day-1.html" rel="alternate" type="text/html" title="[React.js] React의 학습커브는 왜 가파른 것일까?" /><published>2026-02-25T00:00:00+00:00</published><updated>2026-02-25T00:00:00+00:00</updated><id>https://hwp-log.github.io/react.js/2026/02/25/React.js-day-1</id><content type="html" xml:base="https://hwp-log.github.io/react.js/2026/02/25/React.js-day-1.html"><![CDATA[<p>React의 학습커브는 왜 가파른 것일까? 컴포넌트에 대한 이해? 단방향 데이터 흐름? hook개념? 무엇이 어렵다고 특정짓기 어렵지만, 개인적인 생각으로는 이러한 개념을 한 번에 이해해야하는 부담이 아닐까 싶다. 왜냐하면 JS로 분리해서 인터렉션을 구성하던 개발자 입장에서는 이러한 개념이 한눈에 들어오지 않기 때문이다.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="https://hwp-log.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://hwp-log.github.io/" rel="alternate" type="text/html" /><updated>2026-02-28T11:13:24+00:00</updated><id>https://hwp-log.github.io/feed.xml</id><title type="html">Engineering Log</title><subtitle>프로젝트, 기술 탐구, 공부 내용을 한 데 모은 개인 기록 저장소</subtitle><entry><title type="html">[React.js] React의 학습커브는 왜 가파른 것일까?</title><link href="https://hwp-log.github.io/react.js/2026/02/25/React.js-day-1.html" rel="alternate" type="text/html" title="[React.js] React의 학습커브는 왜 가파른 것일까?" /><published>2026-02-25T00:00:00+00:00</published><updated>2026-02-25T00:00:00+00:00</updated><id>https://hwp-log.github.io/react.js/2026/02/25/React.js-day-1</id><content type="html" xml:base="https://hwp-log.github.io/react.js/2026/02/25/React.js-day-1.html"><![CDATA[<p>React의 학습커브는 왜 가파른 것일까? 컴포넌트에 대한 이해? 단방향 데이터 흐름? hook개념? 무엇이 어렵다고 특정짓기 어렵지만, 개인적인 생각으로는 이러한 개념을 한 번에 이해해야하는 부담이 아닐까 싶다. 왜냐하면 JS로 분리해서 인터렉션을 구성하던 개발자 입장에서는 이러한 개념이 한눈에 들어오지 않기 때문이다.</p>
 
 <p>실제로 본인도 JS로 각 Dom의 인터렉션을 지정해서 작성하다가, React의 트리구조와 대응하는 컴포넌트 단위로의 사고전환에 어려운 점이 많았다. 그렇다면 이러한 전환이 필요했던 이유는 무엇이였을까? 굳이 쪼개서 생각하지 않아도 될 부분을 왜 쪼개고, 이에 맞는 프레임워크를 왜 만들게 된 것일까?</p>
 
@@ -24,23 +24,28 @@
 
 <h2 id="탄생배경-2-그렇다면-니즈가-쌓이게-된-원인은-무엇이었을까">[탄생배경 2] 그렇다면 니즈가 쌓이게 된 원인은 무엇이었을까?</h2>
 
-<p>facebook은 MVC 스타일 구조와 양방향/다방향 데이터 흐름 패턴을 많이 사용하고 있었다. 이 방식은 초기화면처럼 단순할 때, 잘 동작했었지만, 기능과 화면이 복잡해질수록 점점 한계를 드러내기 시작했다.</p>
+<p>facebook은 MVC 스타일 구조와 양방향/단방향 데이터 흐름 패턴을 많이 사용하고 있었다. 이 방식은 초기화면처럼 단순할 때, 잘 동작했었다.</p>
 
-<p>그 한계는 앞서 말했던 ‘기능간의 영향을 주고 받는 내용이 많아진점’, 그리고 이러한 내용이 대량으로 발생하면서 연쇄적인 업데이트(cascading updates) 폭증하게 된 것이다.</p>
+<p><img src="/assets/post_images/2026-02-25/mvc00.png" alt="mvc패턴" /><br />
+출처 : 본인</p>
 
-<p>그렇다면 이러한 연쇄적인 업데이트는 무엇을 말하는건가? MVC패턴을 생각해보자, 사용자가 입력을 하면 View에서 Controller를 거쳐 Model이 갱신되고, 다시 갱신된 Model은 View에 재랜더링 하게되는 방식이다.</p>
+<p>그러나 기능과 화면이 복잡해질수록 점점 한계를 드러내기 시작했다. 그 한계는 앞서 말했던 ‘기능간의 영향을 주고 받는 내용이 많아진점’, 그리고 이러한 내용이 대량으로 발생하면서 연쇄적인 업데이트(cascading updates) 폭증하게 된 것이다.</p>
+
+<p><img src="/assets/post_images/2026-02-25/mvc22.png" alt="mvc패턴" /><br />
+출처 : 본인</p>
+
+<p>그렇다면 연쇄적인 업데이트는 무엇을 말하는건가? MVC패턴을 생각해보자, 사용자가 입력을 하면 View에서 Controller를 거쳐 Model이 갱신되고, 다시 갱신된 Model은 View에 재랜더링 하게되는 방식이다.</p>
 
 <p>즉, [ 입력(Input) -&gt; 모델(Model) -&gt; 출력(Output) ]의 패턴 인것이다. 
 이 사이클은 여기서만 끝난다면, “어느 지점에서 어떤 값이 바뀌는지” 쉽게 예측할 수 있다.</p>
 
 <p>문제는… 여기서 끝이 아니였던 것이다. 만약 세번째 단계인, ‘출력단계(Output)에서 끝나지 않고, 자동으로 입력(Input) 트리거’가 다시 작동한다면 어떻게 될까?</p>
 
-<p>고정적으로 생각하는 것 : [ 입력(Input) -&gt; 모델(Model) -&gt; 출력(Output) ]
-자동입력 트리거가 있을 경우 : [ 입력(Input) -&gt; 모델(Model) -&gt; 출력(Output) &amp; 자동 트리거 입력(Input) -&gt; 모델(Model -&gt; …)]</p>
+<p>[ 입력(Input) -&gt; 모델(Model) -&gt; 출력(Output) &amp; 자동 트리거 입력(Input) -&gt; 모델(Model -&gt; …)]</p>
 
-<p>출력 이후, 자동 트리거 입력(Input)이 작동하여 Model, View를 다시 왕복 하게 될것이다. 이것이 ‘어디서 무엇이 전파되고 다시 재전파 되는지’를 말하는 연쇄적인 업데이트(cascading updates)이다.</p>
+<p>출력 이후, 자동 트리거 입력(Input)이 작동하여 Model, View를 다시 왕복 하게 될것이다. 이런 패턴이 여러기능에서 발생하여, ‘어디서 무엇이 전파되고 다시 재전파 되는지’를 알 수 없게 되는 현상이 연쇄적인 업데이트(cascading updates)인 것이다.</p>
 
-<p>물론, 기능이 적은 상태에서는 많은 데이터를 관리하지 않았기 때문에 추적이 가능했을 것이다. 하지만 아래 사진처럼 기능이 추가되면서, 이러한 패턴이 폭증하게 되었고 이는 유지보수의 니즈로서 구체화 되기 시작했다.</p>
+<p>물론, 기능이 적은 상태에서는 많은 데이터를 관리하지 않았기 때문에 추적이 가능했을 것이다. 하지만 점차 이러한 패턴이 폭증하게 되었고 이는 유지보수의 니즈로서 구체화 되기 시작했다.</p>
 
 <p><img src="/assets/post_images/2026-02-25/mvc.png" alt="페이스북의 복잡해진 MVC패턴" /><br />
 출처 : <a href="https://www.infoq.com/news/2014/05/facebook-mvc-flux/">InfoQ</a></p>
@@ -69,26 +74,20 @@
 <p>이렇게 보면, Flux는 “View/Model이 어디서 끝나는지 모르는 스파게티 흐름”을 
 한 방향으로 고정하고, 최종책임을 Store에서 확인 할 수 있는 구조가 되는 것이다.</p>
 
-<p>기존(MVC) : [ Input(view) -&gt; Model#1 -&gt; Output(view) -&gt; Model#??(‘어느 모델로 튈지 모름’) -&gt; …]
-개선(FLUX) : [ Input(View) -&gt; Action(controller) -&gt; Dispatcher(controller) -&gt; Store(‘정해진 도메인 기능들의 모델영역’) -&gt; Output(View) -&gt; …]</p>
-
 <p>간단히 말하자면…</p>
 
 <ul>
   <li>양방향 :</li>
 </ul>
 
-<p>[Model#1 &lt;-&gt; ViewA &lt;-&gt; Model#?? &lt;-&gt; ViewB]</p>
+<p>[Model기능1 &lt;-&gt; ViewA &lt;-&gt; Model기능?? &lt;-&gt; View??]</p>
 
 <ul>
   <li>한방향 :</li>
 </ul>
 
-<p>[ViewA -&gt; Action -&gt; Dispatcher -&gt; StoreA]
-[ViewA -&gt; Action -&gt; Dispatcher -&gt; StoreB]
- 주의!
-(데이터가 튀지 않는다는 말이 데이터가 여러 Model로 안 간다는 것이 아니다.) 
-(데이터가 이동 도중 예상치 못한 경로로 가지 않는것을 막는다는 것이다.)</p>
+<p>[ViewA -&gt; Action -&gt; Dispatcher -&gt; Store(기능A)]
+[ViewA -&gt; Action -&gt; Dispatcher -&gt; Store(기능B)]</p>
 
 <p>즉, 핵심은 Dispatcher를 통한 ‘고정된 경로를 거쳐 지정된 Store만 갱신해 준다는 것이다.’
 이렇듯 ‘여러 모델’로 값이 튀지 않게 ‘정해진 도메인 기능들의 모델영역(해당 기능의 Store)’로만 가기 때문에 단방향이라고 말하는 것이다.</p>
