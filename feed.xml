@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="https://hwp-log.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://hwp-log.github.io/" rel="alternate" type="text/html" /><updated>2026-02-28T13:49:06+00:00</updated><id>https://hwp-log.github.io/feed.xml</id><title type="html">Engineering Log</title><subtitle>프로젝트, 기술 탐구, 공부 내용을 한 데 모은 개인 기록 저장소</subtitle><entry><title type="html">[React.js] React의 학습커브는 왜 가파른 것일까?</title><link href="https://hwp-log.github.io/react.js/2026/02/25/React.js-day-1.html" rel="alternate" type="text/html" title="[React.js] React의 학습커브는 왜 가파른 것일까?" /><published>2026-02-25T00:00:00+00:00</published><updated>2026-02-25T00:00:00+00:00</updated><id>https://hwp-log.github.io/react.js/2026/02/25/React.js-day-1</id><content type="html" xml:base="https://hwp-log.github.io/react.js/2026/02/25/React.js-day-1.html"><![CDATA[<p>React의 학습커브는 왜 가파른 것일까? 컴포넌트에 대한 이해? 단방향 데이터 흐름? hook개념? 무엇이 어렵다고 특정짓기 어렵지만, 개인적인 생각으로는 이러한 개념을 한 번에 이해해야하는 부담이 아닐까 싶다. 왜냐하면 JS로 분리해서 인터렉션을 구성하던 개발자 입장에서는 이러한 개념이 한눈에 들어오지 않기 때문이다.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="https://hwp-log.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://hwp-log.github.io/" rel="alternate" type="text/html" /><updated>2026-02-28T16:50:23+00:00</updated><id>https://hwp-log.github.io/feed.xml</id><title type="html">Engineering Log</title><subtitle>프로젝트, 기술 탐구, 공부 내용을 한 데 모은 개인 기록 저장소</subtitle><entry><title type="html">[React.js] React의 학습커브는 왜 가파른 것일까?</title><link href="https://hwp-log.github.io/react.js/2026/02/25/React.js-day-1.html" rel="alternate" type="text/html" title="[React.js] React의 학습커브는 왜 가파른 것일까?" /><published>2026-02-25T00:00:00+00:00</published><updated>2026-02-25T00:00:00+00:00</updated><id>https://hwp-log.github.io/react.js/2026/02/25/React.js-day-1</id><content type="html" xml:base="https://hwp-log.github.io/react.js/2026/02/25/React.js-day-1.html"><![CDATA[<p>React의 학습커브는 왜 가파른 것일까? 컴포넌트에 대한 이해? 단방향 데이터 흐름? hook개념? 무엇이 어렵다고 특정짓기 어렵지만, 개인적인 생각으로는 이러한 개념을 한 번에 이해해야하는 부담이 아닐까 싶다. 왜냐하면 JS로 분리해서 인터렉션을 구성하던 개발자 입장에서는 이러한 개념이 한눈에 들어오지 않기 때문이다.</p>
 
 <p>실제로 본인도 JS로 각 Dom의 인터렉션을 지정해서 작성하다가, React의 트리구조와 대응하는 컴포넌트 단위로의 사고전환에 어려운 점이 많았다. 그렇다면 이러한 전환이 필요했던 이유는 무엇이였을까? 굳이 쪼개서 생각하지 않아도 될 부분을 왜 쪼개고, 이에 맞는 프레임워크를 왜 만들게 된 것일까?</p>
 
@@ -65,10 +65,189 @@
 <p>이렇게 보면, Flux는 “View/Model이 어디서 끝나는지 모르는 스파게티 흐름”을 
 단방향으로 고정하고, 최종책임을 Store에서 확인 할 수 있는 구조가 되는 것이다.</p>
 
-<p>즉, Dispatcher를 통한 ‘고정된 경로를 거쳐 지정된 Store만 갱신해 준다는 것이다.’
-이렇듯 ‘여러 모델’로 값이 튀지 않게 ‘정해진 도메인 기능들의 모델영역(해당 기능의 Store)’로만 가기 때문에 단방향이라고 말하는 것이다.</p>
+<p>이는 ‘고정된 경로’랑 ‘저장장소’를 제공하여, 어디서 어떤 상태가 바뀌는지 추적을 쉽게 할 수 있게 해준다. 또한 하나의 액션이 발생하면, 관련된 Store들이 각자 상태를 갱신할 수 있겠지만, 이 모든 과정은 항상 Action -&gt; Dispatcher -&gt; Store -&gt; View 라는 단방향 흐름 안에서 일어나기 때문에, 기존의 “예상치 못한 곳에서 값이 튀는” 현상을 크게 줄일 수 있는 것이다.</p>
 
-<p>이는 ‘고정된 경로’랑 ‘저장장소’를 제공하여, 어디서 어떤 상태가 바뀌는지 추적을 쉽게 할 수 있게 해준다. 또한 하나의 액션이 발생하면, 관련된 Store들이 각자 상태를 갱신할 수 있겠지만, 이 모든 과정은 항상 Action -&gt; Dispatcher -&gt; Store -&gt; View 라는 단방향 흐름 안에서 일어나기 때문에, 기존의 “예상치 못한 곳에서 값이 튀는” 현상을 크게 줄일 수 있는 것이다.</p>]]></content><author><name></name></author><category term="React.js" /><summary type="html"><![CDATA[React의 학습커브는 왜 가파른 것일까? 컴포넌트에 대한 이해? 단방향 데이터 흐름? hook개념? 무엇이 어렵다고 특정짓기 어렵지만, 개인적인 생각으로는 이러한 개념을 한 번에 이해해야하는 부담이 아닐까 싶다. 왜냐하면 JS로 분리해서 인터렉션을 구성하던 개발자 입장에서는 이러한 개념이 한눈에 들어오지 않기 때문이다.]]></summary></entry><entry><title type="html">[JavaScript] var, let, const는 왜 생겨났을까?</title><link href="https://hwp-log.github.io/javascript/2026/02/20/JS-day-1.html" rel="alternate" type="text/html" title="[JavaScript] var, let, const는 왜 생겨났을까?" /><published>2026-02-20T00:00:00+00:00</published><updated>2026-02-20T00:00:00+00:00</updated><id>https://hwp-log.github.io/javascript/2026/02/20/JS-day-1</id><content type="html" xml:base="https://hwp-log.github.io/javascript/2026/02/20/JS-day-1.html"><![CDATA[<p>코딩 학습의 자연스러운 동기는 무엇일까? <a href="https://hwp-log.github.io/reflection/2026/02/19/reflection-1.html">이전 글</a>에서 고민해본 결과, 그 동기는 ‘무언가 만들고자 하는 마음’과 ‘작동 원리에 대한 궁금증’ 두 가지로 나뉜다는 결론에 도달했다. 이번 글에서는 후자 - ‘var의 작동 원리에 대한 궁금증’부터 let, const가 왜 생겨났는지에 대한 궁금증과 학습으로 이어진 과정까지 작성 해 보려 한다.</p>
+<h2 id="엔진과-개념react는-어떻게-진화해왔을까">[엔진과 개념]React는 어떻게 진화해왔을까?</h2>
+<p>앞부분에서 페이스북이 복잡해지면서 Flux 패턴이 등장한 이야기를 했었다. 이제부터는 그 흐름이 실제 React 코드와 엔진에서 어떻게 드러나는지, 최대한 설명해보고자 한다. 설명해보가자 하는 내용은 아래와 같다.</p>
+
+<ol>
+  <li>처음에는 Class 컴포넌트로 시작했고</li>
+  <li>이후에 함수컴포넌트 + Hooks로 패러다임이 바뀌었고</li>
+  <li>내부 엔진은 Fiber라는 구조로 완전히 갈아엎어졌고</li>
+  <li>최근에는 동시성 랜더링 개념까지 얹혀지게 되었다.</li>
+</ol>
+
+<p>이러한 모든걸 한번에 접하다보니, 초보입장에서는 당연히 부담스럽게 느껴질 수 밖에 없다. 그럼 이러한 개념을 동시에 보지말고, 하나씩 파보자.</p>
+
+<h3 id="1-class컴포넌트---모든-걸-한-클래스-안에-넣던-시절">1. Class컴포넌트 - “모든 걸 한 클래스 안에 넣던 시절”</h3>
+
+<p>React 초창기에는 컴포넌트를 클래스로 만들었다. 왜냐하면 초기의 React는 “상태와 로직을 품은 UI조각”을 표현하려고 했었고, 그 시점에서 가장 현실적인 도구가 클래스였기 때문이다. 당시 JS를 통해 인터렉션을 개발하는 개발자들은 물론이고 React팀에서도 개발단위의 기본을 Class라고 생각했었다. 그러나 이러한 내용은 예상과 다르게 Class단위 기능이 아닌 function단위 기능으로만 쓰게 되는데… 이 부분은 function 패러다임으로 바뀌는 다음 내용에서 언급하도록 하겠다.</p>
+
+<p>어쨌든 본론으로 돌아와서 ‘클래스 컴포넌트’의 내용은 아래와 같다.</p>
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">import</span> <span class="nx">React</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span><span class="p">;</span>
+
+  <span class="kd">class</span> <span class="nx">Hello</span> <span class="kd">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span><span class="p">{</span>
+    <span class="nx">render</span><span class="p">(){</span>
+      <span class="k">return</span> <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>안녕하세요, <span class="si">{</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">name</span><span class="si">}</span>님!<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+<span class="c1">// &lt;Hello name="현우"&gt;</span>
+<span class="c1">// return값 : &lt;div&gt; 안녕하세요, 현우님! &lt;/div&gt;</span>
+</code></pre></div></div>
+<ul>
+  <li>Hello 라는 클래스를 만들고</li>
+  <li>React.Component를 상속받고</li>
+  <li>render() 메서드에서 JSX를 반환하여, 출력값을 리턴해준다.</li>
+</ul>
+
+<p>그렇다면, 상태(state)를 가지는 클래스 컴포넌트 형태는 어땠을까?</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">React</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">class</span> <span class="nx">Counter</span> <span class="kd">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+  <span class="nx">construcor</span><span class="p">(</span><span class="nx">props</span><span class="p">){</span>
+    <span class="k">super</span><span class="p">(</span><span class="nx">props</span><span class="p">);</span>
+    <span class="c1">// 컴포넌트의 초기 상태</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">state</span> <span class="o">=</span> <span class="p">{</span><span class="na">count</span><span class="p">:</span><span class="mi">0</span><span class="p">};</span>
+  <span class="p">}</span>
+
+  <span class="nx">handleClick</span><span class="o">=</span><span class="p">()</span><span class="o">=&gt;</span><span class="p">{</span>
+    <span class="c1">// 상태를 바꿀때 setState를 사용</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">(</span><span class="na">count</span><span class="p">:</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">count</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="nx">render</span><span class="p">(){</span>
+    <span class="k">return</span><span class="p">(</span>
+      <span class="p">&lt;</span><span class="nt">button</span> <span class="na">onClick</span><span class="p">=</span><span class="si">{</span><span class="k">this</span><span class="p">.</span><span class="nx">handleClick</span><span class="si">}</span><span class="p">&gt;</span>
+        클릭 수:<span class="si">{</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">count</span><span class="si">}</span>
+      <span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+    <span class="p">)</span>
+  <span class="p">}</span>
+
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>여기서의 포인트는 this.state 에 상태를 넣고, this.setState() 로만 상태를 바꾼다는 점이다.
+이게 기본적으로는 한눈에 들어와서 문제가 안될 것 같지만… 라이프 사이클까지 섞은 실서비스가 되면 아래처럼 더욱 복잡해진다.</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kd">class</span> <span class="nx">Counter</span> <span class="kd">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span><span class="p">{</span>
+    <span class="kd">constructor</span><span class="p">(</span><span class="nx">props</span><span class="p">){</span>
+      <span class="k">super</span><span class="p">(</span><span class="nx">props</span><span class="p">);</span>
+      <span class="c1">// 이벤트 핸들러로 상태 갱신</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">state</span> <span class="o">=</span> <span class="p">{</span><span class="na">count</span><span class="p">:</span><span class="mi">0</span><span class="p">};</span>
+    <span class="p">}</span>
+
+    <span class="nx">componentDidMount</span><span class="p">(){</span>
+      <span class="c1">// 라이프사이클 1</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">컴포넌트가 화면에 등장</span><span class="dl">'</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="nx">componentDidUpdate</span><span class="p">(</span><span class="nx">prevProps</span><span class="p">,</span> <span class="nx">prevState</span><span class="p">){</span>
+      <span class="c1">// 라이프 사이클 2</span>
+      <span class="k">if</span><span class="p">(</span><span class="nx">prevState</span><span class="p">.</span><span class="nx">count</span> <span class="o">!==</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">count</span><span class="p">)}{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">count가 바뀜:</span><span class="dl">'</span><span class="p">,</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">count</span><span class="p">)</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="nx">componentWillUnmount</span><span class="p">(){</span>
+      <span class="c1">// 라이프 사이클 3</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">컴포넌트가 화면에서 사라짐</span><span class="dl">'</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="nx">handleClick</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="c1">// 이벤트 핸들러</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span><span class="na">count</span><span class="p">:</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">count</span> <span class="o">+</span> <span class="mi">1</span><span class="p">});</span>
+    <span class="p">}</span>
+
+    <span class="nx">render</span><span class="p">(){</span>
+      <span class="k">return</span><span class="p">(</span>
+        <span class="p">&lt;</span><span class="nt">button</span> <span class="na">onClick</span><span class="p">=</span><span class="si">{</span><span class="k">this</span><span class="p">.</span><span class="nx">handleClick</span><span class="si">}</span><span class="p">&gt;</span>
+          클릭 수:<span class="si">{</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">count</span><span class="si">}</span>
+        <span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+      <span class="p">)</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+</code></pre></div></div>
+
+<p>즉, 상태관련 코드가 constructor, 라이프사이클 메서드들(1,2,3), 이벤트핸들러로 산개된다.<br />
+기능이 많아질수록 하나의 클래스 파일이 점점 비대해진다는 것이다. 그래서 유지보수를 하면서 이러한 피로감이 증대하게 되는 것이 문제점이였다. 이를 React팀에서 다시 생각하기 사작한 것이다.</p>
+
+<h3 id="2-함수-컴포넌트와-hooks---어쨌든-ui는-그냥-함수잖아">2. 함수 컴포넌트와 Hooks - ‘어쨌든 UI는 그냥 함수잖아?’</h3>
+<p>React 팀이 다시 생각한 포인트는 이것이다.</p>
+
+<p>“UI는 결국 state -&gt; UI로 매핑되어 바뀌는 함수 아닌가?”
+생각해보자. 굳이 클래스 형태가 아니더라도 바뀌는 단위는 클래스가 아니라 함수 아니였나?</p>
+
+<p>그럼 함수단위로 최소한 쪼개보자. 어떠한가?</p>
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">hello</span><span class="p">({</span><span class="nx">name</span><span class="p">}){</span>
+  <span class="k">return</span> <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span> 안녕하세요, <span class="si">{</span><span class="nx">name</span><span class="si">}</span>님!<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;;</span>
+<span class="p">}</span>
+
+<span class="c1">// &lt;hello name="현우"&gt;</span>
+<span class="c1">// retrun값 : 안녕하세요, 현우님!</span>
+</code></pre></div></div>
+
+<ul>
+  <li>입력 : props</li>
+  <li>출력 : JSX</li>
+</ul>
+
+<p>이렇게 보면 직관적이고 한눈에 들어오게 된다.</p>
+
+<h3 id="3-hook이-없던-시절의-한계">3. Hook이 없던 시절의 한계</h3>
+<p>그러나 초창기에는 함수 컴포넌트가 상태나 라이프사이클을 가질 수 없었다. Class단위로 설계가 되었기 때문이다. 그래서 상태나 생명주기가 필요해지는 순간(기능이 복잡해 지는 순간)에는 그 부분은 클래스 컴포넌트로 구현해야 했다.</p>
+
+<p>당시의 함수 컴포넌트 아래의 용도로 쓰였었다.</p>
+<ul>
+  <li>함수 컴포넌트 : 단순표시용</li>
+  <li>상태/라이프사이클 필요시 : 클래스 컴포넌트</li>
+</ul>
+
+<p>이러한 이중 구조가 점점 거슬리기 시작했고, “함수에서도 상태를 쓰고 싶다”는 니즈가 점점 커지게 되었다.</p>
+
+<h3 id="4-hook의-등장---함수에-상태와-생명주기를-심어주기">4. Hook의 등장 - 함수에 “상태와 생명주기”를 심어주기</h3>
+<p>그래서 나온 것이 Hook이다.
+Hook은 “함수 컴포넌트 안에서 React 기능을 쓸 수 있게 해주는 함수”라고 생각하면 된다.</p>
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span><span class="nx">useState</span><span class="p">,</span> <span class="nx">useEffect</span><span class="p">}</span><span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">function</span> <span class="nx">Counter</span><span class="p">(){</span>
+  <span class="c1">//count라는 상태값과 그걸 바꾸는 setCount함수를 만든다.</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">count</span><span class="p">,</span> <span class="nx">setCount</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+
+  <span class="c1">//count가 바뀔 때마다 콘솔에 로그를 남긴다.</span>
+  <span class="nx">useEffect</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">현재 count:</span><span class="dl">'</span><span class="p">,</span><span class="nx">count</span><span class="p">);</span>
+  <span class="p">},</span> <span class="p">[</span><span class="nx">count</span><span class="p">]);</span>
+
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="p">&lt;</span><span class="nt">button</span> <span class="na">onClick</span><span class="p">=</span><span class="si">{</span><span class="p">()</span><span class="o">=&gt;</span><span class="nx">setCount</span><span class="p">(</span><span class="nx">count</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="p">&gt;</span>
+      클릭수:<span class="si">{</span><span class="nx">count</span><span class="si">}</span>
+    <span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+  <span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p>여기서 포인트는</p>
+<ul>
+  <li>useState(0) : 초기값 0으로 상태 슬롯 하나 생성</li>
+  <li>useEffect(… , [count]) : useEffect가 실행되면,그리고 count콜백이 바뀔 때마다 실행되는 “후처리 작동” 등록</li>
+</ul>
+
+<p>결론적으로 클래스에서 여기저기 산개된 것들이, 하나의 함수 안으로 모여 들어온 느낌이다.</p>
+
+<p>하지만 대가도 있다.</p>
+<ul>
+  <li>Hook은 항상 컴포넌트 최상단에서, 매 랜더링마다 같은 순서로 호출되어야 한다.(if,while등과 같은 조건문 안에 작성금지!)</li>
+  <li>랜더링이 다시 일어날 때마다 이 함수가 통째로 다시 실행된다는 점을 이해해야 한다.</li>
+  <li>useEffect의 실행시점, 의존성 배열등을 이해하지 않으면 이상한 버그를 만나기 쉽다.(최소조건의 구조로 작성해야함)</li>
+</ul>
+
+<p>그래서 문법 자체는 직관적으로 변했는데, “작동 원리까지 같이 이해해야 하는” 새로운 난이도가 생긴 것이다.
+상기의 세개의 부분은 중요하지만…다음 글에서 차후 다뤄보기로 하겠다. 현재는 “학습커브가 왜 가파른지”에 대해 언급하는 내용이기에 문맥을 해칠수 있어서 건너뛰는 것이다. 분명한것은 Vanila JS인 경우 수학적으로 딱딱 떨어지는 분자단위의 논리와 같다면, react와 같은 프레임워크는 프로토콜같은 추상단위의 개념으로 봐야 이해하기 용이하다는 것이다. 간단히 얘기하자면, 논리의 앞뒤가 맞기 이전에 의도가 무엇인지 부터 파악해야 한다는 것이다. 그 뒤에 안의 논리를 분자단위로 쪼개도 이해는 늦지 않다.</p>
+
+<h3 id="3-fiber-엔진---랜더링을-잘게-쪼개서-처리하자">3. Fiber 엔진 - “랜더링을 잘게 쪼개서 처리하자”</h3>
+
+<p>…작성중…</p>]]></content><author><name></name></author><category term="React.js" /><summary type="html"><![CDATA[React의 학습커브는 왜 가파른 것일까? 컴포넌트에 대한 이해? 단방향 데이터 흐름? hook개념? 무엇이 어렵다고 특정짓기 어렵지만, 개인적인 생각으로는 이러한 개념을 한 번에 이해해야하는 부담이 아닐까 싶다. 왜냐하면 JS로 분리해서 인터렉션을 구성하던 개발자 입장에서는 이러한 개념이 한눈에 들어오지 않기 때문이다.]]></summary></entry><entry><title type="html">[JavaScript] var, let, const는 왜 생겨났을까?</title><link href="https://hwp-log.github.io/javascript/2026/02/20/JS-day-1.html" rel="alternate" type="text/html" title="[JavaScript] var, let, const는 왜 생겨났을까?" /><published>2026-02-20T00:00:00+00:00</published><updated>2026-02-20T00:00:00+00:00</updated><id>https://hwp-log.github.io/javascript/2026/02/20/JS-day-1</id><content type="html" xml:base="https://hwp-log.github.io/javascript/2026/02/20/JS-day-1.html"><![CDATA[<p>코딩 학습의 자연스러운 동기는 무엇일까? <a href="https://hwp-log.github.io/reflection/2026/02/19/reflection-1.html">이전 글</a>에서 고민해본 결과, 그 동기는 ‘무언가 만들고자 하는 마음’과 ‘작동 원리에 대한 궁금증’ 두 가지로 나뉜다는 결론에 도달했다. 이번 글에서는 후자 - ‘var의 작동 원리에 대한 궁금증’부터 let, const가 왜 생겨났는지에 대한 궁금증과 학습으로 이어진 과정까지 작성 해 보려 한다.</p>
 
 <h2 id="var-let-const는-왜-생겨났을까-라는-의문">“var, let, const는 왜 생겨났을까?” 라는 의문</h2>
 <p>JS를 처음 배우면서 떠오르는 의문점이 뭐가 있을까? 바로 ‘var와 호이스팅’이라는 개념이라고 생각한다. 왜냐하면 함수랑 블록, 스코프 개념이 정립되지 않은 상태이기 때문이다. 특히 이를 코드로 쳐보지 않는 이상 누구든지 난해한 부분이다.</p>
