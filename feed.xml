@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="https://hwp-log.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://hwp-log.github.io/" rel="alternate" type="text/html" /><updated>2026-03-01T06:32:09+00:00</updated><id>https://hwp-log.github.io/feed.xml</id><title type="html">Engineering Log</title><subtitle>프로젝트, 기술 탐구, 공부 내용을 한 데 모은 개인 기록 저장소</subtitle><entry><title type="html">[React.js] React의 학습커브는 왜 가파른 것일까?</title><link href="https://hwp-log.github.io/react.js/2026/02/25/React.js-day-1.html" rel="alternate" type="text/html" title="[React.js] React의 학습커브는 왜 가파른 것일까?" /><published>2026-02-25T00:00:00+00:00</published><updated>2026-02-25T00:00:00+00:00</updated><id>https://hwp-log.github.io/react.js/2026/02/25/React.js-day-1</id><content type="html" xml:base="https://hwp-log.github.io/react.js/2026/02/25/React.js-day-1.html"><![CDATA[<p>React의 학습커브는 왜 가파른 것일까? 컴포넌트에 대한 이해? 단방향 데이터 흐름? hook개념? 무엇이 어렵다고 특정짓기 어렵지만, 개인적인 생각으로는 이러한 개념을 한 번에 이해해야하는 부담이 아닐까 싶다. 왜냐하면 JS로 분리해서 인터렉션을 구성하던 개발자 입장에서는 이러한 개념이 한눈에 들어오지 않기 때문이다.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="https://hwp-log.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://hwp-log.github.io/" rel="alternate" type="text/html" /><updated>2026-03-01T08:47:44+00:00</updated><id>https://hwp-log.github.io/feed.xml</id><title type="html">Engineering Log</title><subtitle>프로젝트, 기술 탐구, 공부 내용을 한 데 모은 개인 기록 저장소</subtitle><entry><title type="html">[React.js] React의 학습커브는 왜 가파른 것일까?</title><link href="https://hwp-log.github.io/react.js/2026/02/25/React.js-day-1.html" rel="alternate" type="text/html" title="[React.js] React의 학습커브는 왜 가파른 것일까?" /><published>2026-02-25T00:00:00+00:00</published><updated>2026-02-25T00:00:00+00:00</updated><id>https://hwp-log.github.io/react.js/2026/02/25/React.js-day-1</id><content type="html" xml:base="https://hwp-log.github.io/react.js/2026/02/25/React.js-day-1.html"><![CDATA[<p>React의 학습커브는 왜 가파른 것일까? 컴포넌트에 대한 이해? 단방향 데이터 흐름? hook개념? 무엇이 어렵다고 특정짓기 어렵지만, 개인적인 생각으로는 이러한 개념을 한 번에 이해해야하는 부담이 아닐까 싶다. 왜냐하면 JS로 분리해서 인터렉션을 구성하던 개발자 입장에서는 이러한 개념이 한눈에 들어오지 않기 때문이다.</p>
 
 <p>실제로 본인도 JS로 각 Dom의 인터렉션을 지정해서 작성하다가, React의 트리구조와 대응하는 컴포넌트 단위로의 사고전환에 어려운 점이 많았다. 그렇다면 이러한 전환이 필요했던 이유는 무엇이였을까? 굳이 쪼개서 생각하지 않아도 될 부분을 왜 쪼개고, 이에 맞는 프레임워크를 왜 만들게 된 것일까?</p>
 
@@ -40,7 +40,7 @@
 
 <p><img src="/assets/post_images/2026-02-25/mvc.png" alt="페이스북의 복잡해진 MVC패턴" />
 -&gt; 기능(Action) 하나를 기준으로 했을때의 cascading update의 모습 | 이때도 찾기가 어렵다.
--&gt; 기능(Action) 하나가 아닌 여러개가 동시에 움직이면? 갱신되는 Modle 값이 추적이 불가하다.
+-&gt; 기능(Action) 하나가 아닌 여러개가 동시에 움직이면? 갱신되는 Model 값이 추적이 불가하다.
 출처 : <a href="https://www.infoq.com/news/2014/05/facebook-mvc-flux/">InfoQ</a></p>
 
 <h2 id="사례와-해결책-안-읽은-메시지-기능과-flux-패턴">[사례와 해결책] ‘안 읽은 메시지 기능’과 ‘Flux 패턴’</h2>
@@ -72,7 +72,7 @@
 <p>이는 ‘고정된 경로’랑 ‘저장장소’를 제공하여, 어디서 어떤 상태가 바뀌는지 추적을 쉽게 할 수 있게 해준다. 또한 하나의 액션이 발생하면, 관련된 Store들이 각자 상태를 갱신할 수 있겠지만, 이 모든 과정은 항상 Action -&gt; Dispatcher -&gt; Store -&gt; View 라는 단방향 흐름 안에서 일어나기 때문에, 기존의 “예상치 못한 곳에서 값이 튀는” 현상을 크게 줄일 수 있는 것이다.</p>
 
 <h2 id="엔진과-개념-react는-어떻게-진화해왔을까">[엔진과 개념] React는 어떻게 진화해왔을까?</h2>
-<p>앞부분에서 페이스북이 복잡해지면서 Flux 패턴이 등장한 이야기를 했었다. 이제부터는 그 흐름이 실제 React 코드와 엔진에서 어떻게 드러나는지, 최대한 설명해보고자 한다. 설명해보가자 하는 내용은 아래와 같다.</p>
+<p>앞부분에서 페이스북이 복잡해지면서 Flux 패턴이 등장한 이야기를 했었다. 이제부터는 그 흐름이 실제 React 코드와 엔진에서 어떻게 드러나는지, 최대한 설명해보고자 한다. 설명해보고자 하는 내용은 아래와 같다.</p>
 
 <ol>
   <li>처음에는 Class 컴포넌트로 시작했고</li>
@@ -110,7 +110,7 @@
 <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">React</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span><span class="p">;</span>
 
 <span class="kd">class</span> <span class="nx">Counter</span> <span class="kd">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
-  <span class="nx">construcor</span><span class="p">(</span><span class="nx">props</span><span class="p">){</span>
+  <span class="kd">constructor</span><span class="p">(</span><span class="nx">props</span><span class="p">){</span>
     <span class="k">super</span><span class="p">(</span><span class="nx">props</span><span class="p">);</span>
     <span class="c1">// 컴포넌트의 초기 상태</span>
     <span class="k">this</span><span class="p">.</span><span class="nx">state</span> <span class="o">=</span> <span class="p">{</span><span class="na">count</span><span class="p">:</span><span class="mi">0</span><span class="p">};</span>
@@ -118,7 +118,7 @@
 
   <span class="nx">handleClick</span><span class="o">=</span><span class="p">()</span><span class="o">=&gt;</span><span class="p">{</span>
     <span class="c1">// 상태를 바꿀때 setState를 사용</span>
-    <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">(</span><span class="na">count</span><span class="p">:</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">count</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span><span class="na">count</span><span class="p">:</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">count</span> <span class="o">+</span> <span class="mi">1</span><span class="p">});</span>
   <span class="p">}</span>
 
   <span class="nx">render</span><span class="p">(){</span>
@@ -149,8 +149,8 @@
 
     <span class="nx">componentDidUpdate</span><span class="p">(</span><span class="nx">prevProps</span><span class="p">,</span> <span class="nx">prevState</span><span class="p">){</span>
       <span class="c1">// 라이프 사이클 2</span>
-      <span class="k">if</span><span class="p">(</span><span class="nx">prevState</span><span class="p">.</span><span class="nx">count</span> <span class="o">!==</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">count</span><span class="p">)}{</span>
-        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">count가 바뀜:</span><span class="dl">'</span><span class="p">,</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">count</span><span class="p">)</span>
+      <span class="k">if</span><span class="p">(</span><span class="nx">prevState</span><span class="p">.</span><span class="nx">count</span> <span class="o">!==</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">count</span><span class="p">){</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">count가 바뀜:</span><span class="dl">'</span><span class="p">,</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">count</span><span class="p">);</span>
       <span class="p">}</span>
     <span class="p">}</span>
 
@@ -183,11 +183,11 @@
 <p>“UI는 결국 state -&gt; UI로 매핑되어 바뀌는 함수 아닌가?”<br />
 생각해보자. 굳이 클래스 형태가 아니더라도 바뀌는 단위는 클래스가 아니라 함수 아니였나?
 그럼 함수단위로 최소한 쪼개보자. 어떠한가?</p>
-<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">hello</span><span class="p">({</span><span class="nx">name</span><span class="p">}){</span>
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">Hello</span><span class="p">({</span><span class="nx">name</span><span class="p">}){</span>
   <span class="k">return</span> <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span> 안녕하세요, <span class="si">{</span><span class="nx">name</span><span class="si">}</span>님!<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;;</span>
 <span class="p">}</span>
 
-<span class="c1">// &lt;hello name="user"&gt;</span>
+<span class="c1">// &lt;Hello name="user"&gt;</span>
 <span class="c1">// retrun값 : 안녕하세요, user님!</span>
 </code></pre></div></div>
 
@@ -243,9 +243,9 @@ Hook은 “함수 컴포넌트 안에서 React 기능을 쓸 수 있게 해주�
 </ul>
 
 <p>그래서 문법 자체는 직관적으로 변했는데, “작동 원리까지 같이 이해해야 하는” 새로운 난이도가 생긴 것이다.
-상기의 세개의 부분은 중요하지만…다음 글에서 차후 다뤄보기로 하겠다. 현재는 “학습커브가 왜 가파른지”에 대해 언급하는 내용이기에 문맥을 해칠수 있어서 건너뛰는 것이다. 분명한것은 Vanila JS인 경우 수학적으로 딱딱 떨어지는 분자단위의 논리와 같다면, react와 같은 프레임워크는 프로토콜같은 추상단위의 개념으로 봐야 이해하기 용이하다는 것이다. 간단히 얘기하자면, 논리의 앞뒤가 맞기 이전에 의도가 무엇인지 부터 파악해야 한다는 것이다. 그 뒤에 안의 논리를 분자단위로 쪼개도 이해는 늦지 않다.</p>
+상기의 세개의 부분은 중요하지만…다음 글에서 차후 다뤄보기로 하겠다. 현재는 “학습커브가 왜 가파른지”에 대해 언급하는 내용이기에 문맥을 해칠수 있어서 건너뛰는 것이다. 분명한것은 Vanilla JS인 경우 수학적으로 딱딱 떨어지는 분자단위의 논리와 같다면, react와 같은 프레임워크는 프로토콜같은 추상단위의 개념으로 봐야 이해하기 용이하다는 것이다. 간단히 얘기하자면, 논리의 앞뒤가 맞기 이전에 의도가 무엇인지 부터 파악해야 한다는 것이다. 그 뒤에 안의 논리를 분자단위로 쪼개도 이해는 늦지 않다.</p>
 
-<h3 id="5-react-구엔진---처음부터-끝까지-그리자">5. React 구엔진 - “처음부터 끝까지 그리자”</h3>
+<h3 id="5-react-엔진---처음부터-끝까지-그리자에서-단위별로-쪼개서-그리자">5. React 엔진 - “처음부터 끝까지 그리자”에서 “단위별로 쪼개서 그리자”</h3>
 <p>지금까지는 “React의 추상개념과 그 단위를 어떻게 코드로 쓰느냐”에 대한 이야기였다.
 이제는 “그 코드를 React가 내부에서 어떻게 처리하는지” 엔진에 대해서 살펴보자.</p>
 
@@ -278,7 +278,83 @@ Hook은 “함수 컴포넌트 안에서 React 기능을 쓸 수 있게 해주�
   <li>급하지 않은 랜더링 컴포넌트는 나중으로 미룰 수 있다는 것이다.</li>
 </ul>
 
-<p>개발자가 Fiber객체를 직접 다루지는 않지만, 이 구조 덕분에 UI가 “덜 버벅이는” 방향으로 개선 될 수 있었다.</p>]]></content><author><name></name></author><category term="React.js" /><summary type="html"><![CDATA[React의 학습커브는 왜 가파른 것일까? 컴포넌트에 대한 이해? 단방향 데이터 흐름? hook개념? 무엇이 어렵다고 특정짓기 어렵지만, 개인적인 생각으로는 이러한 개념을 한 번에 이해해야하는 부담이 아닐까 싶다. 왜냐하면 JS로 분리해서 인터렉션을 구성하던 개발자 입장에서는 이러한 개념이 한눈에 들어오지 않기 때문이다.]]></summary></entry><entry><title type="html">[JavaScript] var, let, const는 왜 생겨났을까?</title><link href="https://hwp-log.github.io/javascript/2026/02/20/JS-day-1.html" rel="alternate" type="text/html" title="[JavaScript] var, let, const는 왜 생겨났을까?" /><published>2026-02-20T00:00:00+00:00</published><updated>2026-02-20T00:00:00+00:00</updated><id>https://hwp-log.github.io/javascript/2026/02/20/JS-day-1</id><content type="html" xml:base="https://hwp-log.github.io/javascript/2026/02/20/JS-day-1.html"><![CDATA[<p>코딩 학습의 자연스러운 동기는 무엇일까? <a href="https://hwp-log.github.io/reflection/2026/02/19/reflection-1.html">이전 글</a>에서 고민해본 결과, 그 동기는 ‘무언가 만들고자 하는 마음’과 ‘작동 원리에 대한 궁금증’ 두 가지로 나뉜다는 결론에 도달했다. 이번 글에서는 후자 - ‘var의 작동 원리에 대한 궁금증’부터 let, const가 왜 생겨났는지에 대한 궁금증과 학습으로 이어진 과정까지 작성 해 보려 한다.</p>
+<p>개발자가 Fiber객체를 직접 다루지는 않지만, 이 구조 덕분에 UI가 “덜 버벅이는” 방향으로 개선 될 수 있었다.</p>
+
+<h3 id="6-동시성-랜더링---급한-것-먼저-그렇지-않은것은-나중에">6. 동시성 랜더링 - “급한 것 먼저, 그렇지 않은것은 나중에”</h3>
+<p>Fiber가 “작업을 쪼갤 수 있는 구조”라면,
+동시성(concurrent)랜더링은 그 위에서 돌아가는 “우선순위와 스케줄링 정책”이라고 보면 된다.</p>
+
+<p>예시로 검색 필터 UI를 생각해 보자.</p>
+
+<p>작동은 두가지로 구성된다.</p>
+<ol>
+  <li>입력창에 실시간 입력 (자 -&gt; 자동 -&gt; 자동차)</li>
+  <li>리스트가 실시간 필터링됨(자 : [자전거, 자동문, 자동차] -&gt; 자동:[자동문, 자동차] -&gt; 자동차:[자동차])</li>
+</ol>
+
+<p>실제로 이런 내용이 단어 일 때는 문제가 없지만, 문장이나 여러단어가 된다면, 필터링 + 렌더링이 꽤나 무거운 작업이 된다.
+그럼 이를 어떻게 해결하는게 좋을까? 아래의 코드를 보자.</p>
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span><span class="nx">useState</span><span class="p">,</span> <span class="nx">useTransition</span><span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">function</span> <span class="nx">SearchList</span><span class="p">({</span><span class="nx">items</span><span class="p">}){</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">query</span><span class="p">,</span> <span class="nx">setQuery</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="dl">''</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">filtered</span><span class="p">,</span> <span class="nx">setFiltered</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="nx">items</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">isPending</span><span class="p">,</span> <span class="nx">startTransition</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useTransition</span><span class="p">();</span>
+
+  <span class="kd">const</span> <span class="nx">handleChange</span> <span class="o">=</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">value</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">value</span><span class="p">;</span>
+    <span class="c1">// 1. 입력 필드 값은 바로 반영(급한 작업)</span>
+    <span class="nx">setQuery</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>
+
+    <span class="c1">// 2. 필터링은 startTransition안에 넣어서 "급하지 않은 작업"</span>
+    <span class="nx">startTransition</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">items</span><span class="p">.</span><span class="nx">filter</span><span class="p">((</span><span class="nx">item</span><span class="p">)</span> <span class="o">=&gt;</span>
+        <span class="nx">item</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">().</span><span class="nx">includes</span><span class="p">(</span><span class="nx">value</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">())</span>
+      <span class="p">);</span>
+      <span class="nx">setFiltered</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+    <span class="p">});</span>
+  <span class="p">};</span>
+  
+  <span class="k">return</span><span class="p">(</span>
+    <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">input</span> <span class="na">value</span><span class="p">=</span><span class="si">{</span><span class="nx">query</span><span class="si">}</span> <span class="na">onChange</span><span class="p">=</span><span class="si">{</span><span class="nx">handleChange</span><span class="si">}</span> <span class="p">/&gt;</span>
+      <span class="si">{</span><span class="nx">isPending</span><span class="o">&amp;&amp;</span><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>검색 중...<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span><span class="si">}</span>
+      <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+        <span class="si">{</span><span class="nx">filtered</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">item</span><span class="p">)</span><span class="o">=&gt;</span><span class="p">(</span>
+          <span class="p">&lt;</span><span class="nt">li</span> <span class="na">key</span><span class="p">=</span><span class="si">{</span><span class="nx">item</span><span class="si">}</span><span class="p">&gt;</span><span class="si">{</span><span class="nx">item</span><span class="si">}</span><span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+        <span class="p">))</span><span class="si">}</span>
+      <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+  <span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>이 코드의 핵심은 React의 Fiber엔진을 이용하여</p>
+<ol>
+  <li>사용자의 입력은 실시간으로 업데이트</li>
+  <li>리스트 필터링은 startTransition안에 넣어서 나중에 반영한다는 점이다.</li>
+</ol>
+
+<p>사용자 입장(UX)에서는</p>
+<ul>
+  <li>타이핑 반응은 빠르고</li>
+  <li>리스트는 약간 늦게 바뀌지만, 그 사이에 브라우저가 멈춘듯한 느낌은 적다는 것이다.
+이것이 동시성 렌더링이 가져온 UX측면의 개선점인 것이다.</li>
+</ul>
+
+<h2 id="결론--react의-학습커브가-왜-가파르게-느껴질까">결론 : React의 학습커브가 왜 가파르게 느껴질까?</h2>
+<p>결론적으로, 원점으로 돌아와서 학습커브가 복잡해지는 이유는 다음과 같다.</p>
+<ol>
+  <li>MVC -&gt; Flux 패턴으로의 전환이해</li>
+  <li>패턴이해에서 발생하는 Dispatcher과 Store이해</li>
+  <li>Function 컴포넌트의 개념의 이해를 위한 Class 컴포넌트 구조 이해와 Hooks 문법과 규칙이해</li>
+  <li>랜더링과 useEffect, useState 사용타이밍과 이유 그리고 콜백 의존성 배열의 이해</li>
+  <li>Fiber의 쪼갠 구조의 엔진작동원리, 동시성랜더링, 이에 따른 useTransition같은 구조에 대한 맞는 기술의 최적화개념</li>
+</ol>
+
+<p>결론적으로 DOM을 직접잡고 조작하던 JS코드에서 연쇄적인 업데이트(Cascading Update)를 해결하기 위해, 쪼개고 React로 프레이밍한 구조를 최적하기 위한 구조와 이유를 이해하면서 써야하니, 학습커브자체가 높을 수 밖에 없다는 것이다.</p>
+
+<p>다만 장점으로는 이러한 사연과 이해를 하게 된다면, 리엑트로 인한 안정적인 코드의 유지보수와 코드의 책임영역별 피드백을 유연하게 줄 수 있다는 점에서 React를 공부할 가치가 크다고 개인적으로 생각한다.</p>]]></content><author><name></name></author><category term="React.js" /><summary type="html"><![CDATA[React의 학습커브는 왜 가파른 것일까? 컴포넌트에 대한 이해? 단방향 데이터 흐름? hook개념? 무엇이 어렵다고 특정짓기 어렵지만, 개인적인 생각으로는 이러한 개념을 한 번에 이해해야하는 부담이 아닐까 싶다. 왜냐하면 JS로 분리해서 인터렉션을 구성하던 개발자 입장에서는 이러한 개념이 한눈에 들어오지 않기 때문이다.]]></summary></entry><entry><title type="html">[JavaScript] var, let, const는 왜 생겨났을까?</title><link href="https://hwp-log.github.io/javascript/2026/02/20/JS-day-1.html" rel="alternate" type="text/html" title="[JavaScript] var, let, const는 왜 생겨났을까?" /><published>2026-02-20T00:00:00+00:00</published><updated>2026-02-20T00:00:00+00:00</updated><id>https://hwp-log.github.io/javascript/2026/02/20/JS-day-1</id><content type="html" xml:base="https://hwp-log.github.io/javascript/2026/02/20/JS-day-1.html"><![CDATA[<p>코딩 학습의 자연스러운 동기는 무엇일까? <a href="https://hwp-log.github.io/reflection/2026/02/19/reflection-1.html">이전 글</a>에서 고민해본 결과, 그 동기는 ‘무언가 만들고자 하는 마음’과 ‘작동 원리에 대한 궁금증’ 두 가지로 나뉜다는 결론에 도달했다. 이번 글에서는 후자 - ‘var의 작동 원리에 대한 궁금증’부터 let, const가 왜 생겨났는지에 대한 궁금증과 학습으로 이어진 과정까지 작성 해 보려 한다.</p>
 
 <h2 id="var-let-const는-왜-생겨났을까-라는-의문">“var, let, const는 왜 생겨났을까?” 라는 의문</h2>
 <p>JS를 처음 배우면서 떠오르는 의문점이 뭐가 있을까? 바로 ‘var와 호이스팅’이라는 개념이라고 생각한다. 왜냐하면 함수랑 블록, 스코프 개념이 정립되지 않은 상태이기 때문이다. 특히 이를 코드로 쳐보지 않는 이상 누구든지 난해한 부분이다.</p>
