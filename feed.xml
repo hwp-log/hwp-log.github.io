@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="https://hwp-log.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://hwp-log.github.io/" rel="alternate" type="text/html" /><updated>2026-02-28T16:50:23+00:00</updated><id>https://hwp-log.github.io/feed.xml</id><title type="html">Engineering Log</title><subtitle>프로젝트, 기술 탐구, 공부 내용을 한 데 모은 개인 기록 저장소</subtitle><entry><title type="html">[React.js] React의 학습커브는 왜 가파른 것일까?</title><link href="https://hwp-log.github.io/react.js/2026/02/25/React.js-day-1.html" rel="alternate" type="text/html" title="[React.js] React의 학습커브는 왜 가파른 것일까?" /><published>2026-02-25T00:00:00+00:00</published><updated>2026-02-25T00:00:00+00:00</updated><id>https://hwp-log.github.io/react.js/2026/02/25/React.js-day-1</id><content type="html" xml:base="https://hwp-log.github.io/react.js/2026/02/25/React.js-day-1.html"><![CDATA[<p>React의 학습커브는 왜 가파른 것일까? 컴포넌트에 대한 이해? 단방향 데이터 흐름? hook개념? 무엇이 어렵다고 특정짓기 어렵지만, 개인적인 생각으로는 이러한 개념을 한 번에 이해해야하는 부담이 아닐까 싶다. 왜냐하면 JS로 분리해서 인터렉션을 구성하던 개발자 입장에서는 이러한 개념이 한눈에 들어오지 않기 때문이다.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="https://hwp-log.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://hwp-log.github.io/" rel="alternate" type="text/html" /><updated>2026-03-01T04:15:27+00:00</updated><id>https://hwp-log.github.io/feed.xml</id><title type="html">Engineering Log</title><subtitle>프로젝트, 기술 탐구, 공부 내용을 한 데 모은 개인 기록 저장소</subtitle><entry><title type="html">[React.js] React의 학습커브는 왜 가파른 것일까?</title><link href="https://hwp-log.github.io/react.js/2026/02/25/React.js-day-1.html" rel="alternate" type="text/html" title="[React.js] React의 학습커브는 왜 가파른 것일까?" /><published>2026-02-25T00:00:00+00:00</published><updated>2026-02-25T00:00:00+00:00</updated><id>https://hwp-log.github.io/react.js/2026/02/25/React.js-day-1</id><content type="html" xml:base="https://hwp-log.github.io/react.js/2026/02/25/React.js-day-1.html"><![CDATA[<p>React의 학습커브는 왜 가파른 것일까? 컴포넌트에 대한 이해? 단방향 데이터 흐름? hook개념? 무엇이 어렵다고 특정짓기 어렵지만, 개인적인 생각으로는 이러한 개념을 한 번에 이해해야하는 부담이 아닐까 싶다. 왜냐하면 JS로 분리해서 인터렉션을 구성하던 개발자 입장에서는 이러한 개념이 한눈에 들어오지 않기 때문이다.</p>
 
 <p>실제로 본인도 JS로 각 Dom의 인터렉션을 지정해서 작성하다가, React의 트리구조와 대응하는 컴포넌트 단위로의 사고전환에 어려운 점이 많았다. 그렇다면 이러한 전환이 필요했던 이유는 무엇이였을까? 굳이 쪼개서 생각하지 않아도 될 부분을 왜 쪼개고, 이에 맞는 프레임워크를 왜 만들게 된 것일까?</p>
 
 <p>이번 글에서는</p>
 <ul>
-  <li>React의 ‘트리구조가 탄생하게 된 배경’을 먼저 살펴보고,</li>
+  <li>React의 ‘구조가 탄생하게 된 배경’을 먼저 살펴보고,</li>
   <li>그 구조에 맞는 ‘개념과 기술’이 어떻게 만들어 졌는지 정리해 보고자 한다.</li>
 </ul>
 
@@ -18,7 +18,7 @@
 좌 : 2004년 페이스북 | 우 : 2011년 페이스북<br />
 출처 : <a href="https://www.cnet.com/pictures/facebook-then-and-now-pictures/">CNET</a></p>
 
-<p>이 상태에서 페이스북의 엔지니어들은 코드 유지/보수자체가 점점 더 어려워지고 있다는 사실에 직면하게 되었다. 복잡해진 UI를 더욱 효율적인 방식으로 이해하고, 다룰 수 있는 방식 방식이 필요하게 된 것이다.</p>
+<p>이 상태에서 페이스북의 엔지니어들은 코드 유지/보수자체가 점점 더 어려워지고 있다는 사실에 직면하게 되었다. 복잡해진 UI를 더욱 효율적인 방식으로 이해하고, 다룰 수 있는 방식이 필요하게 된 것이다.</p>
 
 <p>이러한 내부적인 니즈가 쌓인 끝에, 복잡한 UI를 다루기 위한 프레임워크 React.js가 탄생하게 된다.</p>
 
@@ -26,24 +26,26 @@
 
 <p>facebook은 MVC 스타일 구조와 양방향/단방향 데이터 흐름 패턴을 많이 사용하고 있었다. 이 방식은 초기화면처럼 단순할 때, 잘 동작했었다.</p>
 
-<p><img src="/assets/post_images/2026-02-25/mvc00.png" alt="mvc패턴" /><br />
+<p><img src="/assets/post_images/2026-02-25/mvc12.png" alt="mvc패턴" /><br />
 출처 : 본인</p>
 
-<p>그러나 기능과 화면이 복잡해질수록 점점 한계를 드러내기 시작했다. 그 한계는 앞서 말했던 ‘기능간의 영향을 주고 받는 내용이 많아진 점’, 그리고 이러한 내용이 대량으로 발생하면서 연쇄적인 업데이트(cascading updates) 폭증하게 된 것이다.</p>
+<p>그러나 기능과 화면이 복잡해질수록 점점 한계를 드러내기 시작했다. 그 한계는 앞서 말했던 ‘기능간의 영향을 주고 받는 내용이 많아진 점’, 그리고 이러한 내용이 대량으로 발생하면서 연쇄적인 업데이트(cascading updates)가 폭증하게 된 것이다.</p>
 
-<p><img src="/assets/post_images/2026-02-25/mvc22.png" alt="mvc패턴" /><br />
+<p><img src="/assets/post_images/2026-02-25/mvc3.png" alt="mvc패턴" /><br />
 출처 : 본인</p>
 
 <p>핵심은 이런 ‘예측불가 패턴’이 ‘여러 기능에서 동시에 발생’하여, ‘어디서 전파되고 어디로 재전파 되는지’를 알 수 없게 되는 현상이 연쇄적인 업데이트(cascading updates)인 것이다.</p>
 
-<p>물론, 기능이 적은 상태에서는 많은 데이터를 관리하지 않았기 때문에 추적이 가능했을 것이다. 하지만 점차 이러한 패턴이 폭증하게 되었고 이는 유지보수의 니즈로서 구체화 되기 시작했다.</p>
+<p>물론, 기능이 적은 상태에서는 많은 데이터를 관리하지 않았기 때문에 추적이 가능했을 것이다. 하지만 점차 이러한 패턴이 폭증하게 되었고 이는 개발 및 유지보수의 니즈로서 구체화 되기 시작했다.</p>
 
-<p><img src="/assets/post_images/2026-02-25/mvc.png" alt="페이스북의 복잡해진 MVC패턴" /><br />
+<p><img src="/assets/post_images/2026-02-25/mvc.png" alt="페이스북의 복잡해진 MVC패턴" />
+-&gt; 기능(Action) 하나를 기준으로 했을때의 cascading update의 모습 | 이때도 찾기가 어렵다.
+-&gt; 기능(Action) 하나가 아닌 여러개가 동시에 움직이면? 갱신되는 Modle 값이 추적이 불가하다.
 출처 : <a href="https://www.infoq.com/news/2014/05/facebook-mvc-flux/">InfoQ</a></p>
 
 <h2 id="사례와-해결책-안-읽은-메시지-기능과-flux-패턴">[사례와 해결책] ‘안 읽은 메시지 기능’과 ‘Flux 패턴’</h2>
 
-<p>그렇다면 그 사례는 어떤 것이 있을까? 페이스북에서는 “실제로 새 메시지가 없는데도, 새 메시지가 있다고 사용자에게 알리는 채팅버그”가 있었다. 이는 앞서 말한 “연쇄적인 업데이트 내용이 폭증”하면서, 모델에 수시로 값이 갱신되고 어느 부분에서 값이 바뀌었는지 알 수 없었기에 생긴 버그였다.</p>
+<p>그렇다면 그 사례는 어떤 것이 있을까? 페이스북에서는 “실제로 새 메시지가 없는데도, 새 메시지가 있다고 사용자에게 알리는 채팅버그”가 있었다. 이는 앞서 말한 “연쇄적인 업데이트 내용이 폭증”하면서, 모델에 수시로 값이 갱신되고, 어느 부분에서 값이 바뀌었는지 알 수 없었기에 생긴 버그였다.</p>
 
 <p>그리고 이를 해결하고자 했던 패턴이 Flux 패턴이였다.</p>
 
@@ -65,9 +67,11 @@
 <p>이렇게 보면, Flux는 “View/Model이 어디서 끝나는지 모르는 스파게티 흐름”을 
 단방향으로 고정하고, 최종책임을 Store에서 확인 할 수 있는 구조가 되는 것이다.</p>
 
+<p><img src="/assets/post_images/2026-02-25/mvc4.png" alt="mvc패턴" /></p>
+
 <p>이는 ‘고정된 경로’랑 ‘저장장소’를 제공하여, 어디서 어떤 상태가 바뀌는지 추적을 쉽게 할 수 있게 해준다. 또한 하나의 액션이 발생하면, 관련된 Store들이 각자 상태를 갱신할 수 있겠지만, 이 모든 과정은 항상 Action -&gt; Dispatcher -&gt; Store -&gt; View 라는 단방향 흐름 안에서 일어나기 때문에, 기존의 “예상치 못한 곳에서 값이 튀는” 현상을 크게 줄일 수 있는 것이다.</p>
 
-<h2 id="엔진과-개념react는-어떻게-진화해왔을까">[엔진과 개념]React는 어떻게 진화해왔을까?</h2>
+<h2 id="엔진과-개념-react는-어떻게-진화해왔을까">[엔진과 개념] React는 어떻게 진화해왔을까?</h2>
 <p>앞부분에서 페이스북이 복잡해지면서 Flux 패턴이 등장한 이야기를 했었다. 이제부터는 그 흐름이 실제 React 코드와 엔진에서 어떻게 드러나는지, 최대한 설명해보고자 한다. 설명해보가자 하는 내용은 아래와 같다.</p>
 
 <ol>
@@ -176,10 +180,9 @@
 <h3 id="2-함수-컴포넌트와-hooks---어쨌든-ui는-그냥-함수잖아">2. 함수 컴포넌트와 Hooks - ‘어쨌든 UI는 그냥 함수잖아?’</h3>
 <p>React 팀이 다시 생각한 포인트는 이것이다.</p>
 
-<p>“UI는 결국 state -&gt; UI로 매핑되어 바뀌는 함수 아닌가?”
-생각해보자. 굳이 클래스 형태가 아니더라도 바뀌는 단위는 클래스가 아니라 함수 아니였나?</p>
-
-<p>그럼 함수단위로 최소한 쪼개보자. 어떠한가?</p>
+<p>“UI는 결국 state -&gt; UI로 매핑되어 바뀌는 함수 아닌가?”<br />
+생각해보자. 굳이 클래스 형태가 아니더라도 바뀌는 단위는 클래스가 아니라 함수 아니였나?
+그럼 함수단위로 최소한 쪼개보자. 어떠한가?</p>
 <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">hello</span><span class="p">({</span><span class="nx">name</span><span class="p">}){</span>
   <span class="k">return</span> <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span> 안녕하세요, <span class="si">{</span><span class="nx">name</span><span class="si">}</span>님!<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;;</span>
 <span class="p">}</span>
