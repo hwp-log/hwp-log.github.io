@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="https://hwp-log.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://hwp-log.github.io/" rel="alternate" type="text/html" /><updated>2026-03-01T10:39:33+00:00</updated><id>https://hwp-log.github.io/feed.xml</id><title type="html">Engineering Log</title><subtitle>프로젝트, 기술 탐구, 공부 내용을 한 데 모은 개인 기록 저장소</subtitle><entry><title type="html">[React.js] React의 학습커브는 왜 가파른 것일까?</title><link href="https://hwp-log.github.io/react.js/2026/02/25/React.js-day-1.html" rel="alternate" type="text/html" title="[React.js] React의 학습커브는 왜 가파른 것일까?" /><published>2026-02-25T00:00:00+00:00</published><updated>2026-02-25T00:00:00+00:00</updated><id>https://hwp-log.github.io/react.js/2026/02/25/React.js-day-1</id><content type="html" xml:base="https://hwp-log.github.io/react.js/2026/02/25/React.js-day-1.html"><![CDATA[<p>React의 학습커브는 왜 가파른 것일까? 컴포넌트에 대한 이해? 단방향 데이터 흐름? hook개념? 무엇이 어렵다고 특정짓기 어렵지만, 개인적인 생각으로는 이러한 개념을 한 번에 이해해야하는 부담이 아닐까 싶다. 왜냐하면 JS로 분리해서 인터렉션을 구성하던 개발자 입장에서는 이러한 개념이 한눈에 들어오지 않기 때문이다.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="https://hwp-log.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://hwp-log.github.io/" rel="alternate" type="text/html" /><updated>2026-03-02T07:55:55+00:00</updated><id>https://hwp-log.github.io/feed.xml</id><title type="html">Engineering Log</title><subtitle>프로젝트, 기술 탐구, 공부 내용을 한 데 모은 개인 기록 저장소</subtitle><entry><title type="html">[React.js] React의 학습커브는 왜 가파른 것일까?</title><link href="https://hwp-log.github.io/react.js/2026/02/25/React.js-day-1.html" rel="alternate" type="text/html" title="[React.js] React의 학습커브는 왜 가파른 것일까?" /><published>2026-02-25T00:00:00+00:00</published><updated>2026-02-25T00:00:00+00:00</updated><id>https://hwp-log.github.io/react.js/2026/02/25/React.js-day-1</id><content type="html" xml:base="https://hwp-log.github.io/react.js/2026/02/25/React.js-day-1.html"><![CDATA[<p>React의 학습커브는 왜 가파른 것일까? 컴포넌트에 대한 이해? 단방향 데이터 흐름? hook개념? 무엇이 어렵다고 특정짓기 어렵지만, 개인적인 생각으로는 이러한 개념을 한 번에 이해해야하는 부담이 아닐까 싶다. 왜냐하면 JS로 분리해서 인터렉션을 구성하던 개발자 입장에서는 이러한 개념이 한눈에 들어오지 않기 때문이다.</p>
 
 <p>실제로 본인도 JS로 각 Dom의 인터렉션을 지정해서 작성하다가, React의 트리구조와 대응하는 컴포넌트 단위로의 사고전환에 어려운 점이 많았다. 그렇다면 이러한 전환이 필요했던 이유는 무엇이였을까? 굳이 쪼개서 생각하지 않아도 될 부분을 왜 쪼개고, 이에 맞는 프레임워크를 왜 만들게 된 것일까?</p>
 
@@ -92,6 +92,7 @@
 
   <span class="kd">class</span> <span class="nx">Hello</span> <span class="kd">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span><span class="p">{</span>
     <span class="nx">render</span><span class="p">(){</span>
+      <span class="c1">// view영역 출력</span>
       <span class="k">return</span> <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>안녕하세요, <span class="si">{</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">name</span><span class="si">}</span>님!<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;;</span>
     <span class="p">}</span>
   <span class="p">}</span>
@@ -112,17 +113,25 @@
 <span class="kd">class</span> <span class="nx">Counter</span> <span class="kd">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
   <span class="kd">constructor</span><span class="p">(</span><span class="nx">props</span><span class="p">){</span>
     <span class="k">super</span><span class="p">(</span><span class="nx">props</span><span class="p">);</span>
-    <span class="c1">// 컴포넌트의 초기 상태</span>
+    <span class="c1">// Store 영역</span>
+
+    <span class="c1">// this.state : store의 상태.</span>
     <span class="k">this</span><span class="p">.</span><span class="nx">state</span> <span class="o">=</span> <span class="p">{</span><span class="na">count</span><span class="p">:</span><span class="mi">0</span><span class="p">};</span>
   <span class="p">}</span>
 
   <span class="nx">handleClick</span><span class="o">=</span><span class="p">()</span><span class="o">=&gt;</span><span class="p">{</span>
-    <span class="c1">// 상태를 바꿀때 setState를 사용</span>
+    <span class="c1">// Action + Dispatcher 영역</span>
+
+    <span class="c1">// handleClick(Action) : 이벤트 트리거를 받는다.</span>
+    <span class="c1">// setState(Dispatcher) : store에 있는 state속성에 접근해서 상태변경.</span>
     <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span><span class="na">count</span><span class="p">:</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">count</span> <span class="o">+</span> <span class="mi">1</span><span class="p">});</span>
   <span class="p">}</span>
 
   <span class="nx">render</span><span class="p">(){</span>
     <span class="k">return</span><span class="p">(</span>
+      <span class="c1">// View 영역</span>
+
+      <span class="c1">// render()로 view 영역을 그려준다.</span>
       <span class="p">&lt;</span><span class="nt">button</span> <span class="na">onClick</span><span class="p">=</span><span class="si">{</span><span class="k">this</span><span class="p">.</span><span class="nx">handleClick</span><span class="si">}</span><span class="p">&gt;</span>
         클릭 수:<span class="si">{</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">count</span><span class="si">}</span>
       <span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
@@ -142,6 +151,7 @@
       <span class="k">this</span><span class="p">.</span><span class="nx">state</span> <span class="o">=</span> <span class="p">{</span><span class="na">count</span><span class="p">:</span><span class="mi">0</span><span class="p">};</span>
     <span class="p">}</span>
 
+    <span class="c1">// lifeCycle : View나 Store가 변경 됐을 경우 후처리.</span>
     <span class="nx">componentDidMount</span><span class="p">(){</span>
       <span class="c1">// 라이프사이클 1</span>
       <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">컴포넌트가 화면에 등장</span><span class="dl">'</span><span class="p">)</span>
@@ -211,21 +221,33 @@ Hook은 “함수 컴포넌트 안에서 React 기능을 쓸 수 있게 해주�
 
 <span class="kd">function</span> <span class="nx">Counter</span><span class="p">(){</span>
   <span class="c1">//count라는 상태값과 그걸 바꾸는 setCount함수를 만든다.</span>
-  <span class="c1">// 상태</span>
+  <span class="c1">// Store 영역</span>
   <span class="kd">const</span> <span class="p">[</span><span class="nx">count</span><span class="p">,</span> <span class="nx">setCount</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
 
   <span class="c1">//count가 바뀔 때마다 콘솔에 로그를 남긴다.</span>
-  <span class="c1">// 라이프 사이클(1,2,3)</span>
+  <span class="c1">// lifeCycle(1+2+3) : 후처리 영역</span>
   <span class="nx">useEffect</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">현재 count:</span><span class="dl">'</span><span class="p">,</span><span class="nx">count</span><span class="p">);</span>
   <span class="p">},</span> <span class="p">[</span><span class="nx">count</span><span class="p">]);</span>
 
   <span class="k">return</span> <span class="p">(</span>
+    <span class="c1">//View + Dispatcher 영역</span>
     <span class="p">&lt;</span><span class="nt">button</span> <span class="na">onClick</span><span class="p">=</span><span class="si">{</span><span class="p">()</span><span class="o">=&gt;</span><span class="nx">setCount</span><span class="p">(</span><span class="nx">count</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="p">&gt;</span>
       클릭수:<span class="si">{</span><span class="nx">count</span><span class="si">}</span>
     <span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
   <span class="p">)</span>
 <span class="p">}</span>
+<span class="c1">// 1. 'View'에서 사용자가 버튼을 클릭한다.</span>
+<span class="c1">// 2. button onClick에서 setCount(count+1)을 해주는 'Dispatcher'가 실행된다.</span>
+
+<span class="c1">// 3. 'Store'영역의 const [count, setCount] = useState(0)에서 setCout가 실행되면서, coun함수의 값, useState로 초기값으로 잡힌 0이 1로 갱신된다.</span>
+
+<span class="c1">// 4. 'lifeCycle'영역에서 count함수값이 갱신되면서,</span>
+<span class="c1">// useEffect(() =&gt; {</span>
+<span class="c1">//    console.log('현재 count:',count);</span>
+<span class="c1">// }, [count]);</span>
+<span class="c1">// 에서 설정된 count 콜백 함수가 갱신되고 useEffect의 함수가 작동하면서 후처리 결과 console.log의 내용을 표시해준다.</span>
+
 </code></pre></div></div>
 <p>여기서 포인트는</p>
 <ul>
