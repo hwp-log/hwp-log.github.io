@@ -1,0 +1,358 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.27.3 by Michael Rose
+  Copyright 2013-2025 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>[React.js] Function 컴포넌트의 최소조건 - Engineering Log</title>
+<meta name="description" content="이전글의 React내용중, “4.Hook의 등장”에서는 Class컴포넌트에서 Function컴포넌트로의 이행되는 과정을 다뤄보았고, 이 과정에서 구조적 변화를 통해 코드 작성에서의 최소조건부가 필요하다는 것을 알 수 있었다. 이번 내용에서는 이러한 최소조건이 왜 생길 수 밖에 없었는지에 대해 알아보도록 하자.">
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Engineering Log">
+<meta property="og:title" content="[React.js] Function 컴포넌트의 최소조건">
+<meta property="og:url" content="https://hwp-log.github.io/react.js/2026/03/02/React.js-day-2.html">
+
+
+  <meta property="og:description" content="이전글의 React내용중, “4.Hook의 등장”에서는 Class컴포넌트에서 Function컴포넌트로의 이행되는 과정을 다뤄보았고, 이 과정에서 구조적 변화를 통해 코드 작성에서의 최소조건부가 필요하다는 것을 알 수 있었다. 이번 내용에서는 이러한 최소조건이 왜 생길 수 밖에 없었는지에 대해 알아보도록 하자.">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2026-03-02T00:00:00+00:00">
+
+
+
+
+
+
+<link rel="canonical" href="https://hwp-log.github.io/react.js/2026/03/02/React.js-day-2.html">
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Engineering Log Feed">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+  
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css"></noscript>
+
+
+
+    <link rel="icon" type="image/png" href="/assets/images/favicon.png">
+
+<style>
+    /* 홈에서 Recent Posts 헤더 숨기기 */
+    .layout--home h3.archive__subtitle {
+        display: none !important;
+    }
+</style>
+  </head>
+
+  <body class="layout--single" dir="ltr">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+          <a class="site-logo" href="/"><img src="/assets/images/logo.png" alt="Engineering Log"></a>
+        
+        <a class="site-title" href="/">
+          Engineering Log
+          
+        </a>
+        <ul class="visible-links"></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+
+<div id="main" role="main">
+  
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork" >
+    
+    <meta itemprop="headline"
+      content="[React.js] Function 컴포넌트의 최소조건">
+    
+    <meta itemprop="description" content="이전글의 React내용중, “4.Hook의 등장”에서는 Class컴포넌트에서 Function컴포넌트로의 이행되는 과정을 다뤄보았고, 이 과정에서 구조적 변화를 통해 코드 작성에서의 최소조건부가 필요하다는 것을 알 수 있었다. 이번 내용에서는 이러한 최소조건이 왜 생길 수 밖에 없었는지에 대해 알아보도록 하자.">
+    
+    
+    <meta itemprop="datePublished" content="2026-03-02T00:00:00+00:00">
+    
+
+    <div class="page__inner-wrap">
+      
+      <header>
+        <h1 id="page-title" class="page__title" itemprop="headline">
+          <a href="https://hwp-log.github.io/react.js/2026/03/02/React.js-day-2.html" itemprop="url">[React.js] Function 컴포넌트의 최소조건</p>
+</a>
+        </h1>
+        
+
+<p class="page__meta">
+    
+    <span class="page__meta-date">
+        <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i>
+        <time datetime="2026-03-02T00:00:00+00:00">2026-03-02</time>
+    </span>
+    
+
+    <!-- Hits.sh View Counter -->
+    <span id="page-views" data-url="/react.js/2026/03/02/React.js-day-2.html" style="margin-left: 10px;"></span>
+</p>
+      </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p><a href="https://hwp-log.github.io/react.js/2026/02/25/React.js-day-1.html">이전글</a>의 React내용중, “4.Hook의 등장”에서는 Class컴포넌트에서 Function컴포넌트로의 이행되는 과정을 다뤄보았고, 이 과정에서 구조적 변화를 통해 코드 작성에서의 최소조건부가 필요하다는 것을 알 수 있었다. 이번 내용에서는 이러한 최소조건이 왜 생길 수 밖에 없었는지에 대해 알아보도록 하자.</p>
+
+<p>다뤄보고자 하는 내용</p>
+
+<ol>
+  <li>Hook은 항상 컴포넌트 최상단에서, 매 랜더링마다 같은 순서로 호출.</li>
+  <li>랜더링이 다시 일어날 때마다 컴포넌트 함수가 통째로 재실행.</li>
+  <li>useEffect의 실행시점, 의존성 배열의 이해.</li>
+</ol>
+
+<h2 id="hook은-항상-컴포넌트-최상단에서-매-랜더링마다-같은-순서로-호출한다">Hook은 항상 컴포넌트 최상단에서, 매 랜더링마다 같은 순서로 호출한다.</h2>
+
+<p><a href="https://legacy.reactjs.org/docs/hooks-rules.html">공식문서</a>의 내용에 따르면, “반복문, 조건문 또는 중첩함수”내에서 Hooks를 호출하지 말라고 한다. 이런 이유는 무엇일까? 아래의 예시를 통해 이해한 내용을 설명하고자 한다.</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="kd">function</span> <span class="nx">Form</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// 1. 상태저장 Hook 호출(name state)</span>
+        <span class="kd">const</span> <span class="p">[</span><span class="nx">name</span><span class="p">,</span> <span class="nx">setName</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="dl">'</span><span class="s1">Mary</span><span class="dl">'</span><span class="p">);</span>
+        <span class="c1">// 2. 후처리 Hook 호출</span>
+        <span class="nx">useEffect</span><span class="p">(</span><span class="kd">function</span> <span class="nx">persistForm</span><span class="p">()</span> <span class="p">{</span>
+            <span class="nx">localStorage</span><span class="p">.</span><span class="nx">setItem</span><span class="p">(</span><span class="dl">'</span><span class="s1">formData</span><span class="dl">'</span><span class="p">,</span> <span class="nx">name</span><span class="p">);</span>
+        <span class="p">});</span>
+
+        <span class="c1">// 3. 상태저장 Hook 호출(surname state)</span>
+        <span class="kd">const</span> <span class="p">[</span><span class="nx">surname</span><span class="p">,</span> <span class="nx">setSurname</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="dl">'</span><span class="s1">Poppins</span><span class="dl">'</span><span class="p">);</span>
+
+        <span class="c1">// 4. 후처리 Hook 호출</span>
+        <span class="nx">useEffect</span><span class="p">(</span><span class="kd">function</span> <span class="nx">updateTitle</span><span class="p">()</span> <span class="p">{</span>
+            <span class="nb">document</span><span class="p">.</span><span class="nx">title</span> <span class="o">=</span> <span class="nx">name</span> <span class="o">+</span> <span class="dl">''</span> <span class="o">+</span> <span class="nx">surname</span><span class="p">;</span>
+        <span class="p">});</span>
+    <span class="p">}</span>
+</code></pre></div></div>
+
+<p>상기의 예시를 보면, 1~4까지 순서대로 기재되어 있음을 확인 할 수 있다. 물론 내용을 보면 각 상태를 저장하는 변수 name, surname으로 나뉘어져 있어 [1,2],[3,4]로 구분해서 생각할 수 있다. 그러나 지금은 1,2,3,4 순서에 집중해 보도록하자.</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 순서 1</span>
+<span class="nx">useState</span><span class="p">(</span><span class="dl">'</span><span class="s1">Mary</span><span class="dl">'</span><span class="p">)</span>
+<span class="c1">// 순서 2 </span>
+<span class="nx">useEffect</span><span class="p">(</span><span class="nx">persistForm</span><span class="p">)</span>
+<span class="c1">// 순서 3</span>
+<span class="nx">useState</span><span class="p">(</span><span class="dl">'</span><span class="s1">Poppins</span><span class="dl">'</span><span class="p">)</span>
+<span class="c1">// 순서 4</span>
+<span class="nx">useEffect</span><span class="p">(</span><span class="nx">updateTitle</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>해당함수들은 ‘하나의 컴포넌트’ 안에 있기 때문에, ‘랜더링이 일어날 때마다 컴포넌트 전체가 다시 작동’하게 된다. 여기서 주의해야 할 점은, 정해진 순서가 누락될 수 있다는 위험요소가 있다는 것이다. 그렇다면 순서가 누락될 위험요소는 무엇일까?</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="kd">function</span> <span class="nx">Form</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// 1. 상태저장 Hook 호출(name state)</span>
+        <span class="kd">const</span> <span class="p">[</span><span class="nx">name</span><span class="p">,</span> <span class="nx">setName</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="dl">'</span><span class="s1">Mary</span><span class="dl">'</span><span class="p">);</span>
+        <span class="c1">// -&gt; 갱신(조건문 추가)</span>
+        <span class="c1">// 2. 후처리 Hook 호출</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">name</span> <span class="o">!==</span> <span class="dl">''</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">useEffect</span><span class="p">(</span><span class="kd">function</span> <span class="nx">persistForm</span><span class="p">()</span> <span class="p">{</span>
+                <span class="nx">localStorage</span><span class="p">.</span><span class="nx">setItem</span><span class="p">(</span><span class="dl">'</span><span class="s1">formData</span><span class="dl">'</span><span class="p">,</span> <span class="nx">name</span><span class="p">);</span>
+            <span class="p">});</span>
+        <span class="p">}</span>
+        <span class="c1">// 3. 상태저장 Hook 호출(surname state)</span>
+        <span class="kd">const</span> <span class="p">[</span><span class="nx">surname</span><span class="p">,</span> <span class="nx">setSurname</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="dl">'</span><span class="s1">Poppins</span><span class="dl">'</span><span class="p">);</span>
+
+        <span class="c1">// 4. 후처리 Hook 호출</span>
+        <span class="nx">useEffect</span><span class="p">(</span><span class="kd">function</span> <span class="nx">updateTitle</span><span class="p">()</span> <span class="p">{</span>
+            <span class="nb">document</span><span class="p">.</span><span class="nx">title</span> <span class="o">=</span> <span class="nx">name</span> <span class="o">+</span> <span class="dl">''</span> <span class="o">+</span> <span class="nx">surname</span><span class="p">;</span>
+        <span class="p">});</span>
+    <span class="p">}</span>
+</code></pre></div></div>
+
+<p>갱신된 코드 내용에 주목하자. 조건문이 useEffect훅을 감싸고 있다. 해당 내용이 실행된다면 어떤일이 발생할까? 조건에 name 내용이 존재하지 않는다면, 어떻게 될까?</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 순서 1</span>
+<span class="nx">useState</span><span class="p">(</span><span class="dl">'</span><span class="s1">Mary</span><span class="dl">'</span><span class="p">)</span>
+
+<span class="c1">// 순서 2?? </span>
+<span class="c1">//useEffect(persistForm) 작동 건너뜀!!</span>
+
+<span class="c1">// 순서 2 (이전 순서 3)</span>
+<span class="nx">useState</span><span class="p">(</span><span class="dl">'</span><span class="s1">Poppins</span><span class="dl">'</span><span class="p">)</span> <span class="c1">// 순서3번 이였던 hook이 2번으로 작동해서 오작동!!</span>
+<span class="c1">// 순서 3 (이전 순서 4)</span>
+<span class="nx">useEffect</span><span class="p">(</span><span class="nx">updateTitle</span><span class="p">)</span> <span class="c1">// 순서4번 이였던 hook이 4번으로 작동해서 오작동!!</span>
+</code></pre></div></div>
+
+<p>재밌게도 이전순서가 작동을 건너뛰자, 후순위 작동이였던 훅들이 앞 당겨졌다. 즉, ‘하나의 컴포넌트에서 랜더링이 일어날때마다 전체가 다시 작동한다는 원칙’이 전제로 깔려있었기 때문에, 인덱싱 된 순서가 지켜져야 되는데 그렇지 못해서 Error가 발생 한 것이다.</p>
+
+<p>보통은 상태가 저장된 변수의 갱신을 통해 해당 내용만 작동한다고 생각하지만, 사실은 컴포넌트 안의 상태변수가 어떤것이 변하던, 전체가 갱신되는 일이 발생해서 생기는 것이다. ‘React는 지정해 놓은 전체 Hooks를 실행시킨다는 것을 기본전제라고 생각하자.’ 그러면 훅 호출 자체를 조건문으로 감싸는 방식이 모순이 되니 사용할 일이 없어질 것이다.</p>
+
+<p>그렇다면, 이 경우는 어떠할까?</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="c1">// ...</span>
+    <span class="c1">// 2. 후처리 Hook 호출</span>
+        <span class="nx">useEffect</span><span class="p">(</span><span class="kd">function</span> <span class="nx">persistForm</span><span class="p">()</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">name</span> <span class="o">!==</span> <span class="dl">''</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">localStorage</span><span class="p">.</span><span class="nx">setItem</span><span class="p">(</span><span class="dl">'</span><span class="s1">formData</span><span class="dl">'</span><span class="p">,</span> <span class="nx">name</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">});</span>
+    <span class="c1">// ...</span>
+</code></pre></div></div>
+
+<p>Hook은 항상 실행시키되, name의 내용이 있다면, 후처리 하겠다는 것이다. 이것이 훅의 전체실행이라는 최소조건을 총족하되… 조건문, 반복문, 중첩함수를 사용할 수 있게 하는 핵심이다.</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2026-03-02T00:00:00+00:00">2026-03-02</time></p>
+
+      </footer>
+
+      
+
+      
+  <nav class="pagination">
+    
+      <a href="/react.js/2026/02/25/React.js-day-1.html" class="pagination--pager" title="[React.js] React의 학습커브는 왜 가파른 것일까?">Previous</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">Next</a>
+    
+  </nav>
+
+
+    </div>
+
+    
+  </article>
+
+  
+  
+
+  <!-- Hits.sh View Counter Script -->
+  <script>
+    (function () {
+      var viewElement = document.getElementById('page-views');
+      if (!viewElement) return;
+
+      var pageUrl = viewElement.getAttribute('data-url');
+
+      // 배지 이미지 (투명 배경, 수직 정렬)
+      var img = document.createElement('img');
+      img.src = 'https://hits.sh/hwp-log.github.io' + pageUrl + '.svg?view=total&style=flat-square&label=views&color=00000000&labelColor=00000000&hit=7a8288';
+      img.alt = 'Views';
+      img.style.verticalAlign = 'text-bottom';
+      img.style.height = '16px';
+
+      viewElement.appendChild(img);
+    })();
+  </script>
+</div>
+      
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        
+
+<div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+
+<div class="page__footer-copyright">&copy; 2026 <a href="https://hwp-log.github.io">Engineering Log</a>. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/jekyll-themes/minimal-mistakes/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

@@ -40,4 +40,10 @@ var store = [{
         "tags": [],
         "url": "/react.js/2026/02/25/React.js-day-1.html",
         "teaser": null
+      },{
+        "title": "[React.js] Function 컴포넌트의 최소조건",
+        "excerpt":"이전글의 React내용중, “4.Hook의 등장”에서는 Class컴포넌트에서 Function컴포넌트로의 이행되는 과정을 다뤄보았고, 이 과정에서 구조적 변화를 통해 코드 작성에서의 최소조건부가 필요하다는 것을 알 수 있었다. 이번 내용에서는 이러한 최소조건이 왜 생길 수 밖에 없었는지에 대해 알아보도록 하자. 다뤄보고자 하는 내용 Hook은 항상 컴포넌트 최상단에서, 매 랜더링마다 같은 순서로 호출. 랜더링이 다시 일어날 때마다...","categories": ["React.js"],
+        "tags": [],
+        "url": "/react.js/2026/03/02/React.js-day-2.html",
+        "teaser": null
       }]
