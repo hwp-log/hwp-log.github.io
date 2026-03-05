@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="https://hwp-log.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://hwp-log.github.io/" rel="alternate" type="text/html" /><updated>2026-03-05T03:13:18+00:00</updated><id>https://hwp-log.github.io/feed.xml</id><title type="html">Engineering Log</title><subtitle>프로젝트, 기술 탐구, 공부 내용을 한 데 모은 개인 기록 저장소</subtitle><entry><title type="html">[React.js] Function 컴포넌트의 최소조건</title><link href="https://hwp-log.github.io/react.js/2026/03/02/React.js-day-2.html" rel="alternate" type="text/html" title="[React.js] Function 컴포넌트의 최소조건" /><published>2026-03-02T00:00:00+00:00</published><updated>2026-03-02T00:00:00+00:00</updated><id>https://hwp-log.github.io/react.js/2026/03/02/React.js-day-2</id><content type="html" xml:base="https://hwp-log.github.io/react.js/2026/03/02/React.js-day-2.html"><![CDATA[<p><a href="https://hwp-log.github.io/react.js/2026/02/25/React.js-day-1.html">이전글</a>의 React내용 중, “4.Hook의 등장”에서는 Class컴포넌트에서 Function컴포넌트로의 이행되는 과정을 다뤄보았고, 이 과정에서 구조적 변화를 통해 코드 작성에서의 최소조건부가 필요하다는 것을 알 수 있었다. 이번 내용에서는 이러한 최소조건이 왜 생길 수 밖에 없었는지에 대해 알아보도록 하자.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="https://hwp-log.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://hwp-log.github.io/" rel="alternate" type="text/html" /><updated>2026-03-05T09:47:20+00:00</updated><id>https://hwp-log.github.io/feed.xml</id><title type="html">Engineering Log</title><subtitle>프로젝트, 기술 탐구, 공부 내용을 한 데 모은 개인 기록 저장소</subtitle><entry><title type="html">[React.js] Function 컴포넌트의 최소조건</title><link href="https://hwp-log.github.io/react.js/2026/03/02/React.js-day-2.html" rel="alternate" type="text/html" title="[React.js] Function 컴포넌트의 최소조건" /><published>2026-03-02T00:00:00+00:00</published><updated>2026-03-02T00:00:00+00:00</updated><id>https://hwp-log.github.io/react.js/2026/03/02/React.js-day-2</id><content type="html" xml:base="https://hwp-log.github.io/react.js/2026/03/02/React.js-day-2.html"><![CDATA[<p><a href="https://hwp-log.github.io/react.js/2026/02/25/React.js-day-1.html">이전글</a>의 React내용 중, “4.Hook의 등장”에서는 Class컴포넌트에서 Function컴포넌트로의 이행되는 과정을 다뤄보았고, 이 과정에서 구조적 변화를 통해 코드 작성에서의 최소조건부가 필요하다는 것을 알 수 있었다. 이번 내용에서는 이러한 최소조건이 왜 생길 수 밖에 없었는지에 대해 알아보도록 하자.</p>
 
 <p>다뤄보고자 하는 내용</p>
 
@@ -8,7 +8,7 @@
   <li>useEffect의 실행시점, 의존성 배열의 이해.</li>
 </ol>
 
-<h2 id="hook은-항상-컴포넌트-최상단에서-매-랜더링마다-같은-순서로-호출한다">Hook은 항상 컴포넌트 최상단에서, 매 랜더링마다 같은 순서로 호출한다.</h2>
+<h2 id="1-hook은-항상-컴포넌트-최상단에서-매-랜더링마다-같은-순서로-호출한다">1. Hook은 항상 컴포넌트 최상단에서, 매 랜더링마다 같은 순서로 호출한다.</h2>
 
 <p><a href="https://legacy.reactjs.org/docs/hooks-rules.html">공식문서</a>의 내용에 따르면, “반복문, 조건문 또는 중첩함수”내에서 Hooks를 호출하지 말라고 한다. 이런 이유는 무엇일까? 아래의 예시를 통해 이해한 내용을 설명하고자 한다.</p>
 
@@ -22,7 +22,6 @@
 
         <span class="c1">// 3. 상태저장 Hook 호출(surname state)</span>
         <span class="kd">const</span> <span class="p">[</span><span class="nx">surname</span><span class="p">,</span> <span class="nx">setSurname</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="dl">'</span><span class="s1">Poppins</span><span class="dl">'</span><span class="p">);</span>
-
         <span class="c1">// 4. 후처리 Hook 호출</span>
         <span class="nx">useEffect</span><span class="p">(</span><span class="kd">function</span> <span class="nx">updateTitle</span><span class="p">()</span> <span class="p">{</span>
             <span class="nb">document</span><span class="p">.</span><span class="nx">title</span> <span class="o">=</span> <span class="nx">name</span> <span class="o">+</span> <span class="dl">''</span> <span class="o">+</span> <span class="nx">surname</span><span class="p">;</span>
@@ -42,7 +41,7 @@
 <span class="nx">useEffect</span><span class="p">(</span><span class="nx">updateTitle</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p>해당함수들은 ‘하나의 컴포넌트’ 안에 있기 때문에, ‘랜더링이 일어날 때마다 컴포넌트 전체가 다시 작동’하게 된다. 여기서 주의해야 할 점은, 정해진 순서가 누락될 수 있다는 위험요소가 있다는 것이다. 그렇다면 순서가 누락될 위험요소는 무엇일까?</p>
+<p>해당함수들은 <a href="#rerender-entire-function">‘랜더링이 일어날 때마다 컴포넌트 함수 전체가 통째로 재실행’</a>하게 된다. 여기서 주의해야 할 점은, 정해진 순서가 누락될 수 있다는 위험요소가 있다는 것이다. 그렇다면 순서가 누락될 위험요소는 무엇일까?</p>
 
 <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="kd">function</span> <span class="nx">Form</span><span class="p">()</span> <span class="p">{</span>
         <span class="c1">// 1. 상태저장 Hook 호출(name state)</span>
@@ -56,7 +55,6 @@
         <span class="p">}</span>
         <span class="c1">// 3. 상태저장 Hook 호출(surname state)</span>
         <span class="kd">const</span> <span class="p">[</span><span class="nx">surname</span><span class="p">,</span> <span class="nx">setSurname</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="dl">'</span><span class="s1">Poppins</span><span class="dl">'</span><span class="p">);</span>
-
         <span class="c1">// 4. 후처리 Hook 호출</span>
         <span class="nx">useEffect</span><span class="p">(</span><span class="kd">function</span> <span class="nx">updateTitle</span><span class="p">()</span> <span class="p">{</span>
             <span class="nb">document</span><span class="p">.</span><span class="nx">title</span> <span class="o">=</span> <span class="nx">name</span> <span class="o">+</span> <span class="dl">''</span> <span class="o">+</span> <span class="nx">surname</span><span class="p">;</span>
@@ -94,7 +92,23 @@
     <span class="c1">// ...</span>
 </code></pre></div></div>
 
-<p>Hook은 항상 실행시키되, name의 내용이 있다면, 후처리 하겠다는 것이다. 이것이 훅의 전체실행이라는 최소조건을 총족하되… 조건문, 반복문, 중첩함수를 사용할 수 있게 해주는 핵심요소 인 것이다.</p>]]></content><author><name></name></author><category term="React.js" /><summary type="html"><![CDATA[이전글의 React내용 중, “4.Hook의 등장”에서는 Class컴포넌트에서 Function컴포넌트로의 이행되는 과정을 다뤄보았고, 이 과정에서 구조적 변화를 통해 코드 작성에서의 최소조건부가 필요하다는 것을 알 수 있었다. 이번 내용에서는 이러한 최소조건이 왜 생길 수 밖에 없었는지에 대해 알아보도록 하자.]]></summary></entry><entry><title type="html">[React.js] React의 학습커브는 왜 가파른 것일까?</title><link href="https://hwp-log.github.io/react.js/2026/02/25/React.js-day-1.html" rel="alternate" type="text/html" title="[React.js] React의 학습커브는 왜 가파른 것일까?" /><published>2026-02-25T00:00:00+00:00</published><updated>2026-02-25T00:00:00+00:00</updated><id>https://hwp-log.github.io/react.js/2026/02/25/React.js-day-1</id><content type="html" xml:base="https://hwp-log.github.io/react.js/2026/02/25/React.js-day-1.html"><![CDATA[<p>React의 학습커브는 왜 가파른 것일까? 컴포넌트에 대한 이해? 단방향 데이터 흐름? hook개념? 무엇이 어렵다고 특정짓기 어렵지만, 개인적인 생각으로는 이러한 개념을 한 번에 이해해야하는 부담이 아닐까 싶다. 왜냐하면 JS로 분리해서 인터렉션을 구성하던 개발자 입장에서는 이러한 개념이 한눈에 들어오지 않기 때문이다.</p>
+<p>Hook은 항상 실행시키되, name의 내용이 있다면, 후처리 하겠다는 것이다. 이것이 훅의 전체실행이라는 최소조건을 총족하되… 조건문, 반복문, 중첩함수를 사용할 수 있게 해주는 핵심요소 인 것이다.
+이렇게 조건을 총족하게 된다면 React 공식문서에서 말한 ‘Hook은 항상 컴포넌트 최상단에서, 매 랜더링마다 같은 순서로 호출’ 조건을 만족시킬 수 있다.</p>
+
+<h2 id="rerender-entire-function">2. 랜더링이 다시 일어날 때마다 컴포넌트 함수가 통째로 재실행.</h2>
+
+<p>그렇다면 랜더링이 다시 일어날 때마다 컴포넌트 함수 전체가 재실행 되는 것일까? 이는 React의 주요 역할을 생각해보면 알 수 있다. React는 어플리케이션 상태에 따라 UI자체가 항상 최신 상태로 유지 하고자 한다. 정확히 말하자면, 상태가 변화했을때 화면 전체가 최신상태로 변하고, 어떤 곳이 변경되었는지 파악하여 계산한뒤, 갱신하는 것이다.</p>
+
+<p>이 과정은 크게 3단계로 나눌 수 있는데…</p>
+
+<ol>
+  <li>트리거링 : 상태가 변경될 때 발생.</li>
+  <li>랜더링 : React가 컴포넌트의 구성 Hook을 전체 작동시키고 새로운 UI를 다시 계산.</li>
+  <li>커밋 : 이렇게 계산된 UI와 이전 상태를 비교해, 변경된 DOM만 바꿔준다.</li>
+</ol>
+
+<p><img src="/assets/post_images/2026-03-02/render.png" alt="랜더링" /><br />
+출처 : <a href="https://viniciusvidal.com/en/posts/what-is-a-re-render">viniciusvidal</a></p>]]></content><author><name></name></author><category term="React.js" /><summary type="html"><![CDATA[이전글의 React내용 중, “4.Hook의 등장”에서는 Class컴포넌트에서 Function컴포넌트로의 이행되는 과정을 다뤄보았고, 이 과정에서 구조적 변화를 통해 코드 작성에서의 최소조건부가 필요하다는 것을 알 수 있었다. 이번 내용에서는 이러한 최소조건이 왜 생길 수 밖에 없었는지에 대해 알아보도록 하자.]]></summary></entry><entry><title type="html">[React.js] React의 학습커브는 왜 가파른 것일까?</title><link href="https://hwp-log.github.io/react.js/2026/02/25/React.js-day-1.html" rel="alternate" type="text/html" title="[React.js] React의 학습커브는 왜 가파른 것일까?" /><published>2026-02-25T00:00:00+00:00</published><updated>2026-02-25T00:00:00+00:00</updated><id>https://hwp-log.github.io/react.js/2026/02/25/React.js-day-1</id><content type="html" xml:base="https://hwp-log.github.io/react.js/2026/02/25/React.js-day-1.html"><![CDATA[<p>React의 학습커브는 왜 가파른 것일까? 컴포넌트에 대한 이해? 단방향 데이터 흐름? hook개념? 무엇이 어렵다고 특정짓기 어렵지만, 개인적인 생각으로는 이러한 개념을 한 번에 이해해야하는 부담이 아닐까 싶다. 왜냐하면 JS로 분리해서 인터렉션을 구성하던 개발자 입장에서는 이러한 개념이 한눈에 들어오지 않기 때문이다.</p>
 
 <p>실제로 본인도 JS로 각 Dom의 인터렉션을 지정해서 작성하다가, React의 트리구조와 대응하는 컴포넌트 단위로의 사고전환에 어려운 점이 많았다. 그렇다면 이러한 전환이 필요했던 이유는 무엇이였을까? 굳이 쪼개서 생각하지 않아도 될 부분을 왜 쪼개고, 이에 맞는 프레임워크를 왜 만들게 된 것일까?</p>
 
