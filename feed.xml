@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="https://hwp-log.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://hwp-log.github.io/" rel="alternate" type="text/html" /><updated>2026-03-07T06:55:34+00:00</updated><id>https://hwp-log.github.io/feed.xml</id><title type="html">Engineering Log</title><subtitle>프로젝트, 기술 탐구, 공부 내용을 한 데 모은 개인 기록 저장소</subtitle><entry><title type="html">[React.js] Function 컴포넌트의 최소조건</title><link href="https://hwp-log.github.io/react.js/2026/03/02/React.js-day-2.html" rel="alternate" type="text/html" title="[React.js] Function 컴포넌트의 최소조건" /><published>2026-03-02T00:00:00+00:00</published><updated>2026-03-02T00:00:00+00:00</updated><id>https://hwp-log.github.io/react.js/2026/03/02/React.js-day-2</id><content type="html" xml:base="https://hwp-log.github.io/react.js/2026/03/02/React.js-day-2.html"><![CDATA[<p><a href="https://hwp-log.github.io/react.js/2026/02/25/React.js-day-1.html">이전글</a>의 React내용 중, “4.Hook의 등장”에서는 Class컴포넌트에서 Function컴포넌트로의 이행되는 과정을 다뤄보았고, 이 과정에서 구조적 변화를 통해 코드 작성에서의 최소조건부가 필요하다는 것을 알 수 있었다. 이번 내용에서는 이러한 최소조건이 왜 생길 수 밖에 없었는지에 대해 알아보도록 하자.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="https://hwp-log.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://hwp-log.github.io/" rel="alternate" type="text/html" /><updated>2026-03-07T12:50:38+00:00</updated><id>https://hwp-log.github.io/feed.xml</id><title type="html">Engineering Log</title><subtitle>프로젝트, 기술 탐구, 공부 내용을 한 데 모은 개인 기록 저장소</subtitle><entry><title type="html">[React.js] Function 컴포넌트의 최소조건</title><link href="https://hwp-log.github.io/react.js/2026/03/02/React.js-day-2.html" rel="alternate" type="text/html" title="[React.js] Function 컴포넌트의 최소조건" /><published>2026-03-02T00:00:00+00:00</published><updated>2026-03-02T00:00:00+00:00</updated><id>https://hwp-log.github.io/react.js/2026/03/02/React.js-day-2</id><content type="html" xml:base="https://hwp-log.github.io/react.js/2026/03/02/React.js-day-2.html"><![CDATA[<p><a href="https://hwp-log.github.io/react.js/2026/02/25/React.js-day-1.html">이전글</a>의 React내용 중, “4.Hook의 등장”에서는 Class컴포넌트에서 Function컴포넌트로의 이행되는 과정을 다뤄보았고, 이 과정에서 구조적 변화를 통해 코드 작성에서의 최소조건부가 필요하다는 것을 알 수 있었다. 이번 내용에서는 이러한 최소조건이 왜 생길 수 밖에 없었는지에 대해 알아보도록 하자.</p>
 
 <p>다뤄보고자 하는 내용</p>
 
@@ -95,9 +95,9 @@
 <p>Hook은 항상 실행시키되, name의 내용이 있다면, 후처리 하겠다는 것이다. 이것이 훅의 전체실행이라는 최소조건을 총족하되… 조건문, 반복문, 중첩함수를 사용할 수 있게 해주는 핵심요소 인 것이다.
 이렇게 조건을 총족하게 된다면 React 공식문서에서 말한 ‘Hook은 항상 컴포넌트 최상단에서, 매 랜더링마다 같은 순서로 호출’ 조건을 만족시킬 수 있다.</p>
 
-<h2 id="rerender-entire-function">2. React는 랜더링이 다시 일어날 때마다 컴포넌트 함수가 통째로 재실행.</h2>
+<h2 id="rerender-entire-function">2. React는 랜더링이 일어날 때마다 컴포넌트 함수가 통째로 재실행.</h2>
 
-<p>그렇다면 랜더링이 다시 일어날 때마다 컴포넌트 함수 전체가 재실행 되는 것일까? 이는 React의 주요 역할을 생각해보면 알 수 있다. “React는 어플리케이션 상태에 따라 UI자체가 항상 최신 상태로 유지 하고자 한다.” 정확히 말하자면, 상태가 변화했을때 화면 전체가 최신상태로 변하고, 어떤 곳이 변경되었는지 파악하여 계산한뒤, 갱신하는 것이다.</p>
+<p>그렇다면 렌더링이 일어날 때마다 컴포넌트 함수 전체가 재실행 되는 것일까? 이는 React의 주요 역할을 생각해보면 알 수 있다. “React는 UI를 항상 최신형태로 유지하고자 한다.” 정확히 말하자면, 상태가 변화했을 때, 컴포넌트 함수를 통째로 재실행하여 새로운 UI를 계산하고, 변경된 부분만 실제 DOM에 반영하는 것이다.</p>
 
 <p>이 과정은 크게 3단계로 나눌 수 있는데</p>
 
@@ -107,50 +107,116 @@
   <li>커밋 : 이렇게 계산된 UI와 이전 상태를 비교해, 변경된 DOM만 바꿔준다.</li>
 </ol>
 
-<p><img src="/assets/post_images/2026-03-02/render.png" alt="랜더링" /><br />
+<p><img src="/assets/post_images/2026-03-02/render.png" alt="렌더링" /><br />
 출처 : <a href="https://viniciusvidal.com/en/posts/what-is-a-re-render">Vinícius Vidal</a> - What is a re-render in React</p>
 
-<p>이미지 내용을 보면 1,2가 순서대로 작동하는 것을 알 수 있다. 1의 useState(…) 인자에는 상태 초기값이 들어가며, 그 상태 초기값이 변할때, 2의 Function Component함수 내용(훅, 랜더링)이 전체가 실행되고 바뀌는 부분만 커밋되는 것이다.</p>
+<p>그런데 이 3단계, 커밋에서 최초 렌더링(mount)과 리렌더링(update)의 작동 방식이 다르다. 이 둘을 구분해서 이해하는 것이 중요하다.</p>
 
-<p>여기서 주의할 점은, 1의 useState(…)의 인자가 들어가서 초기값이 변할 때 인데, 여기서 인자로 들어가서 바로 훅이 실행되는 것이 아니라, 인자 -&gt; 큐 예약상태 -&gt; 컴포넌트 리랜더 -&gt; 훅 실행 순으로 작동한다는 것이다.</p>
+<h3 id="2-1-최초-렌더링-mount--그냥-바로-그린다">2-1. 최초 렌더링 (Mount) — “그냥 바로 그린다”</h3>
 
-<p><img src="/assets/post_images/2026-03-02/re-render.png" alt="리랜더링" /><br />
-출처 : 본인</p>
+<p>최초 렌더링은 React가 컴포넌트를 화면에 처음 그리는 과정이다. 부모 컴포넌트가 JSX에 <code class="language-plaintext highlighter-rouge">&lt;Form /&gt;</code>을 포함한 순간, React가 “이 컴포넌트를 그려야 한다”고 판단하고 바로 실행한다.</p>
 
-<p>이렇듯 useState에서 상태값이 들어간다고 해서 바로 훅의 상태에 적용되는것이 아닌, ‘큐 -&gt; Re-render과정’을 거쳐서 작동한다는 것에 주목해야 한다. 헷갈리겠지만 아래의 코드를 보면 이해가 쉬워진다.</p>
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">Form</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// 1. 상태 슬롯 생성 + 초기값 'Mary' 저장</span>
+    <span class="kd">const</span> <span class="p">[</span><span class="nx">name</span><span class="p">,</span> <span class="nx">setName</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="dl">'</span><span class="s1">Mary</span><span class="dl">'</span><span class="p">);</span>
+    <span class="c1">// 2. 후처리 Hook 등록</span>
+    <span class="nx">useEffect</span><span class="p">(</span><span class="kd">function</span> <span class="nx">persistForm</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">localStorage</span><span class="p">.</span><span class="nx">setItem</span><span class="p">(</span><span class="dl">'</span><span class="s1">formData</span><span class="dl">'</span><span class="p">,</span> <span class="nx">name</span><span class="p">);</span>
+    <span class="p">});</span>
+    <span class="c1">// 3. 상태 슬롯 생성 + 초기값 'Poppins' 저장</span>
+    <span class="kd">const</span> <span class="p">[</span><span class="nx">surname</span><span class="p">,</span> <span class="nx">setSurname</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="dl">'</span><span class="s1">Poppins</span><span class="dl">'</span><span class="p">);</span>
+    <span class="c1">// 4. 후처리 Hook 등록</span>
+    <span class="nx">useEffect</span><span class="p">(</span><span class="kd">function</span> <span class="nx">updateTitle</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nb">document</span><span class="p">.</span><span class="nx">title</span> <span class="o">=</span> <span class="nx">name</span> <span class="o">+</span> <span class="dl">'</span><span class="s1"> </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">surname</span><span class="p">;</span>
+    <span class="p">});</span>
+    <span class="c1">// 5. JSX 반환 -&gt; DOM에 반영</span>
+    <span class="c1">// 6. DOM 커밋 후, 2,4에서 등록했던 useEffect 콜백들이 실행</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p>최초 렌더링(mount)에서는 리랜더링(update)의 큐 예약 같은 과정이 없다. React가 직접 “이거 그려”라고 명령하기 때문에, useState는 상태 슬롯을 생성하고 초기값을 저장한 뒤, 나머지 훅들이 순서대로 실행되고, JSX가 반환되어 DOM에 바로 반영된다.</p>
 
-<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="c1">// 0. setName(...) 또는 setSurname(...) 호출 (업데이트 발생)</span>
-    <span class="c1">// 1. 해당 state 훅의 업데이트가 큐에 예약됨</span>
-    <span class="c1">// 2. Form 컴포넌트 리렌더 시작</span>
-    <span class="kd">function</span> <span class="nx">Form</span><span class="p">()</span> <span class="p">{</span>
-    <span class="c1">// 3. 예약된 상태저장 Hook 호출 (name 상태 읽기)</span>
+<h3 id="2-2-리렌더링-update--큐에-모아서-다시-그린다">2-2. 리렌더링 (Update) — “큐에 모아서 다시 그린다”</h3>
+
+<p>리렌더링은 setState가 호출되어 상태가 변경될 때 발생한다. 그런데 여기서 중요한 점이 있다. setState 호출이 곧바로 리렌더링을 일으키는 것이 아니라, 큐에 업데이트를 예약한 뒤 React가 적절한 타이밍에 처리한다는 것이다.</p>
+
+<p>큐가 필요한 이유는, 짧은 시간에 여러 setState가 호출될 수 있기 때문이다.</p>
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">handleClick</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">setName</span><span class="p">(</span><span class="dl">'</span><span class="s1">Jane</span><span class="dl">'</span><span class="p">);</span>      <span class="c1">// 큐에 예약</span>
+    <span class="nx">setAge</span><span class="p">(</span><span class="mi">30</span><span class="p">);</span>           <span class="c1">// 큐에 예약</span>
+    <span class="nx">setCity</span><span class="p">(</span><span class="dl">'</span><span class="s1">Seoul</span><span class="dl">'</span><span class="p">);</span>     <span class="c1">// 큐에 예약</span>
+    <span class="c1">// -&gt; 3번 리렌더가 아니라, 큐에 모아서 1번만 리렌더 (배칭)</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p>이렇게 모아서 한 번에 처리하는 것을 배칭(batching)이라고 하며, 이를 통해 불필요한 재실행을 줄여 성능을 유지하는 것이다.</p>
+
+<p>그렇다면 리렌더링의 실제 순서를 코드로 보자.</p>
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 0. setName(...) 또는 setSurname(...) 호출 (업데이트 발생)</span>
+<span class="c1">// 1. 해당 state의 업데이트가 큐에 예약됨</span>
+<span class="c1">// 2. React가 큐를 처리하며 Form 컴포넌트 리렌더 시작</span>
+<span class="kd">function</span> <span class="nx">Form</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// 3. useState가 큐에서 새 값을 꺼내서 반환 (name 상태 읽기)</span>
     <span class="kd">const</span> <span class="p">[</span><span class="nx">name</span><span class="p">,</span> <span class="nx">setName</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="dl">'</span><span class="s1">Mary</span><span class="dl">'</span><span class="p">);</span>
     <span class="c1">// 4. 후처리 Hook 등록 (이번 렌더 후 실행할 effect)</span>
     <span class="nx">useEffect</span><span class="p">(</span><span class="kd">function</span> <span class="nx">persistForm</span><span class="p">()</span> <span class="p">{</span>
         <span class="nx">localStorage</span><span class="p">.</span><span class="nx">setItem</span><span class="p">(</span><span class="dl">'</span><span class="s1">formData</span><span class="dl">'</span><span class="p">,</span> <span class="nx">name</span><span class="p">);</span>
     <span class="p">});</span>
-    <span class="c1">// 5. 상태저장 Hook 호출 (surname state 읽기)</span>
+    <span class="c1">// 5. useState가 큐에서 새 값을 꺼내서 반환 (surname 상태 읽기)</span>
     <span class="kd">const</span> <span class="p">[</span><span class="nx">surname</span><span class="p">,</span> <span class="nx">setSurname</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="dl">'</span><span class="s1">Poppins</span><span class="dl">'</span><span class="p">);</span>
     <span class="c1">// 6. 후처리 Hook 등록</span>
     <span class="nx">useEffect</span><span class="p">(</span><span class="kd">function</span> <span class="nx">updateTitle</span><span class="p">()</span> <span class="p">{</span>
-        <span class="nb">document</span><span class="p">.</span><span class="nx">title</span> <span class="o">=</span> <span class="nx">name</span> <span class="o">+</span> <span class="dl">''</span> <span class="o">+</span> <span class="nx">surname</span><span class="p">;</span>
+        <span class="nb">document</span><span class="p">.</span><span class="nx">title</span> <span class="o">=</span> <span class="nx">name</span> <span class="o">+</span> <span class="dl">'</span><span class="s1"> </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">surname</span><span class="p">;</span>
     <span class="p">});</span>
-    <span class="p">}</span>
-    <span class="c1">// 7. DOM 커밋 후, 4,6에서 등록했던 useEffect 콜백들이 실행</span>
+<span class="p">}</span>
+<span class="c1">// 7. DOM 커밋 후, 4,6에서 등록했던 useEffect 콜백들이 실행</span>
 </code></pre></div></div>
 
-<p>이것이 “React는 랜더링이 다시 일어날 때마다 컴포넌트 함수가 통째로 재실행” 되는 실제 순서이다.</p>
+<p>최초 렌더링과 비교하면 차이가 명확하다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>최초 렌더링 (Mount)</th>
+      <th>리렌더링 (Update)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>트리거</td>
+      <td>React가 컴포넌트를 발견</td>
+      <td>setState 호출</td>
+    </tr>
+    <tr>
+      <td>큐 예약</td>
+      <td>없음 (바로 실행)</td>
+      <td>있음 (배칭 후 실행)</td>
+    </tr>
+    <tr>
+      <td>useState 역할</td>
+      <td>상태 슬롯 생성 + 초기값 저장</td>
+      <td>큐에서 새 값을 꺼내서 반환</td>
+    </tr>
+    <tr>
+      <td>실행 흐름</td>
+      <td>바로 함수 실행 -&gt; DOM 반영</td>
+      <td>큐 예약 -&gt; 배칭 -&gt; 함수 재실행 -&gt; 변경된 DOM만 커밋</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>이것이 “React는 랜더링이 다시 일어날 때마다 컴포넌트 함수가 통째로 재실행” 되는 실제 순서이다.
+최초 렌더링은 바로 실행되고, 리렌더링은 큐를 거쳐서 실행된다는 차이를 기억해두자.</p>
 
 <h2 id="3-useeffect의-실행시점-의존성-배열의-이해">3. useEffect의 실행시점, 의존성 배열의 이해</h2>
 
-<p>그렇다면 상태저장 Hook인 useState의 작동원리를 알았다면, sideEffect를 일으키는 Hook인 useEffect의 작동원리는 무엇일까? useEffect는 작동시점을 기준으로 설명이 가능한데, 이는 2가지로 나누어서 얘기해 볼 수 있다.</p>
+<p>그렇다면 sideEffect를 일으키는 Hook인 useEffect의 작동원리는 무엇일까? 이경우도 최초 랜더링(Mount), 리렌더링(Update)로 나눌 수 있다.</p>
 
 <ol>
-  <li>DOM이 준비되었을 때(초기 랜더링)</li>
-  <li>의존성 배열의 변화가 있을 때</li>
+  <li>DOM이 준비되었을 때(최초 랜더링)</li>
+  <li>의존성 배열의 변화가 있을 때(리랜더링)</li>
 </ol>
 
-<p>먼저, “1. DOM이 준비되었을 때”를 설명 해 보겠다.</p>
+<p>먼저, “1. DOM이 준비되었을 때”(최초 랜더링)를 설명 해 보겠다.</p>
 
 <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="k">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span><span class="nx">useEffect</span><span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">react</span><span class="dl">"</span><span class="p">;</span>
     <span class="c1">// ...</span>
@@ -158,6 +224,7 @@
 
         <span class="nx">useEffect</span><span class="p">(</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
         <span class="c1">// 2.컴포넌트가 처음 렌더링되고, 그 결과가 DOM에 반영된 "뒤에" 한 번 실행되는 콜백</span>
+        <span class="c1">// (초기 랜더링)</span>
         <span class="nx">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">DOM이 완전히 로드 되었습니다.</span><span class="dl">'</span><span class="p">)</span>
         <span class="p">},[])</span>
 
@@ -170,25 +237,28 @@
 
 <p>코드에서 주석에 달린 순서대로 작동하는 것에 주목해보자. 이는 useEffect함수의 끝쪽에 달려있는 ‘의존성 배열 []’가 작동하지 않았을 때를 말한다. 즉, 초기에는 의존성 배열의 변화없이 초기에 App컴포넌트가 작동했을때의 작동을 설명한 것이다. 이 경우의 Dom은 return되는 &lt;div&gt;를 말하며, &lt;div&gt;가 DOM에 반영된 이후, 콜백으로서 alert의 내용이 실행된다.</p>
 
-<p>그렇다면 “2.의존성 배열의 변화가 있을 때”는 어느 경우를 말하는 것일까?</p>
+<p>그렇다면 “2.의존성 배열의 변화가 있을 때”(리랜더링)는 어느 경우를 말하는 것일까?</p>
 
 <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="k">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span><span class="nx">useState</span><span class="p">,</span> <span class="nx">useEffect</span><span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">react</span><span class="dl">"</span><span class="p">;</span>
     <span class="c1">// 1. 해당 state 훅의 업데이트가 큐에 예약됨</span>
     <span class="c1">// 2. App 컴포넌트 리렌더 시작</span>
     <span class="k">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="nx">App</span><span class="p">()</span> <span class="p">{</span>
-        <span class="c1">// 3. 리랜더링 과정에서 useState 훅 호출 (value state 읽기)</span>
+        <span class="c1">// 3. 리랜더링 과정에서 useState 훅 호출 (value 상태 읽기)</span>
         <span class="kd">const</span> <span class="p">[</span><span class="nx">value</span><span class="p">,</span> <span class="nx">setValue</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="dl">'</span><span class="s1">user</span><span class="dl">'</span><span class="p">);</span>    
 
         <span class="nx">useEffect</span><span class="p">(</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
         <span class="c1">// 5. DOM 커밋 이후, 의존성 배열의 이전 값과 현재 값이 다르면 실행되는 콜백</span>
-        <span class="nx">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">DOM이 완전히 로드 되었습니다.</span><span class="dl">'</span><span class="p">)</span>
+        <span class="c1">// (의존성 변화)</span>
+        <span class="nx">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">value가 변경되었습니다: </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">value</span><span class="p">)</span>
         <span class="p">},[</span><span class="nx">value</span><span class="p">])</span>
 
         <span class="k">return</span> <span class="p">(</span>
-                <span class="c1">// 4.컴포넌트의 UI가 DOM에 렌더링되는 단계</span>
+            <span class="p">&lt;&gt;</span>
+                <span class="si">{</span><span class="cm">/* 4.컴포넌트의 UI가 DOM에 렌더링되는 단계 */</span><span class="si">}</span>
                 <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>안녕하세요! <span class="si">{</span><span class="nx">value</span><span class="si">}</span>님!<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-                <span class="c1">// 0. setValue(...) 호출 (업데이트 발생)</span>
+                <span class="si">{</span><span class="cm">/* 0. setValue(...) 호출 (업데이트 발생) */</span><span class="si">}</span>
                 <span class="p">&lt;</span><span class="nt">button</span> <span class="na">onClick</span><span class="p">=</span><span class="si">{</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">setValue</span><span class="p">(</span><span class="dl">"</span><span class="s2">user1</span><span class="dl">"</span><span class="p">)</span><span class="si">}</span><span class="p">&gt;</span>user1로 변경<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+            <span class="p">&lt;/&gt;</span>
         <span class="p">);</span>
     <span class="p">}</span>
 </code></pre></div></div>
@@ -205,7 +275,7 @@
   <li>useEffect의 실행시점, 의존성 배열의 이해.</li>
 </ol>
 
-<p>이 세 가지 최소조건이 생긴 근본적인 이유는 2번, 즉 컴포넌트 함수가 렌더링이 일어날 때마다 통째로 재실행되는 구조 때문이다. 통째로 재실행되기 때문에 React는 Hook을 호출 순서로 식별할 수밖에 없고, 그래서 1번의 순서 보장 규칙이 필연적으로 따라온다. 또한 통째로 재실행된 결과가 DOM에 커밋된 이후에야 후처리가 가능하기 때문에, 3번의 useEffect는 DOM 커밋 이후라는 ‘실행 시점’과 ‘의존성 배열’ 비교라는 실행 기준이 분리되어 작동하는 것이다.</p>]]></content><author><name></name></author><category term="React.js" /><summary type="html"><![CDATA[이전글의 React내용 중, “4.Hook의 등장”에서는 Class컴포넌트에서 Function컴포넌트로의 이행되는 과정을 다뤄보았고, 이 과정에서 구조적 변화를 통해 코드 작성에서의 최소조건부가 필요하다는 것을 알 수 있었다. 이번 내용에서는 이러한 최소조건이 왜 생길 수 밖에 없었는지에 대해 알아보도록 하자.]]></summary></entry><entry><title type="html">[React.js] React의 학습커브는 왜 가파른 것일까?</title><link href="https://hwp-log.github.io/react.js/2026/02/25/React.js-day-1.html" rel="alternate" type="text/html" title="[React.js] React의 학습커브는 왜 가파른 것일까?" /><published>2026-02-25T00:00:00+00:00</published><updated>2026-02-25T00:00:00+00:00</updated><id>https://hwp-log.github.io/react.js/2026/02/25/React.js-day-1</id><content type="html" xml:base="https://hwp-log.github.io/react.js/2026/02/25/React.js-day-1.html"><![CDATA[<p>React의 학습커브는 왜 가파른 것일까? 컴포넌트에 대한 이해? 단방향 데이터 흐름? hook개념? 무엇이 어렵다고 특정짓기 어렵지만, 개인적인 생각으로는 이러한 개념을 한 번에 이해해야하는 부담이 아닐까 싶다. 왜냐하면 JS로 분리해서 인터렉션을 구성하던 개발자 입장에서는 이러한 개념이 한눈에 들어오지 않기 때문이다.</p>
+<p>이 세 가지 최소조건이 생긴 근본적인 이유는 2번, 즉 UI를 최신으로 유지하기 위해, 컴포넌트 함수가 렌더링이 일어날 때마다 통째로 재실행되는 구조 때문이다. 통째로 재실행되기 때문에 React는 Hook을 호출 순서로 식별할 수밖에 없고, 그래서 1번의 순서 보장 규칙이 필연적으로 따라온다. 또한 통째로 재실행된 결과가 DOM에 커밋된 이후에야 후처리가 가능하기 때문에, 3번의 useEffect는 DOM 커밋 이후라는 ‘실행 시점’과 ‘의존성 배열’ 비교라는 실행 기준이 분리되어 작동하는 것이다.</p>]]></content><author><name></name></author><category term="React.js" /><summary type="html"><![CDATA[이전글의 React내용 중, “4.Hook의 등장”에서는 Class컴포넌트에서 Function컴포넌트로의 이행되는 과정을 다뤄보았고, 이 과정에서 구조적 변화를 통해 코드 작성에서의 최소조건부가 필요하다는 것을 알 수 있었다. 이번 내용에서는 이러한 최소조건이 왜 생길 수 밖에 없었는지에 대해 알아보도록 하자.]]></summary></entry><entry><title type="html">[React.js] React의 학습커브는 왜 가파른 것일까?</title><link href="https://hwp-log.github.io/react.js/2026/02/25/React.js-day-1.html" rel="alternate" type="text/html" title="[React.js] React의 학습커브는 왜 가파른 것일까?" /><published>2026-02-25T00:00:00+00:00</published><updated>2026-02-25T00:00:00+00:00</updated><id>https://hwp-log.github.io/react.js/2026/02/25/React.js-day-1</id><content type="html" xml:base="https://hwp-log.github.io/react.js/2026/02/25/React.js-day-1.html"><![CDATA[<p>React의 학습커브는 왜 가파른 것일까? 컴포넌트에 대한 이해? 단방향 데이터 흐름? hook개념? 무엇이 어렵다고 특정짓기 어렵지만, 개인적인 생각으로는 이러한 개념을 한 번에 이해해야하는 부담이 아닐까 싶다. 왜냐하면 JS로 분리해서 인터렉션을 구성하던 개발자 입장에서는 이러한 개념이 한눈에 들어오지 않기 때문이다.</p>
 
 <p>실제로 본인도 JS로 각 Dom의 인터렉션을 지정해서 작성하다가, React의 트리구조와 대응하는 컴포넌트 단위로의 사고전환에 어려운 점이 많았다. 그렇다면 이러한 전환이 필요했던 이유는 무엇이였을까? 굳이 쪼개서 생각하지 않아도 될 부분을 왜 쪼개고, 이에 맞는 프레임워크를 왜 만들게 된 것일까?</p>
 
