@@ -10,9 +10,10 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 const allPosts = await getCollection('blog');
 
 const posts = allPosts
-  .filter((post) => post.id.startsWith('techdeepdive/')) 
+  .filter((post) => post.id.startsWith('techdeepdive/'))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
+
 
 <!doctype html>
 <html lang="ko">
