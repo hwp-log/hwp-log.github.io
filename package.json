@@ -17,6 +17,7 @@
     "@astrojs/sitemap": "^3.7.1",
     "astro": "^6.0.3",
     "shaku": "^2.2.4",
+    "shaku-code-annotate-shiki-transformer": "^0.3.0",
     "sharp": "^0.34.3"
   }
 }

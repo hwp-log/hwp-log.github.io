@@ -31,6 +31,10 @@ const { Content } = await render(post);
       description={post.data.description ?? ''}
     />
     <style>
+      article.post a {
+        text-decoration: none;
+      }
+      
       .post-main {
         width: 800px;
         max-width: calc(100% - 2em);
@@ -69,7 +73,6 @@ const { Content } = await render(post);
         line-height: 1.7;
         font-size: 0.98rem;
       }
-
       .post-body p {
         margin: 0 0 1em 0;
       }
