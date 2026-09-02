@@ -1,0 +1,152 @@
+---
+import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
+import BaseHead from "../../components/BaseHead.astro";
+import Footer from "../../components/Footer.astro";
+import FormattedDate from "../../components/FormattedDate.astro";
+import Header from "../../components/Header.astro";
+import { SITE_DESCRIPTION, SITE_TITLE } from "../../consts";
+
+const allPosts = await getCollection("blog");
+
+console.log(allPosts.map((p) => p.id));
+
+const posts = allPosts
+  .filter((post) => post.id.startsWith("troubleshooting/"))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<!doctype html>
+<html lang="ko">
+  <head>
+    <BaseHead title={`${SITE_TITLE} - Blog`} description={SITE_DESCRIPTION} />
+    <style>
+      .blog-main {
+        width: 800px;
+        max-width: calc(100% - 2em);
+        margin: 0 auto;
+        padding: 2.5em 0 4em;
+      }
+
+      .blog-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 1.1rem;
+      }
+
+      .blog-card {
+        border-radius: 14px;
+        border: 1px solid rgba(148, 163, 184, 0.25);
+        background: rgba(15, 23, 42, 0.96);
+        transition:
+          transform 0.7s ease,
+          box-shadow 0.7s ease,
+          background 0.7s ease,
+          border-color 0.7s ease;
+      }
+
+      .blog-card-link {
+        display: block;
+        padding: 1rem 1.2rem;
+        text-decoration: none;
+        color: inherit;
+      }
+
+      .blog-card-inner {
+        display: grid;
+        grid-template-columns: 220px minmax(0, 1fr);
+        gap: 1.25rem;
+        align-items: center;
+      }
+
+      .blog-card:hover {
+        background: rgba(30, 41, 59, 0.98);
+        transform: translateY(-1px);
+        box-shadow: 0 18px 40px rgba(0, 0, 0, 0.6);
+        border-color: rgba(129, 140, 248, 0.6);
+      }
+
+      .blog-thumb {
+        border-radius: 12px;
+        overflow: hidden;
+      }
+
+      .blog-thumb img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+
+      .blog-content {
+        min-width: 0;
+      }
+
+      .blog-post-title {
+        margin: 0 0 0.35em 0;
+        font-size: 1.1rem;
+      }
+
+      .blog-post-meta {
+        margin: 0;
+        color: rgb(var(--gray));
+        font-size: 0.8rem;
+      }
+
+      .blog-post-desc {
+        margin: 0.55em 0 0;
+        font-size: 0.9rem;
+        color: rgb(var(--gray));
+      }
+
+      @media (max-width: 720px) {
+        .blog-card-inner {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body class="blog-page">
+    <Header />
+    <main class="blog-main">
+      <section>
+        <ul class="blog-list">
+          {
+            posts.map((post) => (
+              <li class="blog-card">
+                <a class="blog-card-link" href={`/troubleshooting/${post.id}/`}>
+                  <article class="blog-card-inner">
+                    {post.data.heroImage && (
+                      <div class="blog-thumb">
+                        <Image
+                          src={post.data.heroImage}
+                          alt=""
+                          width={400}
+                          height={225}
+                        />
+                      </div>
+                    )}
+                    <div class="blog-content">
+                      <header class="blog-post-header">
+                        <h2 class="blog-post-title">{post.data.title}</h2>
+                        <p class="blog-post-meta">
+                          <FormattedDate date={post.data.pubDate} />
+                        </p>
+                      </header>
+                      {post.data.description && (
+                        <p class="blog-post-desc">{post.data.description}</p>
+                      )}
+                    </div>
+                  </article>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+    </main>
+    <Footer />
+  </body>
+</html>

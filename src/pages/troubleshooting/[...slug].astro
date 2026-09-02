@@ -1,0 +1,105 @@
+---
+import { type CollectionEntry, getCollection, render } from "astro:content";
+import BaseHead from "../../components/BaseHead.astro";
+import Footer from "../../components/Footer.astro";
+import FormattedDate from "../../components/FormattedDate.astro";
+import Header from "../../components/Header.astro";
+import { SITE_TITLE } from "../../consts";
+
+export async function getStaticPaths() {
+	const posts = await getCollection("blog");
+
+	return posts
+		.filter((post) => post.id.startsWith("troubleshooting/"))
+		.map((post) => ({
+			params: { slug: post.id },
+			props: post,
+		}));
+}
+
+type Props = CollectionEntry<"blog">;
+
+const post = Astro.props as Props;
+const { Content } = await render(post);
+---
+
+<!doctype html>
+<html lang="ko">
+	<head>
+		<BaseHead
+			title={`${post.data.title} - ${SITE_TITLE}`}
+			description={post.data.description ?? ""}
+		/>
+		<style>
+			article.post a {
+				text-decoration: none;
+			}
+
+			.post-main {
+				width: 800px;
+				max-width: calc(100% - 2em);
+				margin: 0 auto;
+				padding: 2.5em 0 4em;
+			}
+
+			.post-header {
+				margin-bottom: 1.8rem;
+			}
+
+			.post-hero {
+				margin-bottom: 1.4rem;
+				border-radius: 12px;
+				overflow: hidden;
+			}
+
+			.post-hero img {
+				display: block;
+				width: 100%;
+				height: auto;
+			}
+
+			.post-title {
+				margin: 0 0 0.5rem 0;
+				font-size: 1.6rem;
+			}
+
+			.post-meta {
+				margin: 0;
+				color: rgb(var(--gray));
+				font-size: 0.8rem;
+			}
+
+			.post-body {
+				line-height: 1.7;
+				font-size: 0.98rem;
+			}
+			.post-body p {
+				margin: 0 0 1em 0;
+			}
+		</style>
+	</head>
+	<body>
+		<Header />
+		<main class="post-main">
+			<article>
+				<header class="post-header">
+					{
+						post.data.heroImage && (
+							<div class="post-hero">
+								<img src={post.data.heroImage} alt="" />
+							</div>
+						)
+					}
+					<h1 class="post-title">{post.data.title}</h1>
+					<p class="post-meta">
+						<FormattedDate date={post.data.pubDate} />
+					</p>
+				</header>
+				<section class="post-body">
+					<Content />
+				</section>
+			</article>
+		</main>
+		<Footer />
+	</body>
+</html>
